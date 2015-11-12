@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="501.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="14.0" layoutY="5.0" prefHeight="69.0" prefWidth="596.0">
+         <children>
+            <Label layoutY="14.0" prefHeight="17.0" prefWidth="304.0" text="Modulo Levantamento Técnico / Orçamentação" />
+            <Label alignment="CENTER" contentDisplay="TOP" layoutX="146.0" layoutY="47.0" prefHeight="17.0" prefWidth="304.0" text=" Levantamento Técnico " />
+         </children>
+      </Pane>
+      <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="186.0" prefHeight="31.0" prefWidth="156.0" text="Insira nome Edificio:" />
+      <Button layoutX="234.0" layoutY="378.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="286.0" text="Iniciar VOO Drone coordenadas inseridas" />
+      <Button layoutX="26.0" layoutY="378.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="130.0" text="Ligar / Desligar " />
+      <Button layoutX="543.0" layoutY="455.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" text="Sair" />
+      <ProgressBar layoutX="89.0" layoutY="442.0" prefHeight="20.0" prefWidth="233.0" progress="0.0" />
+      <Label layoutX="89.0" layoutY="425.0" prefHeight="20.0" prefWidth="145.0" text="Estado Bateria Drone" />
+      <Circle fill="#5fff1f" layoutX="34.0" layoutY="433.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f58" layoutX="34.0" layoutY="460.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="52.0" layoutY="423.0" prefHeight="20.0" prefWidth="23.0" text="ON" />
+      <Label layoutX="52.0" layoutY="450.0" prefHeight="20.0" prefWidth="37.0" text="OFF" />
+      <Label layoutX="26.0" layoutY="339.0" prefHeight="31.0" prefWidth="108.0" text="Drone:" />
+      <TextField layoutX="187.0" layoutY="188.0" prefHeight="27.0" prefWidth="391.0" />
+      <Label layoutX="14.0" layoutY="230.0" prefHeight="31.0" prefWidth="178.0" text="Insira Coordenadas Edificio:" />
+      <TextField layoutX="186.0" layoutY="234.0" prefHeight="27.0" prefWidth="156.0" />
+      <TextField layoutX="366.0" layoutY="234.0" prefHeight="27.0" prefWidth="156.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="186.0" layoutY="261.0" prefHeight="27.0" prefWidth="156.0" text="Latitude" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="366.0" layoutY="261.0" prefHeight="27.0" prefWidth="156.0" text="Longitude" />
+      <Button layoutX="479.0" layoutY="455.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="55.0" text="Voltar" />
+      <Button layoutX="477.0" layoutY="312.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="Guardar Edificio" />
+      <DatePicker layoutX="188.0" layoutY="113.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="74.0" prefHeight="31.0" prefWidth="156.0" text="Levantamento nº :" />
+      <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="111.0" prefHeight="31.0" prefWidth="156.0" text="Data :" />
+      <TextField layoutX="188.0" layoutY="76.0" prefHeight="0.0" prefWidth="44.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="119.0" layoutY="149.0" prefHeight="31.0" prefWidth="67.0" text="Cliente:" />
+      <ChoiceBox layoutX="188.0" layoutY="151.0" prefWidth="150.0" />
+      <Button layoutX="344.0" layoutY="151.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="16.0" text="+" />
+   </children>
+</AnchorPane>
