@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package p2.projeto.mlt.controller.model;
+package p2.projeto.mlt.model;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +32,9 @@ public class ProjetoP2JavaFX extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        
+        //Teste
+            
     }
     
 }
