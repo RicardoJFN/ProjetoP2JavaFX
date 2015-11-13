@@ -9,6 +9,6 @@ package p2.projeto.mlt.model;
  *
  * @author ricardon
  */
-public class Teste {
+public class SimpleDoubleLatitude {
     
 }

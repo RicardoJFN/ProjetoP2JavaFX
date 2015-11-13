@@ -28,16 +28,22 @@ public class Cliente {
     protected StringProperty pais;
     protected IntegerProperty contactoTelefone;
     protected IntegerProperty contactoTelemovel;
-    protected IntegerProperty contactoEmail;
+    protected StringProperty contactoEmail;
     
     /**
-     * Construtor da classe Cliente FALTA ACABAR
+     * Construtor da classe Cliente 
      * @param nome
      * @param morada
+     * @param codigoPostal
+     * @param localidade
+     * @param pais
+     * @param contactoTelefone
+     * @param contactoTelemovel
+     * @param contactoEmail
      */
     
     public Cliente(String nome, String morada, int codigoPostal, String localidade, String pais, int contactoTelefone,
-            int contactoTelemovel, int contactoEmail){
+            int contactoTelemovel, String contactoEmail){
         
         this.nome = new SimpleStringProperty(nome);
         this.morada = new SimpleStringProperty(morada);
@@ -46,7 +52,7 @@ public class Cliente {
         this.pais = new SimpleStringProperty(pais);
         this.contactoTelefone = new SimpleIntegerProperty(contactoTelefone);
         this.contactoTelemovel = new SimpleIntegerProperty(contactoTelemovel);
-        this.contactoEmail = new SimpleIntegerProperty(contactoEmail);
+        this.contactoEmail = new SimpleStringProperty(contactoEmail);
     }
     
 }
