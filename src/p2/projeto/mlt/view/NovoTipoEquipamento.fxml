@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="676.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="14.0" layoutY="5.0" prefHeight="53.0" prefWidth="581.0">
+         <children>
+            <Label layoutY="14.0" prefHeight="17.0" prefWidth="304.0" text="Modulo Levantamento Técnico / Orçamentação" />
+            <Label alignment="CENTER" contentDisplay="TOP" layoutX="160.0" layoutY="61.0" prefHeight="20.0" prefWidth="304.0" text="Adicionar novo tipo equipamento" />
+         </children>
+      </Pane>
+      <Button layoutX="597.0" layoutY="632.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Sair" />
+      <ProgressBar layoutX="77.0" layoutY="635.0" prefHeight="20.0" prefWidth="233.0" progress="0.0" />
+      <Label layoutX="77.0" layoutY="618.0" prefHeight="20.0" prefWidth="145.0" text="Estado Bateria Drone" />
+      <Circle fill="#5fff1f" layoutX="22.0" layoutY="626.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="#ff1f58" layoutX="22.0" layoutY="653.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="40.0" layoutY="616.0" prefHeight="20.0" prefWidth="23.0" text="ON" />
+      <Label layoutX="40.0" layoutY="643.0" prefHeight="20.0" prefWidth="37.0" text="OFF" />
+      <Label layoutX="15.0" layoutY="585.0" prefHeight="31.0" prefWidth="108.0" text="Estado Drone:" />
+      <Button layoutX="418.0" layoutY="632.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Voltar" />
+      <Button layoutX="508.0" layoutY="632.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Seguinte" />
+      <Label alignment="CENTER_RIGHT" layoutX="6.0" layoutY="110.0" prefHeight="31.0" prefWidth="95.0" text="Tipo:" />
+      <TextField layoutX="103.0" layoutY="116.0" prefHeight="27.0" prefWidth="244.0" />
+      <TextField layoutX="104.0" layoutY="154.0" prefHeight="27.0" prefWidth="244.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="6.0" layoutY="152.0" prefHeight="31.0" prefWidth="95.0" text="SubTipo:" />
+      <TableView layoutX="365.0" layoutY="199.0" prefHeight="308.0" prefWidth="304.0">
+         <columns>
+            <TableColumn prefWidth="160.0" text="Tipo" />
+            <TableColumn prefWidth="140.0" text="Subtipo" />
+         </columns>
+      </TableView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="436.0" layoutY="167.0" prefHeight="31.0" prefWidth="162.0" text="Equipamentos" textAlignment="RIGHT" />
+      <Button layoutX="272.0" layoutY="186.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Adicionar" />
+      <Button layoutX="569.0" layoutY="515.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Eliminar" />
+      <Button layoutX="390.0" layoutY="515.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Criar" />
+      <Button layoutX="480.0" layoutY="515.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Alterar" />
+   </children>
+</AnchorPane>
