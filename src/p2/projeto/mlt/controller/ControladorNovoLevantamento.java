@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 public class ControladorNovoLevantamento {
     
     private Stage novoLevantamento;
+    private boolean janelaLevantamento = false;
+    
     
     @FXML
     private void initialize(){
@@ -25,10 +27,18 @@ public class ControladorNovoLevantamento {
         this.novoLevantamento = novoLevantamento;
     }
     
+    public boolean isJanelaLevantamento(){
+        return janelaLevantamento;
+    } 
+    
+    
     @FXML
     public void sair(){
+        
+        janelaLevantamento = true;
         novoLevantamento.close();
     }
+    
     
     
 }
