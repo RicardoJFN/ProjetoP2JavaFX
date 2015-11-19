@@ -56,18 +56,7 @@ public class MainApp extends Application{
         }
     }
     
-    public void iniNovoLevantamento(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/p2/projeto/mlt/view/CriarLevantamento.fxml"));
-            
-            AnchorPane layout = (AnchorPane) loader.load();
-            Scene scene = new Scene(layout);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-   
+    
     
     public Stage getPrimaryStage(){
         return primaryStage;

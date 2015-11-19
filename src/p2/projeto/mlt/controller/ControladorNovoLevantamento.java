@@ -6,7 +6,12 @@
 package p2.projeto.mlt.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -30,6 +35,22 @@ public class ControladorNovoLevantamento {
     public boolean isJanelaLevantamento(){
         return janelaLevantamento;
     } 
+    
+    @FXML
+    public void mostraJanelaNovoCliente(){
+         try {
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/NovoCliente.fxml"));
+          Parent root = (Parent) fxmlLoader.load();
+          Stage stage = new Stage();
+          stage.initModality(Modality.APPLICATION_MODAL);
+          stage.initStyle(StageStyle.UNDECORATED);
+          stage.setTitle("Novo Cliente");
+          stage.setScene(new Scene(root));
+          stage.show();
+      } catch (Exception e) {
+      }
+      
+    }
     
     
     @FXML

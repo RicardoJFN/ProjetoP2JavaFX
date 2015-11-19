@@ -41,7 +41,7 @@
       <TextField layoutX="188.0" layoutY="76.0" prefHeight="0.0" prefWidth="44.0" />
       <Label alignment="CENTER_RIGHT" layoutX="119.0" layoutY="149.0" prefHeight="31.0" prefWidth="67.0" text="Cliente:" />
       <ChoiceBox layoutX="188.0" layoutY="151.0" prefWidth="150.0" />
-      <Button layoutX="344.0" layoutY="151.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="16.0" text="+" />
+      <Button layoutX="344.0" layoutY="151.0" mnemonicParsing="false" onAction="#mostraJanelaNovoCliente" prefHeight="27.0" prefWidth="16.0" text="+" />
       <ChoiceBox layoutX="188.0" layoutY="188.0" prefWidth="150.0" />
       <Button layoutX="344.0" layoutY="188.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="16.0" text="+" />
    </children>
