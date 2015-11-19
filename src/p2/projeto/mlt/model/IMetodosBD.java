@@ -11,4 +11,7 @@ package p2.projeto.mlt.model;
  */
 public interface IMetodosBD {
     
+    public boolean inserir();
+    
+    
 }
