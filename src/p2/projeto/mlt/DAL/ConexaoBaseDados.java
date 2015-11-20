@@ -17,34 +17,37 @@ import java.util.logging.Logger;
  */
 public class ConexaoBaseDados {
     
-    //Uso do Singleton
-    public static ConexaoBaseDados instance;
     private Connection conexao;
-    
-    private ConexaoBaseDados() {
-        try {
-            //forName = driver da BD
-            Class.forName("");
-            //Inserir depois  caminho, login e password
-            conexao = DriverManager.getConnection(null, null, null);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ConexaoBaseDados.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
-    public synchronized ConexaoBaseDados estadoConexao(){
-        if(instance == null) {
-            instance = new ConexaoBaseDados();
-        }
-        return instance;
-    }
+    private static ConexaoBaseDados singleton = null;
+    private static final String Nomehost = "";
+    private static final String Nomebd = "";
+    private static final String driverString = "";
+    private static final String driverPath = "";
+    private static final String password = "";
+    private static final String user = "";
 
-    public Connection getConexao() {
+    private ConexaoBaseDados(String driverClassName, String dbURL, String user, String password) throws ClassNotFoundException, SQLException{
+        Class.forName(driverClassName);
+        conexao = DriverManager.getConnection(dbURL, user, password);
+    }
+    
+    public Connection getConexao(){
         return conexao;
     }
     
-    public void encerrarConexao() {
-        instance = null;
+    public static ConexaoBaseDados conectar() throws ClassNotFoundException, SQLException{
+        if (singleton == null){
+            singleton = new ConexaoBaseDados(driverPath, driverString+"://"+Nomehost+"/"+Nomebd,user,password);
+        }
+        return singleton;
     }
+    
+    public void encerrarBaseDados() throws SQLException{
+        if(conexao != null){
+            conexao.close();
+        }
+        singleton = null;
+    }
+    
+    
 }

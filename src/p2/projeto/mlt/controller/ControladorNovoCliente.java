@@ -5,6 +5,7 @@
  */
 package p2.projeto.mlt.controller;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import p2.projeto.mlt.DAL.ConexaoBaseDados;
+import static p2.projeto.mlt.DAL.ConexaoBaseDados.conectar;
 import p2.projeto.mlt.model.Cliente;
 import p2.projeto.mlt.model.IMetodosBD;
 
@@ -39,9 +41,8 @@ public class ControladorNovoCliente implements IMetodosBD{
     
     private Stage novoCliente;
     private Cliente cliente;
-    private static final String SQL_INSERT = "INSERT INTO Cliente (Cliente_nome, Cliente_morada, Cliente_postal, Cliente_telef, Cliente_telem, Cliente_email, Cliente_local) VALUES (?,?,?,?,?,?,?)";
     
-    private static final ConexaoBaseDados conectar = ConexaoBaseDados.instance.estadoConexao();
+    
     
     @FXML
     private void initialize(){
@@ -53,30 +54,27 @@ public class ControladorNovoCliente implements IMetodosBD{
     }
 
     @Override
-    public boolean inserir() {
-       PreparedStatement ps;
-        
+    public void inserir() {
         try {
-            ps = conectar.getConexao().prepareCall(SQL_INSERT);
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            String queryString = "INSERT INTO cliente VALUES (?,?,?,?,?,?,?)";
+            Connection conectar = con.getConexao();
+            PreparedStatement ps = (PreparedStatement) conectar.prepareStatement(queryString);
             
             ps.setString(1, nomeCliente.getText());
             ps.setString(2, moradaCliente.getText());
             ps.setString(3, postalCliente.getText());
-            ps.setString(4, telefoneCliente.getText());
-            ps.setString(5, telemovelCliente.getText());
-            ps.setString(6, emailCliente.getText());
-            ps.setString(7, localidadeCliente.getText());
-            
-            if(ps.executeUpdate() > 0){
-                return true;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ControladorNovoCliente.class.getName()).log(Level.SEVERE, null, ex);
+            ps.setString(4, localidadeCliente.getText());
+            ps.setString(5, telefoneCliente.getText());
+            ps.setString(6, telemovelCliente.getText());
+            ps.setString(7, emailCliente.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-       
-        return false;
+        }
+        
     }
     
    
     
-}
+
