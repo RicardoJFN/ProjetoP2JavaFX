@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="869.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="14.0" layoutY="5.0" prefHeight="51.0" prefWidth="581.0">
+         <children>
+            <Label layoutY="14.0" prefHeight="17.0" prefWidth="304.0" text="Modulo Levantamento Técnico / Orçamentação" />
+         </children>
+      </Pane>
+      <Button layoutX="717.0" layoutY="449.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Sair" />
+      <Button layoutX="626.0" layoutY="449.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Voltar" />
+      <TableView layoutX="67.0" layoutY="110.0" prefHeight="331.0" prefWidth="726.0">
+         <columns>
+            <TableColumn prefWidth="144.0" text="Nome" />
+            <TableColumn prefWidth="198.0" text="Morada" />
+            <TableColumn prefWidth="106.0" text="Localidade" />
+            <TableColumn prefWidth="113.0" text="Telefone" />
+            <TableColumn prefWidth="164.0" text="E-mail" />
+         </columns>
+      </TableView>
+      <Button layoutX="65.0" layoutY="449.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Ver Clientes" />
+      <Label alignment="CENTER" contentDisplay="TOP" layoutX="300.0" layoutY="67.0" prefHeight="20.0" prefWidth="261.0" text="Consulta Clientes " />
+   </children>
+</AnchorPane>
