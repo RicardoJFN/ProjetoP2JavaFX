@@ -36,7 +36,7 @@
       <TextField fx:id="moradaCliente" layoutX="187.0" layoutY="113.0" prefHeight="27.0" prefWidth="391.0" />
       <TextField fx:id="postalCliente" layoutX="188.0" layoutY="151.0" prefHeight="27.0" prefWidth="129.0" />
       <Label alignment="CENTER_RIGHT" layoutX="29.0" layoutY="228.0" prefHeight="31.0" prefWidth="156.0" text="País:" />
-      <Button layoutX="390.0" layoutY="384.0" mnemonicParsing="false" onAction="#inserir" prefHeight="27.0" prefWidth="79.0" text="Guardar" />
-      <TextField fx:id="localidadeCliente1" layoutX="188.0" layoutY="230.0" prefHeight="27.0" prefWidth="202.0" />
+      <Button layoutX="390.0" layoutY="384.0" mnemonicParsing="false" onAction="#executar" prefHeight="27.0" prefWidth="79.0" text="Guardar" />
+      <TextField fx:id="paisCliente" layoutX="188.0" layoutY="230.0" prefHeight="27.0" prefWidth="202.0" />
    </children>
 </AnchorPane>

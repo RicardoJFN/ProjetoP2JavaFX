@@ -20,6 +20,8 @@ public class ControladorNovoTipoEquipamento {
     private TextField tipoEquipamento;
     @FXML
     private TextField subTipoEquipamento;
+    @FXML
+    private TextField valorTipo;
     
     private Stage stageTipoEquipamento;
    
@@ -35,7 +37,8 @@ public class ControladorNovoTipoEquipamento {
     }
     
     public void executar(){
-       NovoTipoEquipamento novoTipo = new NovoTipoEquipamento(tipoEquipamento.getText(), subTipoEquipamento.getText());
+       NovoTipoEquipamento novoTipo = new NovoTipoEquipamento(tipoEquipamento.getText(), subTipoEquipamento.getText(), 
+               Double.parseDouble(valorTipo.getText()));
        novoTipo.inserirTipoEquipamento(novoTipo);
        
     }
