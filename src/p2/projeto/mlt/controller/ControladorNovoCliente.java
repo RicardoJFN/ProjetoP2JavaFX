@@ -5,6 +5,7 @@
  */
 package p2.projeto.mlt.controller;
 
+import p2.projeto.mlt.model.IMetodosBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,13 +17,12 @@ import javafx.stage.Stage;
 import p2.projeto.mlt.DAL.ConexaoBaseDados;
 import static p2.projeto.mlt.DAL.ConexaoBaseDados.conectar;
 import p2.projeto.mlt.model.Cliente;
-import p2.projeto.mlt.model.IMetodosBD;
 
 /**
  *
  * @author ricardon
  */
-public class ControladorNovoCliente implements IMetodosBD{
+public class ControladorNovoCliente {
     
     @FXML
     private TextField nomeCliente;
@@ -32,6 +32,8 @@ public class ControladorNovoCliente implements IMetodosBD{
     private TextField postalCliente;
     @FXML
     private TextField localidadeCliente;
+    @FXML
+    private TextField paisCliente;
     @FXML
     private TextField telefoneCliente;
     @FXML
@@ -53,28 +55,16 @@ public class ControladorNovoCliente implements IMetodosBD{
         this.novoCliente = novoCliente;
     }
 
-    @Override
-    public void inserir() {
-        try {
-            ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            String queryString = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_local,Cliente_telef,Cliente_telem,Cliente_email) VALUES (?,?,?,?,?,?,?)";
-            Connection conectar = con.getConexao();
-            PreparedStatement ps = (PreparedStatement) conectar.prepareStatement(queryString);
-            
-            ps.setString(1, nomeCliente.getText());
-            ps.setString(2, moradaCliente.getText());
-            ps.setString(3, postalCliente.getText());
-            ps.setString(4, localidadeCliente.getText());
-            ps.setString(5, telefoneCliente.getText());
-            ps.setString(6, telemovelCliente.getText());
-            ps.setString(7, emailCliente.getText());
-            
-            ps.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        }
+    
+    public void executar() {
         
+        Cliente novoCliente = new Cliente(nomeCliente.getText(), moradaCliente.getText(), Integer.parseInt(postalCliente.getText()), localidadeCliente.getText(), 
+                paisCliente.getText(), Integer.parseInt(telefoneCliente.getText()), Integer.parseInt(telemovelCliente.getText()), 
+                emailCliente.getText());
+        novoCliente.inserirNovoCliente(novoCliente);
+    
+    }
+
     }
     
    

@@ -5,8 +5,12 @@
  */
 package p2.projeto.mlt.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import p2.projeto.mlt.DAL.ConexaoBaseDados;
 
 /**
  *
@@ -36,6 +40,23 @@ public class NovoTipoEquipamento {
 
     public void setSubTipo(StringProperty subTipo) {
         this.subTipo = subTipo;
+    }
+
+    public void inserirTipoEquipamento(NovoTipoEquipamento novoTipo) {
+        try {
+            //Falta fazer a tabela na base de dados e terminar a linha de código abaixo feita.
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            String insertStatement = "INSERT INTO () VALUES (?,?)";
+            Connection conectar = con.getConexao();
+            PreparedStatement ps = (PreparedStatement) conectar.prepareStatement(insertStatement);
+            
+            ps.setString(1, novoTipo.tipo.getValue());
+            ps.setString(2, novoTipo.subTipo.getValue());
+            
+            ps.execute();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
     
     

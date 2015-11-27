@@ -5,10 +5,13 @@
  */
 package p2.projeto.mlt.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import p2.projeto.mlt.DAL.ConexaoBaseDados;
 
 /**
  *
@@ -53,6 +56,32 @@ public class Cliente {
         this.contactoTelefone = new SimpleIntegerProperty(contactoTelefone);
         this.contactoTelemovel = new SimpleIntegerProperty(contactoTelemovel);
         this.contactoEmail = new SimpleStringProperty(contactoEmail);
+    }
+    
+    /**
+     * Método de inserção de um novo cliente na base de dados
+     * @param cliente
+     */
+    public void inserirNovoCliente(Cliente cliente){
+        try {
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            String insertStatement = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_local,Cliente_telef,Cliente_telem,Cliente_email) VALUES (?,?,?,?,?,?,?)";
+            Connection conexao = con.getConexao();
+            PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
+            
+            ps.setString(1, nome.getValue());
+            ps.setString(2, morada.getValue());
+            ps.setString(3, Integer.toString(codigoPostal.getValue()));
+            ps.setString(4, localidade.getValue());
+            ps.setString(5, pais.getValue());
+            ps.setString(6, Integer.toString(contactoTelefone.getValue()));
+            ps.setString(7, Integer.toString(contactoTelemovel.getValue()));
+            ps.setString(8, contactoEmail.getValue());
+            
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }
