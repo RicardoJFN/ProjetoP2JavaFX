@@ -57,7 +57,7 @@ public class ControladorNovoCliente implements IMetodosBD{
     public void inserir() {
         try {
             ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            String queryString = "INSERT INTO cliente VALUES (?,?,?,?,?,?,?)";
+            String queryString = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_local,Cliente_telef,Cliente_telem,Cliente_email) VALUES (?,?,?,?,?,?,?)";
             Connection conectar = con.getConexao();
             PreparedStatement ps = (PreparedStatement) conectar.prepareStatement(queryString);
             
@@ -68,6 +68,8 @@ public class ControladorNovoCliente implements IMetodosBD{
             ps.setString(5, telefoneCliente.getText());
             ps.setString(6, telemovelCliente.getText());
             ps.setString(7, emailCliente.getText());
+            
+            ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }

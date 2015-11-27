@@ -57,8 +57,6 @@ public class ControladorMenuPrincipal {
           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarLevantamento.fxml"));
           Parent root = (Parent) fxmlLoader.load();
           Stage stage = new Stage();
-          stage.initModality(Modality.APPLICATION_MODAL);
-          stage.initStyle(StageStyle.UNDECORATED);
           stage.setTitle("Novo Levantamento");
           stage.setScene(new Scene(root));
           stage.show();
