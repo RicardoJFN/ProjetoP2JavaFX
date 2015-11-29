@@ -7,7 +7,11 @@ package p2.projeto.mlt.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -24,10 +28,16 @@ public class NovoTipoEquipamento {
     protected StringProperty subTipo;
     protected DoubleProperty valorTipo;
     
+    
+    
     public NovoTipoEquipamento(String tipo, String subTipo, double valorTipo){
         this.tipo = new SimpleStringProperty(tipo);
         this.subTipo = new SimpleStringProperty(subTipo);
         this.valorTipo = new SimpleDoubleProperty(valorTipo);
+    }
+
+    public NovoTipoEquipamento() {
+        
     }
 
     public StringProperty getTipo() {
@@ -71,6 +81,46 @@ public class NovoTipoEquipamento {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+    }
+   
+    public String selecionaTipoEquipamento(){
+        
+        String tipo = "";
+        try {
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            Statement stmt = con.getConexao().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT tipo FROM TipoEquipamento");
+            
+            int maxID = 0;
+            
+            while(rs.next()){
+                tipo = rs.getString("tipo");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return tipo;
+    }
+    
+    public String selecionaSubTipoEquipamento(){
+        
+        String subTipo = "";
+        try {
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            Statement stmt = con.getConexao().createStatement();
+            ResultSet rs = stmt.executeQuery("SELEC subTipo FROM TipoQuipamento");
+            
+            int maxID = 0;
+            
+            while(rs.next()){
+                subTipo = rs.getString("subTipo");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return subTipo;
     }
     
     
