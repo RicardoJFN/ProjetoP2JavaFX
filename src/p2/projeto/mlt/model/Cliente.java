@@ -28,7 +28,7 @@ public class Cliente {
     protected StringProperty morada;
     protected IntegerProperty codigoPostal;
     protected StringProperty localidade;
-    protected StringProperty pais;
+    //protected StringProperty pais;
     protected IntegerProperty contactoTelefone;
     protected IntegerProperty contactoTelemovel;
     protected StringProperty contactoEmail;
@@ -39,20 +39,20 @@ public class Cliente {
      * @param morada
      * @param codigoPostal
      * @param localidade
-     * @param pais
+     * //@param pais
      * @param contactoTelefone
      * @param contactoTelemovel
      * @param contactoEmail
      */
     
-    public Cliente(String nome, String morada, int codigoPostal, String localidade, String pais, int contactoTelefone,
-            int contactoTelemovel, String contactoEmail){
+    public Cliente(String nome, String morada, int codigoPostal, int contactoTelefone,
+            int contactoTelemovel, String contactoEmail, String localidade){
         
         this.nome = new SimpleStringProperty(nome);
         this.morada = new SimpleStringProperty(morada);
         this.codigoPostal = new SimpleIntegerProperty(codigoPostal);
         this.localidade = new SimpleStringProperty(localidade);
-        this.pais = new SimpleStringProperty(pais);
+        //this.pais = new SimpleStringProperty(pais);
         this.contactoTelefone = new SimpleIntegerProperty(contactoTelefone);
         this.contactoTelemovel = new SimpleIntegerProperty(contactoTelemovel);
         this.contactoEmail = new SimpleStringProperty(contactoEmail);
@@ -65,18 +65,19 @@ public class Cliente {
     public void inserirNovoCliente(Cliente cliente){
         try {
             ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            String insertStatement = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_local,Cliente_telef,Cliente_telem,Cliente_email) VALUES (?,?,?,?,?,?,?)";
+            String insertStatement = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_telef,Cliente_telem,Cliente_email,Cliente_local) VALUES (?,?,?,?,?,?,?)";
             Connection conexao = con.getConexao();
             PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
             
             ps.setString(1, nome.getValue());
             ps.setString(2, morada.getValue());
             ps.setString(3, Integer.toString(codigoPostal.getValue()));
-            ps.setString(4, localidade.getValue());
-            ps.setString(5, pais.getValue());
-            ps.setString(6, Integer.toString(contactoTelefone.getValue()));
-            ps.setString(7, Integer.toString(contactoTelemovel.getValue()));
-            ps.setString(8, contactoEmail.getValue());
+            ps.setString(4, Integer.toString(contactoTelefone.getValue()));
+            //ps.setString(6, pais.getValue());
+            //ps.setString(7, Integer.toString(contactoTelefone.getValue()));
+            ps.setString(5, Integer.toString(contactoTelemovel.getValue()));
+            ps.setString(6, contactoEmail.getValue());
+            ps.setString(7, localidade.getValue());
             
             ps.execute();
         } catch (Exception e) {

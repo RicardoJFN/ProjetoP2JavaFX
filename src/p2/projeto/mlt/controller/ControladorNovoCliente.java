@@ -58,9 +58,9 @@ public class ControladorNovoCliente {
     
     public void executar() {
         
-        Cliente novoCliente = new Cliente(nomeCliente.getText(), moradaCliente.getText(), Integer.parseInt(postalCliente.getText()), localidadeCliente.getText(), 
-                paisCliente.getText(), Integer.parseInt(telefoneCliente.getText()), Integer.parseInt(telemovelCliente.getText()), 
-                emailCliente.getText());
+        Cliente novoCliente = new Cliente(nomeCliente.getText(), moradaCliente.getText(), Integer.parseInt(postalCliente.getText()), 
+                Integer.parseInt(telefoneCliente.getText()), Integer.parseInt(telemovelCliente.getText()), 
+                emailCliente.getText(), localidadeCliente.getText());
         novoCliente.inserirNovoCliente(novoCliente);
     
     }
