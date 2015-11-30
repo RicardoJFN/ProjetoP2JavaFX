@@ -36,6 +36,8 @@ public class ControladorNovoLevantamento {
         return janelaLevantamento;
     } 
     
+    
+    //Código para saltar para outra janela.
     @FXML
     public void mostraJanelaNovoCliente(){
          try {
@@ -46,6 +48,7 @@ public class ControladorNovoLevantamento {
           stage.setScene(new Scene(root));
           stage.show();
       } catch (Exception e) {
+          e.printStackTrace();
       }
       
     }

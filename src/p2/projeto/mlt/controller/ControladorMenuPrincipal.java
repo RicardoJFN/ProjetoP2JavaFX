@@ -5,12 +5,18 @@
  */
 package p2.projeto.mlt.controller;
 
+
+import java.util.concurrent.CountDownLatch;
+import java.util.logging.Level;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -70,7 +76,6 @@ public class ControladorMenuPrincipal {
   
    /**
      * Metodo para botao Elaborar Orcamento presente no menu principal - botão de passagem para view CriacaoOrcamento
-     * @param mostraElaborarOrcamento
      */
     @FXML
   private void mostraElaborarOrcamento(){
@@ -147,4 +152,40 @@ public class ControladorMenuPrincipal {
       
       
   }
+  
+  
+    @FXML
+    private void iniciaBateriaDrone(){
+      CountDownLatch countDown1 = new CountDownLatch(5);
+      CountThread counThread = new CountThread(countDown1, 5);
+      ProgressBar pg1 = new ProgressBar();
+      pg1.progressProperty().bind(counThread.processProperty);
+    }
+    class CountThread implements Runnable {
+
+        int contagem = 5;
+        CountDownLatch contador;
+
+        DoubleProperty processProperty;
+
+        CountThread(CountDownLatch c, int num){
+            contador = c;
+            contagem = num;
+            processProperty = new SimpleDoubleProperty(contagem);
+        }
+
+          @Override
+          public void run() {
+              for(int i = 0; i < contagem; i++){
+                  try {
+                      Thread.sleep(5000);
+                  } catch (InterruptedException e) {
+
+                  }
+                  processProperty.set((double)(contador.getCount())/(double)contagem);
+                  contador.countDown();
+              }
+          }
+
+    }
 }
