@@ -17,13 +17,21 @@ import p2.projeto.mlt.model.Edificio;
 public class ControladorMedirEdificio {
  
     @FXML
-    private TextField primeiroPontoTF;
+    private TextField primeiroPontoLat;
     @FXML
-    private TextField segundoPontoTF;
+    private TextField primeiroPontoLong;
     @FXML
-    private TextField terceiroPontoTF;
+    private TextField segundoPontoLat;
     @FXML
-    private TextField quartoPontoTF;
+    private TextField segundoPontoLong;
+    @FXML
+    private TextField terceiroPontoLat;
+    @FXML
+    private TextField terceiroPontoLong;
+    @FXML
+    private TextField quartoPontoLat;
+    @FXML
+    private TextField quartoPontoLong;
     
     private Stage medirEdificio;
     private Edificio edificio;
@@ -34,8 +42,10 @@ public class ControladorMedirEdificio {
     
     
     public void inserirEdificioBD(){
-        Edificio edificio = new Edificio(Double.parseDouble(primeiroPontoTF.getText()), Double.parseDouble(segundoPontoTF.getText()), 
-                Double.parseDouble(terceiroPontoTF.getText()), Double.parseDouble(quartoPontoTF.getText()));
+        Edificio edificio = new Edificio(Double.parseDouble(primeiroPontoLat.getText()), Double.parseDouble(primeiroPontoLong.getText()),
+                Double.parseDouble(segundoPontoLat.getText()), Double.parseDouble(segundoPontoLong.getText()), 
+                Double.parseDouble(terceiroPontoLat.getText()), Double.parseDouble(terceiroPontoLong.getText()),
+                Double.parseDouble(quartoPontoLat.getText()), Double.parseDouble(quartoPontoLong.getText()));
         edificio.inserirEdificio();
     }
 }
