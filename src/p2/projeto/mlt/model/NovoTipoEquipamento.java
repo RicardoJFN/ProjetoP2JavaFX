@@ -69,7 +69,7 @@ public class NovoTipoEquipamento {
         try {
             //Falta fazer a tabela na base de dados e terminar a linha de código abaixo feita.
             ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            String insertStatement = "INSERT INTO () VALUES (?,?,?)";
+            String insertStatement = "INSERT INTO tipoequipamento(tipo,sub_tipo,valor) VALUES (?,?,?)";
             Connection conectar = con.getConexao();
             PreparedStatement ps = (PreparedStatement) conectar.prepareStatement(insertStatement);
             
