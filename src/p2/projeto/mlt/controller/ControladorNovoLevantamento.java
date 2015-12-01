@@ -53,6 +53,43 @@ public class ControladorNovoLevantamento {
       
     }
     
+    /**
+     * Metodo para botao iniciar Voo Drone para medir coordenadas - botão de passagem para view MedirEdificio
+     */
+        @FXML
+    public void inicioVooDrone(){
+         try {
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/MedirEdificio.fxml"));
+          Parent root = (Parent) fxmlLoader.load();
+          Stage stage = new Stage();
+          stage.setTitle(" Levantamento Area Técnica");
+          stage.setScene(new Scene(root));
+          stage.show();
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+      
+    }
+    
+    
+      /**
+     * Metodo para botao + de adicionar novo edificio a cliente - botão de passagem para view NovoEdificio
+     */
+        @FXML
+    public void mostraJanelaNovoEdificio(){
+         try {
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/NovoEdificio.fxml"));
+          Parent root = (Parent) fxmlLoader.load();
+          Stage stage = new Stage();
+          stage.setTitle(" Novo Edificio ");
+          stage.setScene(new Scene(root));
+          stage.show();
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+      
+    }
+    
     
     @FXML
     public void sair(){

@@ -19,7 +19,7 @@
          </children>
       </Pane>
       <Label alignment="CENTER_RIGHT" layoutX="30.0" layoutY="186.0" prefHeight="31.0" prefWidth="156.0" text="Selecione Edificio:" />
-      <Button layoutX="234.0" layoutY="378.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="286.0" text="Iniciar VOO Drone coordenadas inseridas" />
+      <Button layoutX="234.0" layoutY="378.0" mnemonicParsing="false" onAction="#inicioVooDrone" prefHeight="27.0" prefWidth="286.0" text="Iniciar VOO Drone coordenadas inseridas" />
       <Button layoutX="26.0" layoutY="378.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="130.0" text="Ligar / Desligar " />
       <Button layoutX="543.0" layoutY="455.0" mnemonicParsing="false" onAction="#sair" prefHeight="27.0" prefWidth="55.0" text="Sair" />
       <ProgressBar layoutX="89.0" layoutY="442.0" prefHeight="20.0" prefWidth="233.0" progress="0.0" />
@@ -43,6 +43,6 @@
       <ChoiceBox layoutX="188.0" layoutY="151.0" prefWidth="150.0" />
       <Button layoutX="344.0" layoutY="151.0" mnemonicParsing="false" onAction="#mostraJanelaNovoCliente" prefHeight="27.0" prefWidth="16.0" text="+" />
       <ChoiceBox layoutX="188.0" layoutY="188.0" prefWidth="150.0" />
-      <Button layoutX="344.0" layoutY="188.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="16.0" text="+" />
+      <Button layoutX="344.0" layoutY="188.0" mnemonicParsing="false" onAction="#mostraJanelaNovoEdificio" prefHeight="27.0" prefWidth="16.0" text="+" />
    </children>
 </AnchorPane>
