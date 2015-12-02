@@ -42,12 +42,12 @@
          </columns>
       </TableView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="528.0" layoutY="168.0" prefHeight="31.0" prefWidth="162.0" text="Equipamentos" textAlignment="RIGHT" />
-      <Button layoutX="105.0" layoutY="228.0" mnemonicParsing="false" onAction="#executar" prefHeight="27.0" prefWidth="76.0" text="Adicionar" />
-      <Button layoutX="583.0" layoutY="515.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Eliminar" />
-      <Button layoutX="404.0" layoutY="515.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Criar" />
-      <Button layoutX="494.0" layoutY="515.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Alterar" />
-      <TextField fx:id="valorTipo" layoutX="126.0" layoutY="192.0" prefHeight="27.0" prefWidth="55.0" />
+      <Button layoutX="468.0" layoutY="518.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Eliminar" />
+      <Button layoutX="202.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Guardar" />
+      <Button layoutX="379.0" layoutY="518.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Alterar" />
       <Label alignment="CENTER_RIGHT" layoutX="8.0" layoutY="190.0" prefHeight="31.0" prefWidth="117.0" text="Valor Manutenção:" />
       <Label alignment="CENTER_RIGHT" layoutX="181.0" layoutY="190.0" prefHeight="31.0" prefWidth="8.0" text="€" />
+      <Label alignment="CENTER_RIGHT" layoutX="127.0" layoutY="190.0" prefHeight="31.0" prefWidth="53.0" />
+      <Button layoutX="202.0" layoutY="192.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Calcular" />
    </children>
 </AnchorPane>
