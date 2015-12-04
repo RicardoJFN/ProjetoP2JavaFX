@@ -41,9 +41,11 @@ public class ControladorMedirEdificio {
     private Stage medirEdificio;
     private Edificio edificio;
     
+    /**
     public void setNovaMedicaoEdf(Stage medirEdificio){
         this.medirEdificio = medirEdificio;
     }
+    * */
     
     /**
     public void inserirEdificioBD(){
@@ -59,12 +61,12 @@ public class ControladorMedirEdificio {
     
     
     @FXML
-    public void mostraJanelaNovoCliente(){
+    public void mostraJanelaNovoEquipamento(){
          try {
-          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/.fxml"));
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/IdentificacaoEquipamento.fxml"));
           Parent root = (Parent) fxmlLoader.load();
           Stage stage = new Stage();
-          stage.setTitle("Novo Cliente");
+          stage.setTitle("Novo Equipamento");
           stage.setScene(new Scene(root));
           stage.show();
       } catch (Exception e) {

@@ -12,7 +12,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="721.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="721.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p2.projeto.mlt.controller.ControladorIdentEquipamento">
    <children>
       <Pane layoutX="14.0" layoutY="5.0" prefHeight="95.0" prefWidth="581.0">
          <children>
@@ -40,7 +40,7 @@
          </columns>
       </TableView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="327.0" layoutY="143.0" prefHeight="31.0" prefWidth="162.0" text="Equipamentos Edificio" textAlignment="RIGHT" />
-      <Button layoutX="238.0" layoutY="538.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="162.0" text="Adicionar Equipamento" />
+      <Button layoutX="238.0" layoutY="538.0" mnemonicParsing="false" onAction="#mostraJanelaAdicionarEquipamento" prefHeight="27.0" prefWidth="162.0" text="Adicionar Equipamento" />
       <Label layoutX="13.0" layoutY="143.0" prefHeight="31.0" prefWidth="55.0" text="Cliente:" />
       <Label layoutX="77.0" layoutY="143.0" prefHeight="31.0" prefWidth="129.0" text="nome cliente" />
       <Label layoutX="77.0" layoutY="174.0" prefHeight="31.0" prefWidth="129.0" text="nome edificio" />
