@@ -55,7 +55,7 @@ public class ControladorNovoCliente {
         this.novoCliente = novoCliente;
     }
 
-    
+    @FXML
     public void executar() {
         
         Cliente novoCliente = new Cliente(nomeCliente.getText(), moradaCliente.getText(), Integer.parseInt(postalCliente.getText()), 

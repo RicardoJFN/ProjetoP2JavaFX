@@ -6,7 +6,12 @@
 package p2.projeto.mlt.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import p2.projeto.mlt.model.Edificio;
 
@@ -40,12 +45,31 @@ public class ControladorMedirEdificio {
         this.medirEdificio = medirEdificio;
     }
     
-    
+    /**
     public void inserirEdificioBD(){
         Edificio edificio = new Edificio(Double.parseDouble(primeiroPontoLat.getText()), Double.parseDouble(primeiroPontoLong.getText()),
                 Double.parseDouble(segundoPontoLat.getText()), Double.parseDouble(segundoPontoLong.getText()), 
                 Double.parseDouble(terceiroPontoLat.getText()), Double.parseDouble(terceiroPontoLong.getText()),
                 Double.parseDouble(quartoPontoLat.getText()), Double.parseDouble(quartoPontoLong.getText()));
         edificio.inserirEdificio();
+        
+       
+    }
+    * */
+    
+    
+    @FXML
+    public void mostraJanelaNovoCliente(){
+         try {
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/.fxml"));
+          Parent root = (Parent) fxmlLoader.load();
+          Stage stage = new Stage();
+          stage.setTitle("Novo Cliente");
+          stage.setScene(new Scene(root));
+          stage.show();
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+      
     }
 }

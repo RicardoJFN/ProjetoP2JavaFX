@@ -5,6 +5,7 @@
  */
 package p2.projeto.mlt.controller;
 
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -20,7 +21,7 @@ public class ControladorNovoEquipamento {
     @FXML
     private ComboBox<String> tipoEquipamento;
     @FXML
-    private ComboBox<String> subTipoEquipamento;
+    private ComboBox<NovoTipoEquipamento> subTipoEquipamento;
     @FXML
     private TextField marca;
     @FXML
@@ -32,13 +33,21 @@ public class ControladorNovoEquipamento {
     @FXML
     private TextField detalhesEquipamento;
     
-    private NovoTipoEquipamento teste = new NovoTipoEquipamento();
+    
     
     @FXML
     private void initialize(){
         estadoEquipamento.getItems().addAll(Equipamento.Estado.values());
-        tipoEquipamento.getItems().addAll(teste.selecionaTipoEquipamento());
-        subTipoEquipamento.getItems().addAll(teste.selecionaSubTipoEquipamento());
+        tipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaNomesTiposEquipamento());
+        tipoEquipamento.onActionProperty().addListener((obs,oldvalue,newvalue) -> {
+            String nome = tipoEquipamento.getSelectionModel().getSelectedItem();
+            subTipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaSubTiposEquipamento(nome));
+        });
     }
     
+    
+    @FXML
+    public void executar(){
+        //Equipamento novoEquipamento = new Equipamento(tipoEquipamento.getValue(), subTipoEquipamento.getValue(), marca.getText(), modelo.getText(), numeroSerie.getText(), estadoEquipamento.getValue(), detalhesEquipamento.getText());
+    }
 }

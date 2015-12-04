@@ -13,7 +13,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import p2.projeto.mlt.DAL.ConexaoBaseDados;
@@ -24,12 +26,17 @@ import p2.projeto.mlt.DAL.ConexaoBaseDados;
  */
 public class NovoTipoEquipamento {
     
+    protected IntegerProperty idTipo;
     protected StringProperty tipo;
     protected StringProperty subTipo;
     protected DoubleProperty valorTipo;
     
-    
-    
+    public NovoTipoEquipamento(int idTipo, String tipo, String subTipo, double valorTipo){
+        this.idTipo = new SimpleIntegerProperty(idTipo);
+        this.tipo = new SimpleStringProperty(tipo);
+        this.subTipo = new SimpleStringProperty(subTipo);
+        this.valorTipo = new SimpleDoubleProperty(valorTipo);
+    }
     public NovoTipoEquipamento(String tipo, String subTipo, double valorTipo){
         this.tipo = new SimpleStringProperty(tipo);
         this.subTipo = new SimpleStringProperty(subTipo);
@@ -83,44 +90,50 @@ public class NovoTipoEquipamento {
         }
     }
    
-    public String selecionaTipoEquipamento(){
+    public static ArrayList<NovoTipoEquipamento> selecionaSubTiposEquipamento(String tipo){
         
-        String tipo = "";
+        ArrayList <NovoTipoEquipamento> subTipos = new ArrayList<>();
+        try {
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            Statement stmt = con.getConexao().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM TipoEquipamento WHERE tipo = "+tipo);
+            
+            int maxID = 0;
+            
+            while(rs.next()){
+                subTipos.add(new NovoTipoEquipamento(rs.getInt("idTipo"), rs.getString("tipo"), rs.getString("subTipo"), rs.getDouble("valorTipo")));
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return subTipos;
+    }
+
+        public static ArrayList<String> selecionaNomesTiposEquipamento(){
+        
+        ArrayList <String> nomes = new ArrayList<>();
         try {
             ConexaoBaseDados con = ConexaoBaseDados.conectar();
             Statement stmt = con.getConexao().createStatement();
             ResultSet rs = stmt.executeQuery("SELECT tipo FROM TipoEquipamento");
             
-            int maxID = 0;
+            //int maxID = 0;
             
             while(rs.next()){
-                tipo = rs.getString("tipo");
+                nomes.add(rs.getString("tipo"));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         
-        return tipo;
+        return nomes;
     }
     
-    public String selecionaSubTipoEquipamento(){
-        
-        String subTipo = "";
-        try {
-            ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            Statement stmt = con.getConexao().createStatement();
-            ResultSet rs = stmt.executeQuery("SELEC subTipo FROM TipoQuipamento");
-            
-            int maxID = 0;
-            
-            while(rs.next()){
-                subTipo = rs.getString("subTipo");
-            }
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return subTipo;
+
+    @Override
+    public String toString() {
+        return "NovoTipoEquipamento{" + "idTipo=" + idTipo + ", tipo=" + tipo + ", subTipo=" + subTipo + '}';
     }
     
     

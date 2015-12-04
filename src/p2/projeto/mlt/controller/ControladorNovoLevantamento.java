@@ -5,10 +5,14 @@
  */
 package p2.projeto.mlt.controller;
 
+import java.awt.Desktop;
+import java.io.File;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -65,6 +69,9 @@ public class ControladorNovoLevantamento {
           stage.setTitle(" Levantamento Area Técnica");
           stage.setScene(new Scene(root));
           stage.show();
+          
+          File htmlFile = new File("C:\\Users\\ricardon\\Documents\\ProjetoP2\\GoogleMaps.html");
+          Desktop.getDesktop().browse(htmlFile.toURI());
       } catch (Exception e) {
           e.printStackTrace();
       }
@@ -98,6 +105,11 @@ public class ControladorNovoLevantamento {
         novoLevantamento.close();
     }
     
+    @FXML
+    public void iniciarVOODrone(){
+         
     
     
+    
+    }
 }

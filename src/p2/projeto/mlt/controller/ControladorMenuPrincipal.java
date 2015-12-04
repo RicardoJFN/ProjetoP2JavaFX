@@ -156,36 +156,7 @@ public class ControladorMenuPrincipal {
   
     @FXML
     private void iniciaBateriaDrone(){
-      CountDownLatch countDown1 = new CountDownLatch(5);
-      CountThread counThread = new CountThread(countDown1, 5);
-      ProgressBar pg1 = new ProgressBar();
-      pg1.progressProperty().bind(counThread.processProperty);
+     
     }
-    class CountThread implements Runnable {
-
-        int contagem = 5;
-        CountDownLatch contador;
-
-        DoubleProperty processProperty;
-
-        CountThread(CountDownLatch c, int num){
-            contador = c;
-            contagem = num;
-            processProperty = new SimpleDoubleProperty(contagem);
-        }
-
-          @Override
-          public void run() {
-              for(int i = 0; i < contagem; i++){
-                  try {
-                      Thread.sleep(5000);
-                  } catch (InterruptedException e) {
-
-                  }
-                  processProperty.set((double)(contador.getCount())/(double)contagem);
-                  contador.countDown();
-              }
-          }
-
-    }
+    
 }
