@@ -20,7 +20,6 @@
          </children>
       </Pane>
       <Button layoutX="717.0" layoutY="449.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Sair" />
-      <Button layoutX="626.0" layoutY="449.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Voltar" />
       <TableView layoutX="67.0" layoutY="110.0" prefHeight="331.0" prefWidth="726.0">
          <columns>
             <TableColumn prefWidth="144.0" text="Nome" />
