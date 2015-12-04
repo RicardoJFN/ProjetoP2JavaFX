@@ -31,6 +31,6 @@
       <Button layoutX="461.0" layoutY="282.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="125.0" text="Guardar Edificio" />
       <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="100.0" prefHeight="31.0" prefWidth="156.0" text="Cliente :" />
       <Label alignment="CENTER_RIGHT" layoutX="201.0" layoutY="100.0" prefHeight="31.0" prefWidth="225.0" />
-      <Label alignment="CENTER_RIGHT" layoutX="201.0" layoutY="131.0" prefHeight="31.0" prefWidth="39.0" />
+      <TextField layoutX="196.0" layoutY="133.0" prefHeight="27.0" prefWidth="55.0" />
    </children>
 </AnchorPane>
