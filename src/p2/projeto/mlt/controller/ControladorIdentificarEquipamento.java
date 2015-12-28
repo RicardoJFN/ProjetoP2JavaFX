@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author ricardon
  */
-public class ControladorIdentEquipamento {
+public class ControladorIdentificarEquipamento {
     
     @FXML
     public void mostraJanelaAdicionarEquipamento(){

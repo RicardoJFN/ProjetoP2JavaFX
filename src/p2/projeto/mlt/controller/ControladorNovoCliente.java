@@ -5,7 +5,7 @@
  */
 package p2.projeto.mlt.controller;
 
-import p2.projeto.mlt.model.IMetodosBD;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,48 +24,38 @@ import p2.projeto.mlt.model.Cliente;
  */
 public class ControladorNovoCliente {
     
-    @FXML
-    private TextField nomeCliente;
-    @FXML
-    private TextField moradaCliente;
-    @FXML
-    private TextField postalCliente;
-    @FXML
-    private TextField localidadeCliente;
-    @FXML
-    private TextField paisCliente;
-    @FXML
-    private TextField telefoneCliente;
-    @FXML
-    private TextField telemovelCliente;
-    @FXML
-    private TextField emailCliente;
-    
-    private Stage novoCliente;
-    private Cliente cliente;
-    
-    
-    
-    @FXML
-    private void initialize(){
-        
-    }
-    
-    public void setNovoCliente(Stage novoCliente){
-        this.novoCliente = novoCliente;
-    }
+   @FXML
+	private TextField nomeCliente;
+	@FXML
+	private TextField moradaCliente;
+	@FXML
+	private TextField postalCliente;
+	@FXML
+	private TextField telefoneCliente;
+	@FXML
+	private TextField telemovelCliente;
+	@FXML
+	private TextField emailCliente;
+	
+	
+	@FXML
+	public void guardarInfo(){
+		
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		Cliente novoCliente = new Cliente(nomeCliente.getText(), moradaCliente.getText(), 
+				Double.parseDouble(postalCliente.getText()), 
+				Integer.parseInt(telefoneCliente.getText()), Integer.parseInt(telemovelCliente.getText()), 
+				emailCliente.getText());
+		
+		novoCliente.inserirNovoCliente(novoCliente);
+	}
 
-    @FXML
-    public void executar() {
-        
-        Cliente novoCliente = new Cliente(nomeCliente.getText(), moradaCliente.getText(), Integer.parseInt(postalCliente.getText()), 
-                Integer.parseInt(telefoneCliente.getText()), Integer.parseInt(telemovelCliente.getText()), 
-                emailCliente.getText(), localidadeCliente.getText());
-        novoCliente.inserirNovoCliente(novoCliente);
-    
-    }
 
-    }
+  }
     
    
     

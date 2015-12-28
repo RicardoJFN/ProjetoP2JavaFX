@@ -12,7 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import p2.projeto.mlt.model.Cliente;
-import p2.projeto.mlt.model.Drone;
 import p2.projeto.mlt.model.Edificio;
 import p2.projeto.mlt.model.Equipamento;
 import p2.projeto.mlt.model.Levantamento;
@@ -23,46 +22,36 @@ import p2.projeto.mlt.model.Levantamento;
  */
 public class MainApp extends Application{
     
-    private Stage primaryStage;
-    
-    
-    public MainApp(){
-        
-    }
-    
-    @Override
-    public void start(Stage primaryStage){
-        this.primaryStage = new Stage();
-        this.primaryStage.setTitle("Menu Principal");
-       
-        iniMenuPrincipal();
-       
-    }
-    
-    
-    public void iniMenuPrincipal(){
-        try {
-            
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("/p2/projeto/mlt/view/MenuPrincipal.fxml"));
-        
-            AnchorPane layout = (AnchorPane) loader.load();
-            Scene scene = new Scene(layout);
-        
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    
-    
-    public Stage getPrimaryStage(){
-        return primaryStage;
-    }
-    
-    public static void main(String[] args){
-        launch(args);
-    }
+	private Stage primaryStage;
+	
+	@Override
+	public void start(Stage primeryStage){
+		this.primaryStage = new Stage();
+		this.primaryStage.setTitle("Menu Principal");
+		
+		menuPrincipal();
+	}
+
+	public void menuPrincipal(){
+		try{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("/p2/projeto/mlt/views/MenuPrincipal.fxml"));
+			
+			AnchorPane layout = (AnchorPane) loader.load();
+			Scene scene = new Scene(layout);
+			
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public Stage getPrimaryStage(){
+		return primaryStage;
+	}
+	
+	public static void main(String[] args){
+		launch(args);
+	}
 }

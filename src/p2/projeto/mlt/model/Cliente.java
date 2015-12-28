@@ -7,78 +7,186 @@ package p2.projeto.mlt.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import p2.projeto.mlt.DAL.ConexaoBaseDados;
 
-/**
- *
- * @author ricardon
- */
 public class Cliente {
-    
-    
-    /**
-     * Definição de atributos da classe Cliente
-     */
-    
-    protected StringProperty nome;
-    protected StringProperty morada;
-    protected IntegerProperty codigoPostal;
-    protected StringProperty localidade;
-    protected IntegerProperty contactoTelefone;
-    protected IntegerProperty contactoTelemovel;
-    protected StringProperty contactoEmail;
-    
-    /**
-     * Construtor da classe Cliente 
-     * @param nome
-     * @param morada
-     * @param codigoPostal
-     * @param contactoTelefone
-     * @param contactoTelemovel
-     * @param contactoEmail
-     * @param localidade
-     */
-    
-    public Cliente(String nome, String morada, int codigoPostal, int contactoTelefone,
-            int contactoTelemovel, String contactoEmail, String localidade){
-        
-        this.nome = new SimpleStringProperty(nome);
-        this.morada = new SimpleStringProperty(morada);
-        this.codigoPostal = new SimpleIntegerProperty(codigoPostal);
-        this.localidade = new SimpleStringProperty(localidade);
-        //this.pais = new SimpleStringProperty(pais);
-        this.contactoTelefone = new SimpleIntegerProperty(contactoTelefone);
-        this.contactoTelemovel = new SimpleIntegerProperty(contactoTelemovel);
-        this.contactoEmail = new SimpleStringProperty(contactoEmail);
-    }
-    
-    /**
-     * Método de inserção de um novo cliente na base de dados
-     * @param cliente
-     */
-    public void inserirNovoCliente(Cliente cliente){
-        try {
-            ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            String insertStatement = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_telef,Cliente_telem,Cliente_email,Cliente_local) VALUES (?,?,?,?,?,?,?)";
-            Connection conexao = con.getConexao();
-            PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
-            
-            ps.setString(1, nome.getValue());
-            ps.setString(2, morada.getValue());
-            ps.setString(3, Integer.toString(codigoPostal.getValue()));
-            ps.setString(4, Integer.toString(contactoTelefone.getValue()));
-            ps.setString(5, Integer.toString(contactoTelemovel.getValue()));
-            ps.setString(6, contactoEmail.getValue());
-            ps.setString(7, localidade.getValue());
-            
-            ps.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
+	
+	/**
+	 * Definicao de atributos da classe Cliente
+	 */
+
+	protected IntegerProperty idCliente;
+	protected StringProperty nomeCliente;
+	protected StringProperty moradaCliente;
+	protected DoubleProperty codigoPostal;
+	//protected StringProperty localidadeCliente;
+	protected IntegerProperty numeroTelefone;
+	protected IntegerProperty numeroTelemovel;
+	protected StringProperty emailCliente;
+	
+	
+	/**
+	 * Construtor do Cliente com o ID como campo obrigatorio
+	 * @param idCliente
+	 * @param nomeCliente
+	 * @param moradaCliente
+	 * @param codigoPostal
+	 * @param localidadeCliente
+	 * @param numeroTelefone
+	 * @param numeroTelemovel
+	 * @param emailCliente
+	 */
+	public Cliente(int idCliente, String nomeCliente, String moradaCliente, double codigoPostal, 
+			int numeroTelefone, int numeroTelemovel, String emailCliente){
+		this.idCliente = new SimpleIntegerProperty(idCliente);
+		this.nomeCliente = new SimpleStringProperty(nomeCliente);
+		this.moradaCliente = new SimpleStringProperty(moradaCliente);
+		this.codigoPostal = new SimpleDoubleProperty(codigoPostal);
+		this.numeroTelefone = new SimpleIntegerProperty(numeroTelefone);
+		this.numeroTelemovel = new SimpleIntegerProperty(numeroTelemovel);
+		this.emailCliente = new SimpleStringProperty(emailCliente);
+	}
+	
+	/**
+	 * Construtor do Cliente sem o ID como campo obrigatorio
+	 * @param nomeCliente
+	 * @param moradaCliente
+	 * @param codigoPostal
+	 * @param localidadeCliente
+	 * @param numeroTelefone
+	 * @param numeroTelemovel
+	 * @param emailCliente
+	 */
+	public Cliente(String nomeCliente, String moradaCliente, double codigoPostal, 
+			int numeroTelefone, int numeroTelemovel, String emailCliente){
+		this.nomeCliente = new SimpleStringProperty(nomeCliente);
+		this.moradaCliente = new SimpleStringProperty(moradaCliente);
+		this.codigoPostal = new SimpleDoubleProperty(codigoPostal);
+		this.numeroTelefone = new SimpleIntegerProperty(numeroTelefone);
+		this.numeroTelemovel = new SimpleIntegerProperty(numeroTelemovel);
+		this.emailCliente = new SimpleStringProperty(emailCliente);
+	}
+	
+	//-------------------------------------------------------Getters e Setters-------------------------------------------------------
+
+	public IntegerProperty getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(IntegerProperty idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public StringProperty getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(StringProperty nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+
+	public StringProperty getMoradaCliente() {
+		return moradaCliente;
+	}
+
+	public void setMoradaCliente(StringProperty moradaCliente) {
+		this.moradaCliente = moradaCliente;
+	}
+
+	public DoubleProperty getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(DoubleProperty codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+	
+	public IntegerProperty getNumeroTelefone() {
+		return numeroTelefone;
+	}
+
+	public void setNumeroTelefone(IntegerProperty numeroTelefone) {
+		this.numeroTelefone = numeroTelefone;
+	}
+
+	public IntegerProperty getNumeroTelemovel() {
+		return numeroTelemovel;
+	}
+
+	public void setNumeroTelemovel(IntegerProperty numeroTelemovel) {
+		this.numeroTelemovel = numeroTelemovel;
+	}
+
+	public StringProperty getEmailCliente() {
+		return emailCliente;
+	}
+
+	public void setEmailCliente(StringProperty emailCliente) {
+		this.emailCliente = emailCliente;
+	}
+
+	
+	//-------------------------------------------------------Metodo toString()-------------------------------------------------------
+	
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", nomeCliente=" + nomeCliente + ", moradaCliente=" + moradaCliente
+				+ ", codigoPostal=" + codigoPostal + ", numeroTelefone=" + numeroTelefone 
+				+ ", numeroTelemovel=" + numeroTelemovel + ", emailCliente=" + emailCliente + "]";
+	}
+	
+	//-------------------------------------------------------Metodo de insercao de um novo cliente na BD-------------------------------------------------------
+	
+	public void inserirNovoCliente(Cliente cliente){
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			String insertStatement = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_telef,Cliente_telem,Cliente_email) VALUES(?,?,?,?,?,?)";
+			Connection conexao = con.getConexao();
+			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
+			
+			ps.setString(1, nomeCliente.getValue());
+			ps.setString(2, moradaCliente.getValue());
+			ps.setDouble(3, codigoPostal.getValue());
+			ps.setInt(4, numeroTelefone.getValue());
+			ps.setInt(5, numeroTelemovel.getValue());
+			ps.setString(6, emailCliente.getValue());
+			
+			
+			ps.execute();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static ArrayList<Cliente> selecionaNomesCliente(){
+		
+		ArrayList<Cliente> nomes = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT Cliente_name FROM cliente");
+			
+			while(rs.next()){
+				nomes.add(new Cliente(rs.getString("nomeCliente"), rs.getString("moradaCliente"), rs.getDouble("codigoPostal"), 
+						rs.getInt("numeroTelefone"), rs.getInt("numeroTelemovel"), rs.getString("emailCliente")));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return nomes;
+	}
+	
+	
+	
 }
