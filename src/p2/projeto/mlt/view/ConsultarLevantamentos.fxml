@@ -28,7 +28,7 @@
             <TableColumn prefWidth="187.0" text="Edificio" />
          </columns>
       </TableView>
-      <Button layoutX="65.0" layoutY="449.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Ver levantamento" />
+      <Button layoutX="65.0" layoutY="449.0" mnemonicParsing="false" onAction="#mostraResumoLevantamento" prefHeight="27.0" prefWidth="151.0" text="Ver levantamento" />
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="241.0" layoutY="67.0" prefHeight="20.0" prefWidth="261.0" text="Consulta Levantamentos Técnicos" />
    </children>
 </AnchorPane>

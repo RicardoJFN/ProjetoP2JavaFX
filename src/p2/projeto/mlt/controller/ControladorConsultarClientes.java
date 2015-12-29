@@ -5,10 +5,35 @@
  */
 package p2.projeto.mlt.controller;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 /**
  *
  * @author carlosb
  */
 public class ControladorConsultarClientes {
     
+    /**
+     * Metodo para botao ver cliente presente na janela ConsultarClientes -
+     * botao para view ConsultarDetalheCliente que vai permitir ver todos os
+     * dados do cliente 
+     */
+    @FXML
+    private void mostraDetalheCliente() {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ConsultarDetalheCliente.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Ficha Cliente");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+        }
+
+    }
 }

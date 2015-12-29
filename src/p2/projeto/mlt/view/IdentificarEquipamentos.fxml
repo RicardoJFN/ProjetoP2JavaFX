@@ -30,7 +30,7 @@
       <Label layoutX="15.0" layoutY="578.0" prefHeight="31.0" prefWidth="108.0" text="Estado Drone:" />
       <Button layoutX="440.0" layoutY="625.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Voltar" />
       <Label layoutX="13.0" layoutY="112.0" prefHeight="31.0" prefWidth="117.0" text="Levantamento nº :" />
-      <Button layoutX="530.0" layoutY="625.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Seguinte" />
+      <Button layoutX="530.0" layoutY="625.0" mnemonicParsing="false" onAction="#mostraResumoLevantamento" prefHeight="27.0" prefWidth="76.0" text="Seguinte" />
       <TableView layoutX="210.0" layoutY="187.0" prefHeight="331.0" prefWidth="396.0">
          <columns>
             <TableColumn prefWidth="199.0" text="Tipo" />
@@ -39,7 +39,7 @@
          </columns>
       </TableView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="327.0" layoutY="143.0" prefHeight="31.0" prefWidth="162.0" text="Equipamentos Edificio" textAlignment="RIGHT" />
-      <Button layoutX="238.0" layoutY="538.0" mnemonicParsing="false" onAction="#mostraJanelaAdicionarEquipamento" prefHeight="27.0" prefWidth="162.0" text="Adicionar Equipamento" />
+      <Button layoutX="238.0" layoutY="538.0" mnemonicParsing="false" onAction="#mostraAdicionarEquipamento" prefHeight="27.0" prefWidth="162.0" text="Adicionar Equipamento" />
       <Label layoutX="13.0" layoutY="143.0" prefHeight="31.0" prefWidth="55.0" text="Cliente:" />
       <Label layoutX="77.0" layoutY="143.0" prefHeight="31.0" prefWidth="129.0" text="nome cliente" />
       <Label layoutX="77.0" layoutY="174.0" prefHeight="31.0" prefWidth="129.0" text="nome edificio" />

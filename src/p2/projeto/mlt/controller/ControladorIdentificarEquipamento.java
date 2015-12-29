@@ -17,19 +17,44 @@ import javafx.stage.Stage;
  */
 public class ControladorIdentificarEquipamento {
     
+       /**
+     * Metodo para botao Adicionar Equipamento presente na janela identificar
+     * equipamentos - botão de passagem para view AdicionarNovoEquipamento que
+     * vai permitir adicionar equipamentos ao levantamento e colocar na janela
+     * de equipamentos
+     */
     @FXML
-    public void mostraJanelaAdicionarEquipamento(){
+    public void mostraAdicionarEquipamento() {
         try {
-          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/AdicionarEquipamento.fxml"));
-          Parent root = (Parent) fxmlLoader.load();
-          Stage stage = new Stage();
-          stage.setTitle("Novo Equipamento");
-          stage.setScene(new Scene(root));
-          stage.show();
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-      
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/AdicionarNovoEquipamento.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Novo Equipamento");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo para botao seguinte presente na janela IdentificarEquipamentos -
+     * botao de passagem para view resumoLevantamento que vai permitir ver o
+     * resumo de todo o levantamento
+     */
+    @FXML
+    private void mostraResumoLevantamento() {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ResumoLevantamento.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Resumo levantamento");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+        }
+
     }
     
 }

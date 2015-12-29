@@ -7,8 +7,12 @@ package p2.projeto.mlt.controller;
 
 import java.util.ArrayList;
 import javafx.fxml.FXML; 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import p2.projeto.mlt.model.Equipamento;
 import p2.projeto.mlt.model.Equipamento.Estado;
 import p2.projeto.mlt.model.NovoTipoEquipamento;
@@ -56,5 +60,23 @@ public class ControladorNovoEquipamento {
 		
 		novoEquipamento.inserirEquipamento(novoEquipamento);
 	}
+  /**
+     * Metodo para botao Criar Novo Tipo de Equipamento caso nao exista na listagem - botao
+     * de passagem para view CriarNovoTipoEquipamento
+     */
+    @FXML
+    private void criarNovoTipoEquipamento() {
 
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoTipoEquipamento.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Novo Tipo Equipamento");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+        }
+
+    } 
+        
 }

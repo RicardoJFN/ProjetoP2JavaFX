@@ -29,7 +29,7 @@
             <TableColumn prefWidth="164.0" text="E-mail" />
          </columns>
       </TableView>
-      <Button layoutX="65.0" layoutY="449.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" text="Ver Clientes" />
+      <Button layoutX="65.0" layoutY="449.0" mnemonicParsing="false" onAction="#mostraDetalheCliente" prefHeight="27.0" prefWidth="151.0" text="Ver Clientes" />
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="300.0" layoutY="67.0" prefHeight="20.0" prefWidth="261.0" text="Consulta Clientes " />
    </children>
 </AnchorPane>
