@@ -35,7 +35,7 @@ public class MainApp extends Application{
 	public void menuPrincipal(){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/p2/projeto/mlt/views/MenuPrincipal.fxml"));
+			loader.setLocation(MainApp.class.getResource("/p2/projeto/mlt/view/MenuPrincipal.fxml"));
 			
 			AnchorPane layout = (AnchorPane) loader.load();
 			Scene scene = new Scene(layout);

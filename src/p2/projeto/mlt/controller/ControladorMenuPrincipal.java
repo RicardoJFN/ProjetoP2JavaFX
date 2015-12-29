@@ -47,7 +47,7 @@ public class ControladorMenuPrincipal {
 	@FXML
 	private void mostraNovoLevantamento(){
 		try{
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/views/CriarNovoLevantamento.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoLevantamento.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setTitle("Novo Levantamento");
@@ -57,5 +57,92 @@ public class ControladorMenuPrincipal {
 			e.printStackTrace();
 		}
 	}
-    
+     /**
+     * Metodo para botao Elaborar Orcamento presente no menu principal - botão
+     * de passagem para view CriacaoOrcamento
+     */
+    @FXML
+    private void mostraCriarOrcamento() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoOrcamento.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Novo Orçamento");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo para botao Consultar levantamentos Efetuados presente no menu
+     * principal - botão de passagem para view ConsultarLevantamentos
+     */
+    @FXML
+    private void mostraLevantamentosEfetuados() {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ConsultarLevantamentos.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Consulta de Levantamentos");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+        }
+
+    }
+
+    /**
+     * Metodo para botao Consultar Clientes presente no menu principal - botão
+     * de passagem para view ConsultarClientes
+     */
+    @FXML
+    private void mostraConsultarClientes() {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ConsultarClientes.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Consulta Clientes");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+        }
+    }
+
+    /**
+     * Metodo para botao Consultar Orcamentos presente no menu principal - botão
+     * de passagem para view ConsultaOrcamentos
+     */
+    @FXML
+    private void mostraConsultarOrcamentos() {
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ConsultarOrcamentos.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Consulta Orçamentos");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+        }
+
+    }
+
+    /**
+     * Nome da Ligacao ao botao - colocado no fx:id do botao sair
+     */
+    @FXML
+    private javafx.scene.control.Button sair;
+
+    /**
+     * Metodo para botao Sair - Botao para sair do programa
+     */
+    @FXML
+    private void botaoSair() {
+        Stage stage = (Stage) sair.getScene().getWindow();
+        stage.close();
+    }
 }

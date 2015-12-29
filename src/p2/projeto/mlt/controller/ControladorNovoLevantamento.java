@@ -87,7 +87,7 @@ public class ControladorNovoLevantamento {
 	@FXML
 	public void mostraJanelaNovoCliente(){
 		try{
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/views/CriarNovoCliente.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoCliente.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setTitle("Novo Cliente");
@@ -101,7 +101,7 @@ public class ControladorNovoLevantamento {
 	@FXML
 	public void mostraJanelaNovoEdificio(){
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/views/CriarNovoEdificio.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoEdificio.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setTitle("Novo Edificio");
@@ -115,7 +115,7 @@ public class ControladorNovoLevantamento {
 	@FXML
 	public void mostraJanelaIdentificarEquipamentos(){
 		try{
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/views/IdentificarEquipamentos.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/IdentificarEquipamentos.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
 			Stage stage = new Stage();
 			stage.setTitle("Identificacao de Equipamentos");

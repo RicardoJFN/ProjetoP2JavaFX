@@ -12,7 +12,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="1122.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="1122.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p2.projeto.mlt.controller.ControladorConsultarOrcamentos">
    <children>
       <Pane layoutX="14.0" layoutY="5.0" prefHeight="51.0" prefWidth="581.0">
          <children>
