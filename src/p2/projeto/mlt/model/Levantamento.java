@@ -24,10 +24,9 @@ import p2.projeto.mlt.DAL.ConexaoBaseDados;
 
 public class Levantamento {
 
-	protected IntegerProperty idLevantamento;
+        protected IntegerProperty idLevantamento;
+	protected DoubleProperty numLevantamento;
 	protected IntegerProperty dataLevantamento;
-	protected ObjectProperty<Cliente> nomeCliente;
-	protected ObjectProperty<Edificio> nomeEdificio;
 	protected DoubleProperty primeiroPontoLat;
 	protected DoubleProperty primeiroPontoLong;
 	protected DoubleProperty segundoPontoLat;
@@ -36,15 +35,14 @@ public class Levantamento {
 	protected DoubleProperty terceiroPontoLong;
 	protected DoubleProperty quartoPontoLat;
 	protected DoubleProperty quartoPontoLong;
+        protected ObjectProperty<Edificio> numeroEdificio;
 	
 	
-	public Levantamento(int idLevantamento, int dataLevantamento, Cliente nomeCliente, Edificio nomeEdificio, double primeiroPontoLat, 
+	public Levantamento(double numLevantamento, int dataLevantamento, double primeiroPontoLat, 
 			double primeiroPontoLong, double segundoPontoLat, double segundoPontoLong, double terceiroPontoLat, double terceiroPontoLong, 
-			double quartoPontoLat, double quartoPontoLong){
-		this.idLevantamento = new SimpleIntegerProperty(idLevantamento);
+			double quartoPontoLat, double quartoPontoLong, Edificio numeroEdificio){
+		this.numLevantamento = new SimpleDoubleProperty(numLevantamento);
 		this.dataLevantamento = new SimpleIntegerProperty(dataLevantamento);
-		this.nomeCliente = new SimpleObjectProperty<Cliente>(nomeCliente);
-		this.nomeEdificio = new SimpleObjectProperty<Edificio>(nomeEdificio);
 		this.primeiroPontoLat = new SimpleDoubleProperty(primeiroPontoLat);
 		this.primeiroPontoLong = new SimpleDoubleProperty(primeiroPontoLong);
 		this.segundoPontoLat = new SimpleDoubleProperty(segundoPontoLat);
@@ -53,16 +51,43 @@ public class Levantamento {
 		this.terceiroPontoLong = new SimpleDoubleProperty(terceiroPontoLong);
 		this.quartoPontoLat = new SimpleDoubleProperty(quartoPontoLat);
 		this.quartoPontoLong = new SimpleDoubleProperty(quartoPontoLong);
+                this.numeroEdificio = new SimpleObjectProperty<>(numeroEdificio);
+	}
+        
+        public Levantamento(int idLevantamento, double numLevantamento, int dataLevantamento, double primeiroPontoLat, 
+			double primeiroPontoLong, double segundoPontoLat, double segundoPontoLong, double terceiroPontoLat, double terceiroPontoLong, 
+			double quartoPontoLat, double quartoPontoLong, Edificio numeroEdificio){
+                this.idLevantamento = new SimpleIntegerProperty(idLevantamento);
+		this.numLevantamento = new SimpleDoubleProperty(numLevantamento);
+		this.dataLevantamento = new SimpleIntegerProperty(dataLevantamento);
+		this.primeiroPontoLat = new SimpleDoubleProperty(primeiroPontoLat);
+		this.primeiroPontoLong = new SimpleDoubleProperty(primeiroPontoLong);
+		this.segundoPontoLat = new SimpleDoubleProperty(segundoPontoLat);
+		this.segundoPontoLong = new SimpleDoubleProperty(segundoPontoLong);
+		this.terceiroPontoLat = new SimpleDoubleProperty(terceiroPontoLat);
+		this.terceiroPontoLong = new SimpleDoubleProperty(terceiroPontoLong);
+		this.quartoPontoLat = new SimpleDoubleProperty(quartoPontoLat);
+		this.quartoPontoLong = new SimpleDoubleProperty(quartoPontoLong);
+                this.numeroEdificio = new SimpleObjectProperty<>(numeroEdificio);
+	}
+
+        
+        public IntegerProperty getIdLevantamento() {
+            return idLevantamento;
+        }
+        
+        public void setIdLevantamento(IntegerProperty idLevantamento) {
+            this.idLevantamento = idLevantamento;
+        }
+        
+        
+	public DoubleProperty getNumLevantamento() {
+		return numLevantamento;
 	}
 
 
-	public IntegerProperty getIdLevantamento() {
-		return idLevantamento;
-	}
-
-
-	public void setIdLevantamento(IntegerProperty idLevantamento) {
-		this.idLevantamento = idLevantamento;
+	public void setNumLevantamento(DoubleProperty numLevantamento) {
+		this.numLevantamento = numLevantamento;
 	}
 
 
@@ -75,27 +100,15 @@ public class Levantamento {
 		this.dataLevantamento = dataLevantamento;
 	}
 
+    public ObjectProperty<Edificio> getNumeroEdificio() {
+        return numeroEdificio;
+    }
 
+    public void setNumeroEdificio(ObjectProperty<Edificio> numeroEdificio) {
+        this.numeroEdificio = numeroEdificio;
+    }
 
-	public ObjectProperty<Cliente> getNomeCliente() {
-		return nomeCliente;
-	}
-
-
-	public void setNomeCliente(ObjectProperty<Cliente> nomeCliente) {
-		this.nomeCliente = nomeCliente;
-	}
-
-
-	public ObjectProperty<Edificio> getNomeEdificio() {
-		return nomeEdificio;
-	}
-
-
-	public void setNomeEdificio(ObjectProperty<Edificio> nomeEdificio) {
-		this.nomeEdificio = nomeEdificio;
-	}
-
+   
 
 	public DoubleProperty getPrimeiroPontoLat() {
 		return primeiroPontoLat;
@@ -180,8 +193,8 @@ public class Levantamento {
 	
 	@Override
 	public String toString() {
-		return "Levantamento [idLevantamento=" + idLevantamento + ", dataLevantamento=" + dataLevantamento
-				+ ", nomeCliente=" + nomeCliente + ", nomeEdificio=" + nomeEdificio + ", primeiroPontoLat="
+		return "Levantamento [numLevantamento=" + numLevantamento + ", dataLevantamento=" + dataLevantamento
+				+ ", numeroEdificio=" + numeroEdificio + ", primeiroPontoLat="
 				+ primeiroPontoLat + ", primeiroPontoLong=" + primeiroPontoLong + ", segundoPontoLat=" + segundoPontoLat
 				+ ", segundoPontoLong=" + segundoPontoLong + ", terceiroPontoLat=" + terceiroPontoLat
 				+ ", terceiroPontoLong=" + terceiroPontoLong + ", quartoPontoLat=" + quartoPontoLat
@@ -192,25 +205,24 @@ public class Levantamento {
 	
 	
 	
-	public void inserirNovoLevantamento(Levantamento levantamento){
+	public void inserirNovoLevantamento(){
 		try {
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO levantamento(Lev_id,Lev_data,Lev_nomecliente,Lev_nomeedificio,Lev_latp1,Lev_longp1,Lev_latp2,Lev_longp2,Lev_latp3,Lev_longp3,Lev_latp4,Lev_longp4)VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+			String insertStatement = "INSERT INTO levantamento(Lev_num,Lev_data,Lev_latp1,Lev_longp1,Lev_latp2,Lev_latp3,Lev_latp4,Lev_longp2,Lev_longp3,Lev_longp4,Lev_Edif_id)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			
-			ps.setInt(1, idLevantamento.getValue());
+			ps.setDouble(1, numLevantamento.getValue());
 			ps.setInt(2, dataLevantamento.getValue());
-			ps.setInt(3, nomeCliente.getValue().getIdCliente().getValue());
-			ps.setInt(4, nomeEdificio.getValue().getIdEdificio().getValue());
-			ps.setDouble(5, primeiroPontoLat.getValue());
-			ps.setDouble(6, primeiroPontoLong.getValue());
-			ps.setDouble(7, segundoPontoLat.getValue());
+			ps.setDouble(3, primeiroPontoLat.getValue());
+			ps.setDouble(4, primeiroPontoLong.getValue());
+			ps.setDouble(5, segundoPontoLat.getValue());
+			ps.setDouble(6, terceiroPontoLat.getValue());
+			ps.setDouble(7, quartoPontoLat.getValue());
 			ps.setDouble(8, segundoPontoLong.getValue());
-			ps.setDouble(9, terceiroPontoLat.getValue());
-			ps.setDouble(10, terceiroPontoLong.getValue());
-			ps.setDouble(11, quartoPontoLat.getValue());
-			ps.setDouble(12, quartoPontoLong.getValue());
+			ps.setDouble(9, terceiroPontoLong.getValue());
+			ps.setDouble(10, quartoPontoLong.getValue());
+                        ps.setInt(11, numeroEdificio.getValue().getIdEdificio().getValue());
 			
 			ps.execute();
 		}catch (Exception e){

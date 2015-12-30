@@ -169,17 +169,16 @@ public class Cliente {
 		}
 	}
 	
-	public static ArrayList<Cliente> selecionaNomesCliente(){
+	public static ArrayList<String> selecionaNomesCliente(){
 		
-		ArrayList<Cliente> nomes = new ArrayList<>();
+		ArrayList<String> nomes = new ArrayList<>();
 		try{
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
 			Statement stmt = con.getConexao().createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT Cliente_name FROM cliente");
+			ResultSet rs = stmt.executeQuery("SELECT Cliente_nome FROM cliente");
 			
 			while(rs.next()){
-				nomes.add(new Cliente(rs.getString("nomeCliente"), rs.getString("moradaCliente"), rs.getDouble("codigoPostal"), 
-						rs.getInt("numeroTelefone"), rs.getInt("numeroTelemovel"), rs.getString("emailCliente")));
+				nomes.add(rs.getString("Cliente_nome"));
 			}
 		}catch (Exception e){
 			e.printStackTrace();
@@ -187,6 +186,24 @@ public class Cliente {
 		return nomes;
 	}
 	
+        public static ArrayList<Cliente> selecionaCliente(){
+		
+		ArrayList<Cliente> nomes = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM cliente");
+			
+			while(rs.next()){
+				nomes.add(new Cliente(rs.getInt("Cliente_id"), rs.getString("Cliente_nome"), rs.getString("Cliente_morada"), rs.getDouble("Cliente_postal"), rs.getInt("Cliente_telef"), 
+                                        rs.getInt("Cliente_telem"), rs.getString("Cliente_email")));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return nomes;
+	}
+       
 	
 	
 }

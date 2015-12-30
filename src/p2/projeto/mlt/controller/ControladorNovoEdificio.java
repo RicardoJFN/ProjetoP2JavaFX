@@ -5,14 +5,16 @@
  */
 package p2.projeto.mlt.controller;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import p2.projeto.mlt.model.Cliente;
 import p2.projeto.mlt.model.Edificio;
 
 public class ControladorNovoEdificio {
 	
 	@FXML
-	private Label nomeCliente;
+	private ComboBox<Cliente> nomeCliente;
 	@FXML
 	private TextField numeroEdificio;
 	@FXML
@@ -24,12 +26,23 @@ public class ControladorNovoEdificio {
 	
 	@FXML
 	private void initialize(){
-		
+            
+            
+           
+            nomeCliente.getItems().addAll(Cliente.selecionaCliente());
+            
 	}
 	
 	@FXML
 	private void guardarInfo(){
-		//Edificio novoEdificio = new Edificio(n,Integer.parseInt(numeroEdificio.getText()), nomeEdificio.getText(), Double.parseDouble(latEdificio.getText()), Double.parseDouble(longEdificio.getText()));
+		
+            try {
+                Edificio novoEdificio = new Edificio(nomeCliente.getValue(), Integer.parseInt(numeroEdificio.getText()), nomeEdificio.getText(), Double.parseDouble(latEdificio.getText()), Double.parseDouble(longEdificio.getText()));
+                novoEdificio.inserirNovoEdificio();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
 	}
 
 }

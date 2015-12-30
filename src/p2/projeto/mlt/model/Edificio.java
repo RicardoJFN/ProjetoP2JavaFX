@@ -32,7 +32,7 @@ public class Edificio {
 	
 	public Edificio(int idEdificio, Cliente cliente, int numeroEdificio, String nomeEdificio, double latCoordEdificio, double longCoordEdificio){
 		this.idEdificio = new SimpleIntegerProperty(idEdificio);
-		this.cliente = new SimpleObjectProperty<Cliente>(cliente);
+		this.cliente = new SimpleObjectProperty<>(cliente);
 		this.numeroEdificio = new SimpleIntegerProperty(numeroEdificio);
 		this.nomeEdificio = new SimpleStringProperty(nomeEdificio);
 		this.latCoordEdificio = new SimpleDoubleProperty(latCoordEdificio);
@@ -40,13 +40,18 @@ public class Edificio {
 	}
 	
 	public Edificio(Cliente cliente, int numeroEdificio, String nomeEdificio, double latCoordEdificio, double longCoordEdificio){
-		this.cliente = new SimpleObjectProperty<Cliente>(cliente);
+		this.cliente = new SimpleObjectProperty<>(cliente);
 		this.numeroEdificio = new SimpleIntegerProperty(numeroEdificio);
 		this.nomeEdificio = new SimpleStringProperty(nomeEdificio);
 		this.latCoordEdificio = new SimpleDoubleProperty(latCoordEdificio);
 		this.longCoordEdificio = new SimpleDoubleProperty(longCoordEdificio);
 	}
 
+        public Edificio(int idEdificio, String nomeEdificio){
+            this.idEdificio = new SimpleIntegerProperty(idEdificio);
+            this.nomeEdificio = new SimpleStringProperty(nomeEdificio);
+        }
+        
 	public IntegerProperty getIdEdificio() {
 		return idEdificio;
 	}
@@ -55,13 +60,17 @@ public class Edificio {
 		this.idEdificio = idEdificio;
 	}
 
-	public ObjectProperty<Cliente> getNomeCliente() {
-		return cliente;
-	}
+    public ObjectProperty<Cliente> getCliente() {
+        return cliente;
+    }
 
-	public void setNomeCliente(ObjectProperty<Cliente> nomeCliente) {
-		this.cliente = nomeCliente;
-	}
+    public void setCliente(ObjectProperty<Cliente> cliente) {
+        this.cliente = cliente;
+    }
+
+        
+
+	
 
 	public IntegerProperty getNumeroEdificio() {
 		return numeroEdificio;
@@ -105,16 +114,16 @@ public class Edificio {
 	public void inserirNovoEdificio(){
 		try{
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO edificios(Edif_id,Edif_num,Edfi_nome,Edif_lat,Edif_long,Edfi_Cliente_id) VALUES(?,?,?,?,?,?)";
+			String insertStatement = "INSERT INTO edificios(Edif_num,Edif_nome,Edif_lat,Edif_long,Edif_Cliente_id) VALUES(?,?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			
-			ps.setInt(1, idEdificio.getValue());
-			ps.setInt(2, numeroEdificio.getValue());
-			ps.setString(3, nomeEdificio.getValue());
-			ps.setDouble(4, latCoordEdificio.getValue());
-			ps.setDouble(5, longCoordEdificio.getValue());
-			ps.setInt(6, cliente.getValue().getIdCliente().getValue());
+			//ps.setInt(1, idEdificio.getValue());
+			ps.setInt(1, numeroEdificio.getValue());
+			ps.setString(2, nomeEdificio.getValue());
+			ps.setDouble(3, latCoordEdificio.getValue());
+			ps.setDouble(4, longCoordEdificio.getValue());
+			ps.setInt(5, cliente.getValue().getIdCliente().getValue());
 			
 			ps.execute();
 		}catch(Exception e){
@@ -122,21 +131,38 @@ public class Edificio {
 		}
 	}
 	
-	public static ArrayList<Edificio> selecionaNomesEdificio(){
+	public static ArrayList<String> selecionaNomesEdificio(){
 			
-			ArrayList<Edificio> nomes = new ArrayList<>();
+			ArrayList<String> nomes = new ArrayList<>();
 			try{
 				ConexaoBaseDados con = ConexaoBaseDados.conectar();
 				Statement stmt = con.getConexao().createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM edificios");
+				ResultSet rs = stmt.executeQuery("SELECT Edif_nome FROM edificios");
 				
 				while(rs.next()){
-					nomes.add(new Edificio((Cliente) rs.getObject("cliente"), rs.getInt("numeroEdificio"), rs.getString("nomeEdificio"), rs.getDouble("latCoordEdificio"), 
-							rs.getDouble("longCoordEdificio")));
+					nomes.add(rs.getString("Edif_nome"));
 				}
 			}catch(Exception e){
 				e.printStackTrace();
 			}
 			return nomes;
 		}
+        
+        public static ArrayList<Edificio> selecionaEdificio(){
+		
+		ArrayList<Edificio> edificios = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM edificios");
+			
+                       //rs.getInt("Edif_Cliente_id")
+			while(rs.next()){
+				edificios.add(new Edificio(rs.getInt("Edif_id"), rs.getString("Edif_nome")));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return edificios;
+	}
 }

@@ -47,7 +47,7 @@ public class ControladorNovoEquipamento {
 		//subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTiposEquipamentos());
                 tipoEquipamento.onActionProperty().addListener((obs,oldvalue,newvalue)->{
                    String nome = tipoEquipamento.getSelectionModel().getSelectedItem();
-                   subTipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaSubTiposEquipamentos(nome));
+                   //subTipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaSubTiposEquipamentos(nome));
                 });
 	}
 	

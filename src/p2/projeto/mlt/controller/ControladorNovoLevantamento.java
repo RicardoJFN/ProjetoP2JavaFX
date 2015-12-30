@@ -33,9 +33,9 @@ public class ControladorNovoLevantamento {
 	@FXML
 	private TextField dataLevantamento;
 	@FXML
-	private ComboBox<Cliente> nomeCliente;
+	private ComboBox<String> nomeCliente;
 	@FXML
-	private ComboBox<Edificio> nomeEdificio;
+	private ComboBox<Edificio> numeroEdificio;
 	@FXML
 	private TextField primeiroPontoLat;
 	@FXML
@@ -56,6 +56,7 @@ public class ControladorNovoLevantamento {
 	private TextField areaTotal;
 	
 	private Stage novoLevantamento;
+        
 	private boolean janelaLevantamento = false;
 	
 	
@@ -63,15 +64,10 @@ public class ControladorNovoLevantamento {
 	private void initialize(){
 		
 		
-		nomeCliente.onActionProperty().addListener((obs, oldvalue, newvalue) ->{
-			nomeCliente.getItems().addAll(Cliente.selecionaNomesCliente());
-		});
-		
-		nomeEdificio.onActionProperty().addListener((obs, oldvalue, newvalue)->{
-			nomeEdificio.getItems().addAll(Edificio.selecionaNomesEdificio());
-		});
-		
-		
+            
+            nomeCliente.getItems().addAll(Cliente.selecionaNomesCliente());
+            //nomeEdificio.getItems().addAll(Edificio.selecionaNomesEdificio());
+            numeroEdificio.getItems().addAll(Edificio.selecionaEdificio());
 		
 	}
 	
@@ -128,10 +124,30 @@ public class ControladorNovoLevantamento {
 	
 	@FXML
 	public void guardarInfo(){
-		Levantamento novoLevantamento = new Levantamento(Integer.parseInt(numeroLevantamento.getText()), Integer.parseInt(dataLevantamento.getText()),
-				nomeCliente.getValue(),  nomeEdificio.getValue(), Double.parseDouble(primeiroPontoLat.getText()), Double.parseDouble(primeiroPontoLong.getText()),
-				Double.parseDouble(segundoPontoLat.getText()), Double.parseDouble(segundoPontoLong.getText()), Double.parseDouble(terceiroPontoLat.getText()),
-				Double.parseDouble(terceiroPontoLong.getText()), Double.parseDouble(quartoPontoLat.getText()), Double.parseDouble(quartoPontoLong.getText()));
-		novoLevantamento.inserirNovoLevantamento(novoLevantamento);
+		
+            
+            /*
+            Levantamento novoLevantamento = new Levantamento(Integer.parseInt(numeroLevantamento.getText()), Integer.parseInt(dataLevantamento.getText()), 
+                        nomeCliente.getValue(), Integer.parseInt(numeroEdificio.getValue()), Integer.parseInt(primeiroPontoLat.getText()), Integer.parseInt(primeiroPontoLong.getText()), 
+                        Integer.parseInt(segundoPontoLat.getText()), Integer.parseInt(segundoPontoLong.getText()), Integer.parseInt(terceiroPontoLat.getText()), 
+                        Integer.parseInt(terceiroPontoLong.getText()), Integer.parseInt(quartoPontoLat.getText()), Integer.parseInt(quartoPontoLong.getText()));
+            */
+            try {
+                
+                Levantamento novoLevantamento = new Levantamento(Integer.parseInt(numeroLevantamento.getText()), Integer.parseInt(dataLevantamento.getText()),
+                Double.parseDouble(primeiroPontoLat.getText()), Double.parseDouble(primeiroPontoLong.getText()), Double.parseDouble(segundoPontoLat.getText()), Double.parseDouble(segundoPontoLong.getText()),
+                Double.parseDouble(terceiroPontoLat.getText()), Double.parseDouble(terceiroPontoLong.getText()), Double.parseDouble(quartoPontoLat.getText()), Double.parseDouble(quartoPontoLong.getText()),
+                numeroEdificio.getValue());
+                
+                novoLevantamento.inserirNovoLevantamento();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+                
+
 	}
+        
+       
+        
 }
