@@ -47,12 +47,14 @@ public class ControladorMenuPrincipal {
 	@FXML
 	private void mostraNovoLevantamento(){
 		try{
+                        
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoLevantamento.fxml"));
 			Parent root = (Parent) fxmlLoader.load();
-			Stage stage = new Stage();
+                        Stage stage = new Stage();
 			stage.setTitle("Novo Levantamento");
 			stage.setScene(new Scene(root));
 			stage.show();
+                        
 		}catch (Exception e){
 			e.printStackTrace();
 		}
