@@ -35,12 +35,13 @@ public class Levantamento {
 	protected DoubleProperty terceiroPontoLong;
 	protected DoubleProperty quartoPontoLat;
 	protected DoubleProperty quartoPontoLong;
+        protected DoubleProperty calculoArea;
         protected ObjectProperty<Edificio> numeroEdificio;
 	
 	
 	public Levantamento(double numLevantamento, int dataLevantamento, double primeiroPontoLat, 
 			double primeiroPontoLong, double segundoPontoLat, double segundoPontoLong, double terceiroPontoLat, double terceiroPontoLong, 
-			double quartoPontoLat, double quartoPontoLong, Edificio numeroEdificio){
+			double quartoPontoLat, double quartoPontoLong, double calculoArea,Edificio numeroEdificio){
 		this.numLevantamento = new SimpleDoubleProperty(numLevantamento);
 		this.dataLevantamento = new SimpleIntegerProperty(dataLevantamento);
 		this.primeiroPontoLat = new SimpleDoubleProperty(primeiroPontoLat);
@@ -51,6 +52,7 @@ public class Levantamento {
 		this.terceiroPontoLong = new SimpleDoubleProperty(terceiroPontoLong);
 		this.quartoPontoLat = new SimpleDoubleProperty(quartoPontoLat);
 		this.quartoPontoLong = new SimpleDoubleProperty(quartoPontoLong);
+                this.calculoArea = new SimpleDoubleProperty(calculoArea);
                 this.numeroEdificio = new SimpleObjectProperty<>(numeroEdificio);
 	}
         
@@ -71,6 +73,11 @@ public class Levantamento {
                 this.numeroEdificio = new SimpleObjectProperty<>(numeroEdificio);
 	}
 
+        public Levantamento(int idLevantamento, double numLevantamento){
+            this.idLevantamento = new SimpleIntegerProperty(idLevantamento);
+            this.numLevantamento = new SimpleDoubleProperty(numLevantamento);
+        }
+        
         
         public IntegerProperty getIdLevantamento() {
             return idLevantamento;
@@ -189,7 +196,16 @@ public class Levantamento {
 		this.quartoPontoLong = quartoPontoLong;
 	}
 
+    public DoubleProperty getCalculoArea() {
+        return calculoArea;
+    }
 
+    public void setCalculoArea(DoubleProperty calculoArea) {
+        this.calculoArea = calculoArea;
+    }
+
+
+        
 	
 	@Override
 	public String toString() {
@@ -208,7 +224,7 @@ public class Levantamento {
 	public void inserirNovoLevantamento(){
 		try {
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO levantamento(Lev_num,Lev_data,Lev_latp1,Lev_longp1,Lev_latp2,Lev_latp3,Lev_latp4,Lev_longp2,Lev_longp3,Lev_longp4,Lev_Edif_id)VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+			String insertStatement = "INSERT INTO levantamento(Lev_num,Lev_data,Lev_latp1,Lev_longp1,Lev_latp2,Lev_latp3,Lev_latp4,Lev_longp2,Lev_longp3,Lev_longp4,Lev_area,Lev_Edif_id)VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			
@@ -222,11 +238,30 @@ public class Levantamento {
 			ps.setDouble(8, segundoPontoLong.getValue());
 			ps.setDouble(9, terceiroPontoLong.getValue());
 			ps.setDouble(10, quartoPontoLong.getValue());
-                        ps.setInt(11, numeroEdificio.getValue().getIdEdificio().getValue());
+                        ps.setDouble(11, calculoArea.getValue());
+                        ps.setInt(12, numeroEdificio.getValue().getIdEdificio().getValue());
 			
 			ps.execute();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 	}
+        
+        public static ArrayList<Levantamento> selecionaLevantamento(){
+		
+		ArrayList<Levantamento> levantamentos = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM levantamento");
+			
+			while(rs.next()){
+				levantamentos.add(new Levantamento(rs.getInt("Lev_id"), rs.getDouble("Lev_num")));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return levantamentos;
+	}
+        
 }

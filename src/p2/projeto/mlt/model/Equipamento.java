@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import p2.projeto.mlt.DAL.ConexaoBaseDados;
@@ -17,38 +19,39 @@ import p2.projeto.mlt.DAL.ConexaoBaseDados;
 public class Equipamento {
 
 	protected IntegerProperty idEquip;
+        protected StringProperty tipoEquip;
+	protected ObjectProperty<NovoSubTipoEquipamento> subTipoEquip;
+        protected ObjectProperty<Edificio> edificio;
 	protected StringProperty marcaEquip;
 	protected StringProperty modeloEquip;
+        protected StringProperty serieEquip;
 	protected StringProperty detalhesEquip;
-	protected StringProperty serieEquip;
-	protected StringProperty tipoEquip;
-	protected StringProperty subTipoEquip;
 	protected Estado estadoEquip;
-	
+
 	public enum Estado {EXCELENTE, RAZOAVEL, DEGRADADO};
 	
-	public Equipamento(int idEquip, String marcaEquip, String modeloEquip, String detalhesEquip, String serieEquip,
-			String tipoEquip, String subTipoEquip, Estado estadoEquip){
-		this.idEquip = new SimpleIntegerProperty(idEquip);
-		this.marcaEquip = new SimpleStringProperty(marcaEquip);
-		this.modeloEquip = new SimpleStringProperty(modeloEquip);
-		this.detalhesEquip = new SimpleStringProperty(detalhesEquip);
-		this.serieEquip = new SimpleStringProperty(serieEquip);
-		this.tipoEquip = new SimpleStringProperty(tipoEquip);
-		this.subTipoEquip = new SimpleStringProperty(subTipoEquip);
-		this.estadoEquip = estadoEquip;
-	}
+	public Equipamento(int idEquip, String tipoEquip, NovoSubTipoEquipamento subTipoEquip, Edificio edificio, String marcaEquip, String modeloEquip, String serieEquip, String detalhesEquip, Estado estadoEquip){
+            this.idEquip = new SimpleIntegerProperty(idEquip);
+            this.tipoEquip = new SimpleStringProperty(tipoEquip);
+            this.subTipoEquip = new SimpleObjectProperty<>(subTipoEquip);
+            this.edificio = new SimpleObjectProperty<>(edificio);
+            this.marcaEquip = new SimpleStringProperty(marcaEquip);
+            this.modeloEquip = new SimpleStringProperty(modeloEquip);
+            this.serieEquip = new SimpleStringProperty(serieEquip);
+            this.detalhesEquip = new SimpleStringProperty(detalhesEquip);
+            this.estadoEquip = estadoEquip;
+        }
 	
-	public Equipamento(String marcaEquip, String modeloEquip, String detalhesEquip, String serieEquip,
-			String tipoEquip, String subTipoEquip, Estado estadoEquip){
-		this.marcaEquip = new SimpleStringProperty(marcaEquip);
-		this.modeloEquip = new SimpleStringProperty(modeloEquip);
-		this.detalhesEquip = new SimpleStringProperty(detalhesEquip);
-		this.serieEquip = new SimpleStringProperty(serieEquip);
-		this.tipoEquip = new SimpleStringProperty(tipoEquip);
-		this.subTipoEquip = new SimpleStringProperty(subTipoEquip);
-		this.estadoEquip = estadoEquip;
-	}
+	public Equipamento(String tipoEquip, NovoSubTipoEquipamento subTipoEquip, Edificio edificio, String marcaEquip, String modeloEquip, String serieEquip, String detalhesEquip, Estado estadoEquip){
+            this.tipoEquip = new SimpleStringProperty(tipoEquip);
+            this.subTipoEquip = new SimpleObjectProperty<>(subTipoEquip);
+            this.edificio = new SimpleObjectProperty<>(edificio);
+            this.marcaEquip = new SimpleStringProperty(marcaEquip);
+            this.modeloEquip = new SimpleStringProperty(modeloEquip);
+            this.serieEquip = new SimpleStringProperty(serieEquip);
+            this.detalhesEquip = new SimpleStringProperty(detalhesEquip);
+            this.estadoEquip = estadoEquip;
+        }
 
 	
 	
@@ -100,13 +103,23 @@ public class Equipamento {
 		this.tipoEquip = tipoEquip;
 	}
 
-	public StringProperty getSubTipoEquip() {
-		return subTipoEquip;
-	}
+    public ObjectProperty<NovoSubTipoEquipamento> getSubTipoEquip() {
+        return subTipoEquip;
+    }
 
-	public void setSubTipoEquip(StringProperty subTipoEquip) {
-		this.subTipoEquip = subTipoEquip;
-	}
+    public void setSubTipoEquip(ObjectProperty<NovoSubTipoEquipamento> subTipoEquip) {
+        this.subTipoEquip = subTipoEquip;
+    }
+
+    public ObjectProperty<Edificio> getEdificio() {
+        return edificio;
+    }
+
+    public void setEdificio(ObjectProperty<Edificio> edificio) {
+        this.edificio = edificio;
+    }
+
+	
 
 	public Estado getEstadoEquip() {
 		return estadoEquip;
@@ -119,17 +132,18 @@ public class Equipamento {
 	public void inserirEquipamento(Equipamento equipamento){
 		try {
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO equipamento(Equip_marca,Equip_model,Equip_detalhes,Equip_serie,Equip_tipo,Equip_sbtipo,Equip_estado)VALUES(?,?,?,?,?,?,?)";
+			String insertStatement = "INSERT INTO equipamento(Equip_marca,Equip_model,Equip_detalhes,Equip_serie,Equip_tipo,Equip_estado,Equip_Edif_id,Equip_Sbtequip_id)VALUES(?,?,?,?,?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			
-			ps.setString(1, marcaEquip.getValue());
-			ps.setString(2, modeloEquip.getValue());
-			ps.setString(3, detalhesEquip.getValue());
-			ps.setString(4, serieEquip.getValue());
-			ps.setString(5, tipoEquip.getValue());
-			ps.setString(6, subTipoEquip.getValue());
-			ps.setString(7, estadoEquip.name());
+                        ps.setString(1, marcaEquip.getValue());
+                        ps.setString(2, modeloEquip.getValue());
+                        ps.setString(3, detalhesEquip.getValue());
+                        ps.setString(4, serieEquip.getValue());
+                        ps.setString(5, tipoEquip.getValue());
+                        ps.setString(6, estadoEquip.name());
+                        ps.setInt(7, edificio.getValue().getIdEdificio().getValue());
+                        ps.setInt(8, subTipoEquip.getValue().getIdSubTipo().getValue());
 			
 			ps.execute();
 		}catch (Exception e){

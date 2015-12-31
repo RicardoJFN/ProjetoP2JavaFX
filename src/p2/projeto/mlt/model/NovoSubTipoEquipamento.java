@@ -87,4 +87,19 @@ public class NovoSubTipoEquipamento {
 			return subTipos;
 			
 		}
+        
+        public static ArrayList<NovoSubTipoEquipamento> selecionaSubTipos(){
+            ArrayList<NovoSubTipoEquipamento> subTipos = new ArrayList<>();
+            try {
+                ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM sbtequip");
+                        while(rs.next()){
+				subTipos.add(new NovoSubTipoEquipamento(rs.getInt("Sbtequip_id"), rs.getString("Sbtequip_sbtipo")));
+			}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return subTipos;
+        }
 }
