@@ -6,6 +6,7 @@
 package p2.projeto.mlt.controller;
 
 
+import java.awt.Desktop;
 import java.io.File;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -121,6 +122,48 @@ public class ControladorNovoLevantamento {
 			e.printStackTrace();
 		}
 	}
+        
+        @FXML
+        public void obterCoord(){
+           
+            try {
+                File htmlFile = new File("C:\\\\Users\\\\ricardon\\\\Documents\\\\ProjetoP2\\\\GoogleMaps.html");
+            Desktop.getDesktop().browse(htmlFile.toURI());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        }
+        
+        @FXML
+        public void calcularArea(){
+            double primeiraMultiDireita = Double.parseDouble(primeiroPontoLat.getText()) * Double.parseDouble(segundoPontoLong.getText());
+            double segundaMultiDireita = Double.parseDouble(segundoPontoLat.getText()) * Double.parseDouble(terceiroPontoLong.getText());
+            double terceiraMultiDireita = Double.parseDouble(terceiroPontoLat.getText()) * Double.parseDouble(quartoPontoLong.getText());
+            double quartaMultiDireita = Double.parseDouble(quartoPontoLat.getText()) * Double.parseDouble(primeiroPontoLong.getText());
+            
+            double resultadoSomaDireita = primeiraMultiDireita + segundaMultiDireita + terceiraMultiDireita + quartaMultiDireita;
+            
+            double primeiraMultiEsquerda = Double.parseDouble(primeiroPontoLong.getText()) * Double.parseDouble(segundoPontoLat.getText());
+            double segundaMultiEsquerda = Double.parseDouble(segundoPontoLong.getText()) * Double.parseDouble(terceiroPontoLat.getText());
+            double terceiraMultiEsquerda = Double.parseDouble(terceiroPontoLong.getText()) * Double.parseDouble(quartoPontoLat.getText());
+            double quartaMultiEsquerda = Double.parseDouble(quartoPontoLong.getText()) * Double.parseDouble(primeiroPontoLat.getText());
+            
+            double resultadoSomaEsquerda = primeiraMultiEsquerda + segundaMultiEsquerda + terceiraMultiEsquerda + quartaMultiEsquerda;
+            
+            double teste = Math.max(resultadoSomaDireita, resultadoSomaEsquerda);
+            double sub = 0;
+            if(teste == resultadoSomaDireita){
+                sub = resultadoSomaDireita - resultadoSomaEsquerda;
+            }else {
+                sub = resultadoSomaEsquerda - resultadoSomaDireita;
+            }
+            
+            double resultadoFinal = sub / 2;
+            
+            areaTotal.setText(Double.toString(resultadoFinal));
+        }
+        
 	
 	@FXML
 	public void guardarInfo(){
@@ -137,7 +180,7 @@ public class ControladorNovoLevantamento {
                 Levantamento novoLevantamento = new Levantamento(Integer.parseInt(numeroLevantamento.getText()), Integer.parseInt(dataLevantamento.getText()),
                 Double.parseDouble(primeiroPontoLat.getText()), Double.parseDouble(primeiroPontoLong.getText()), Double.parseDouble(segundoPontoLat.getText()), Double.parseDouble(segundoPontoLong.getText()),
                 Double.parseDouble(terceiroPontoLat.getText()), Double.parseDouble(terceiroPontoLong.getText()), Double.parseDouble(quartoPontoLat.getText()), Double.parseDouble(quartoPontoLong.getText()),
-                numeroEdificio.getValue());
+                Double.parseDouble(areaTotal.getText()),numeroEdificio.getValue());
                 
                 novoLevantamento.inserirNovoLevantamento();
             } catch (Exception e) {
@@ -147,6 +190,7 @@ public class ControladorNovoLevantamento {
                 
 
 	}
+        
         
        
         

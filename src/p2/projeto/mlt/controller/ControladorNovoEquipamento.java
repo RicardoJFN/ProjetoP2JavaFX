@@ -13,8 +13,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import p2.projeto.mlt.model.Edificio;
 import p2.projeto.mlt.model.Equipamento;
 import p2.projeto.mlt.model.Equipamento.Estado;
+import p2.projeto.mlt.model.NovoSubTipoEquipamento;
 import p2.projeto.mlt.model.NovoTipoEquipamento;
 
 /**
@@ -26,7 +28,9 @@ public class ControladorNovoEquipamento {
 	@FXML
 	private ComboBox<String> tipoEquipamento;
 	@FXML
-	private ComboBox<NovoTipoEquipamento> subTipoEquipamento;
+	private ComboBox<NovoSubTipoEquipamento> subTipoEquipamento;
+        @FXML
+        private ComboBox<Edificio> edificio;
 	@FXML
 	private TextField marcaEquipamento;
 	@FXML
@@ -44,19 +48,22 @@ public class ControladorNovoEquipamento {
 	private void initialize(){
 		estadoEquipamento.getItems().addAll(Equipamento.Estado.values());
 		tipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaTiposEquipamentos());
-		//subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTiposEquipamentos());
-                tipoEquipamento.onActionProperty().addListener((obs,oldvalue,newvalue)->{
+                subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTipos());
+                edificio.getItems().addAll(Edificio.selecionaEdificio());
+                //subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTiposEquipamentos());
+                /*tipoEquipamento.onActionProperty().addListener((obs,oldvalue,newvalue)->{
                    String nome = tipoEquipamento.getSelectionModel().getSelectedItem();
-                   //subTipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaSubTiposEquipamentos(nome));
+                   subTipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaSubTiposEquipamentos(nome));
                 });
+                */
 	}
 	
 	
 	@FXML
 	public void guardarInfo(){
 		
-		Equipamento novoEquipamento = new Equipamento(marcaEquipamento.getText(), modeloEquipamento.getText(), detalhesEquipamento.getText(), 
-				numeroSerieEquipamento.getText(), tipoEquipamento.getValue(), subTipoEquipamento.getValue().toString(), estadoEquipamento.getValue());
+		Equipamento novoEquipamento = new Equipamento(tipoEquipamento.getValue(),subTipoEquipamento.getValue(),edificio.getValue(),marcaEquipamento.getText(), modeloEquipamento.getText(), 
+                        numeroSerieEquipamento.getText(), detalhesEquipamento.getText(), estadoEquipamento.getValue());
 		
 		novoEquipamento.inserirEquipamento(novoEquipamento);
 	}

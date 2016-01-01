@@ -114,13 +114,13 @@ public class NovoTipoEquipamento {
 		}
 	
 
-        public static ArrayList<NovoTipoEquipamento> selecionaSubTiposEquipamentos(int idTipo){
+        public static ArrayList<NovoTipoEquipamento> selecionaSubTiposEquipamentos(String tipo){
 			
 			ArrayList <NovoTipoEquipamento> subTipos = new ArrayList<>();
 			try {
 				ConexaoBaseDados con = ConexaoBaseDados.conectar();
 				Statement stmt = con.getConexao().createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM TipoEquipamento WHERE tipo = "+idTipo);
+				ResultSet rs = stmt.executeQuery("SELECT * FROM TipoEquipamento WHERE tipo = "+tipo);
 				
 				while(rs.next()){
 					subTipos.add(new NovoTipoEquipamento(rs.getInt("idTipo"), rs.getString("tipo"), rs.getDouble("valor"), rs.getString("subTipo")));
