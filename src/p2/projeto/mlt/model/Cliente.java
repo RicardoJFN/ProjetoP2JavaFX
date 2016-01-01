@@ -76,7 +76,12 @@ public class Cliente {
 		this.numeroTelemovel = new SimpleIntegerProperty(numeroTelemovel);
 		this.emailCliente = new SimpleStringProperty(emailCliente);
 	}
-	
+        
+        public Cliente(int idCliente, String nomeCliente){
+            this.idCliente = new SimpleIntegerProperty(idCliente);
+            this.nomeCliente = new SimpleStringProperty(nomeCliente);
+        }
+        
 	//-------------------------------------------------------Getters e Setters-------------------------------------------------------
 
 	public IntegerProperty getIdCliente() {

@@ -89,11 +89,34 @@ public class Orcamento {
         return "Orcamento{" + "idOrcamento=" + idOrcamento + ", dataOrcamento=" + dataOrcamento + ", cliente=" + cliente + ", edficio=" + edficio + ", levantamento=" + levantamento + '}';
     }
     
+    
+	public void inserirNovoOrcamento(){
+		try {
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			String insertStatement = "INSERT INTO orcamento(Orc_data)VALUES(?)";
+			Connection conexao = con.getConexao();
+			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
+			
+			ps.setInt(1, dataOrcamento.getValue());
+                        //ps.setInt(2, edficio.getValue().getIdEdificio().getValue());
+                        //ps.setInt(3, cliente.getValue().getIdCliente().getValue());
+                        //ps.setInt(4, levantamento.getValue().getIdLevantamento().getValue());
+			
+			ps.execute();
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+    
+    
+    
+    /*
+    
     public void inserirOrcamento(){
         try {
             ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            //String insertStatement = "INSERT INTO orcamento(Orc_Data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id) VALUES(?,?,?,?)";
-            String insertStatement = "INSERT INTO orcamento(Orc_Data) VALUES(?)";
+            String insertStatement = "INSERT INTO orcamento(Orc_Data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id) VALUES(?,?,?,?)";
+            //String insertStatement = "INSERT INTO orcamento(Orc_Data) VALUES(?)";
             Connection conexao = con.getConexao();
             PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
             
@@ -107,7 +130,7 @@ public class Orcamento {
             e.printStackTrace();
         }
     }
-    
+    */
    
     
 }
