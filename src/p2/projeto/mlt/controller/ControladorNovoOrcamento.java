@@ -1,9 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package p2.projeto.mlt.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -12,19 +18,12 @@ import p2.projeto.mlt.model.Edificio;
 import p2.projeto.mlt.model.Levantamento;
 import p2.projeto.mlt.model.Orcamento;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author carlosb
+ * @author ricardon
  */
 public class ControladorNovoOrcamento {
-    
-    
+
     @FXML
     private TextField dataOrcamento;
     @FXML
@@ -35,6 +34,9 @@ public class ControladorNovoOrcamento {
     private ComboBox<Levantamento> levantamento;
     
     
+    private Stage novoOrcamento; 
+    private boolean janelaOrcamento = false;
+    
     @FXML
     private void initialize(){
         cliente.getItems().addAll(Cliente.selecionaCliente());
@@ -42,15 +44,17 @@ public class ControladorNovoOrcamento {
         levantamento.getItems().addAll(Levantamento.selecionaLevantamento());
     }
     
+    public void setNovoOrcamento(){
+        this.novoOrcamento = novoOrcamento;
+    }
     
-     /**
-     * Metodo para botao ver levantamento presente na janela CriarNovoOrcamento -
-     * botao para view resumoLevantamento que vai permitir ver o
-     * resumo do levantamento seleccionado
-     */
+    public boolean isJanelaOrcamento(){
+        return janelaOrcamento;
+    }
+    
+    /*
     @FXML
-    private void mostraResumoLevantamento() {
-
+    public void mostraResumoLevantamento(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ResumoLevantamento.fxml"));
             Parent root = (Parent) fxmlLoader.load();
@@ -61,23 +65,19 @@ public class ControladorNovoOrcamento {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
+    }*/
+    
     
     @FXML
     public void guardarInfo(){
-        
-        Orcamento novoOrcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()));
-        /*
         try {
-            Orcamento novoOrcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()), edificio.getValue(), cliente.getValue(),
-                        levantamento.getValue());
-            novoOrcamento.inserirOrcamento();
+            //System.out.println("Teste");
+            //Orcamento orcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()));
+            Orcamento novoOrcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()), edificio.getValue(), cliente.getValue(),levantamento.getValue());
+            novoOrcamento.inserirNovoOrcamento();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        */
+        
     }
-    
-    
 }
