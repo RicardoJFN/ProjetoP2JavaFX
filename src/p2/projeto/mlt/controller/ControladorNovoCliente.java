@@ -37,7 +37,22 @@ public class ControladorNovoCliente {
 	@FXML
 	private TextField emailCliente;
 	
-	
+
+            /**
+     * Nome da Ligacao ao botao - colocado no fx:id do botao sair
+     */
+        @FXML
+        private javafx.scene.control.Button sair;
+
+    /**
+     * Metodo para botao Sair - Botao para sair da janela
+     */
+    @FXML
+    private void botaoSair() {
+        Stage stage = (Stage) sair.getScene().getWindow();
+        stage.hide();
+    }
+        
 	@FXML
 	public void guardarInfo(){
 		

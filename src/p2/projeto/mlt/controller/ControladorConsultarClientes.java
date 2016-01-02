@@ -17,6 +17,25 @@ import javafx.stage.Stage;
  */
 public class ControladorConsultarClientes {
     
+          @FXML
+ private javafx.scene.control.Button sair;
+    
+    @FXML
+    public void voltaMenuPrincipal() {
+        try {
+            Stage consultarClientes = (Stage) sair.getScene().getWindow();
+            consultarClientes.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/MenuPrincipal.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("MenuPrincipal");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       }
+    
     /**
      * Metodo para botao ver cliente presente na janela ConsultarClientes -
      * botao para view ConsultarDetalheCliente que vai permitir ver todos os

@@ -28,9 +28,9 @@
       <Label layoutX="40.0" layoutY="609.0" prefHeight="20.0" prefWidth="23.0" text="ON" />
       <Label layoutX="40.0" layoutY="636.0" prefHeight="20.0" prefWidth="37.0" text="OFF" />
       <Label layoutX="15.0" layoutY="578.0" prefHeight="31.0" prefWidth="108.0" text="Estado Drone:" />
-      <Button layoutX="440.0" layoutY="625.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Voltar" />
+      <Button fx:id="voltar" layoutX="440.0" layoutY="625.0" mnemonicParsing="false" onAction="#voltarNovoLevantamento" prefHeight="27.0" prefWidth="76.0" text="Voltar" />
       <Label layoutX="13.0" layoutY="112.0" prefHeight="31.0" prefWidth="117.0" text="Levantamento nº :" />
-      <Button layoutX="530.0" layoutY="625.0" mnemonicParsing="false" onAction="#mostraResumoLevantamento" prefHeight="27.0" prefWidth="76.0" text="Seguinte" />
+      <Button fx:id="sair" layoutX="530.0" layoutY="625.0" mnemonicParsing="false" onAction="#mostraResumoLevantamento" prefHeight="27.0" prefWidth="76.0" text="Seguinte" />
       <TableView layoutX="210.0" layoutY="187.0" prefHeight="331.0" prefWidth="396.0">
          <columns>
             <TableColumn prefWidth="199.0" text="Tipo" />

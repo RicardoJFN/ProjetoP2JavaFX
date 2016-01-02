@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import p2.projeto.mlt.model.Cliente;
 import p2.projeto.mlt.model.Edificio;
@@ -34,14 +35,15 @@ public class MainApp extends Application{
 
 	public void menuPrincipal(){
 		try{
+                    
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/p2/projeto/mlt/view/MenuPrincipal.fxml"));
 			
 			AnchorPane layout = (AnchorPane) loader.load();
 			Scene scene = new Scene(layout);
-			
 			primaryStage.setScene(scene);
 			primaryStage.show();
+                       
 		}catch(Exception e){
 			e.printStackTrace();
 		}

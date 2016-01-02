@@ -137,7 +137,7 @@ public class Edificio {
 			try{
 				ConexaoBaseDados con = ConexaoBaseDados.conectar();
 				Statement stmt = con.getConexao().createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT Edif_nome FROM edificios");
+				ResultSet rs = stmt.executeQuery("SELECT * FROM edificios");
 				
 				while(rs.next()){
 					nomes.add(rs.getString("Edif_nome"));
@@ -156,7 +156,7 @@ public class Edificio {
 			Statement stmt = con.getConexao().createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM edificios");
 			
-                       //rs.getInt("Edif_Cliente_id")
+              
 			while(rs.next()){
 				edificios.add(new Edificio(rs.getInt("Edif_id"), rs.getString("Edif_nome")));
 			}

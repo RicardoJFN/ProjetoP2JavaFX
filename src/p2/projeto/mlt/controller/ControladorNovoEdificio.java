@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import p2.projeto.mlt.model.Cliente;
 import p2.projeto.mlt.model.Edificio;
 
@@ -24,6 +25,22 @@ public class ControladorNovoEdificio {
 	@FXML
 	private TextField longEdificio;
 	
+        
+            /**
+     * Nome da Ligacao ao botao - colocado no fx:id do botao sair
+     */
+        @FXML
+        private javafx.scene.control.Button sair;
+
+    /**
+     * Metodo para botao Sair - Botao para sair da janela
+     */
+    @FXML
+    private void botaoSair() {
+        Stage stage = (Stage) sair.getScene().getWindow();
+        stage.hide();
+    }
+    
 	@FXML
 	private void initialize(){
             

@@ -17,6 +17,31 @@ import javafx.stage.Stage;
  */
 public class ControladorIdentificarEquipamento {
     
+        /**
+     * Nome da Ligacao ao botao - colocado no fx:id do botao sair
+     */
+        @FXML
+        private javafx.scene.control.Button voltar;
+
+        @FXML
+        private javafx.scene.control.Button sair;
+        
+  @FXML
+    public void voltarNovoLevantamento() {
+        try {
+            Stage identificarEquipamentos = (Stage) voltar.getScene().getWindow();
+            identificarEquipamentos.hide();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoLevantamento.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("MenuPrincipal");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
        /**
      * Metodo para botao Adicionar Equipamento presente na janela identificar
      * equipamentos - botão de passagem para view AdicionarNovoEquipamento que
@@ -46,6 +71,8 @@ public class ControladorIdentificarEquipamento {
     private void mostraResumoLevantamento() {
 
         try {
+            Stage identificarEquipamentos = (Stage) sair.getScene().getWindow();
+            identificarEquipamentos.hide();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ResumoLevantamento.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();

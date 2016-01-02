@@ -52,11 +52,34 @@ public class ControladorNovoOrcamento {
         return janelaOrcamento;
     }
     
-    /*
+    @FXML
+    private javafx.scene.control.Button voltar;
+    
+     @FXML
+    private javafx.scene.control.Button sair;
+
+    @FXML
+    public void voltaMenuPrincipal() {
+        try {
+            Stage criarNovoOrcamento = (Stage) voltar.getScene().getWindow();
+            criarNovoOrcamento.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/MenuPrincipal.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("MenuPrincipal");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     @FXML
     public void mostraResumoLevantamento(){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ResumoLevantamento.fxml"));
+            Stage criarNovoOrcamento = (Stage) sair.getScene().getWindow();
+            criarNovoOrcamento.hide();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ResumoOrcamento.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Resumo levantamento");
@@ -65,7 +88,8 @@ public class ControladorNovoOrcamento {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
+    }
+    
     
     
     @FXML

@@ -93,14 +93,14 @@ public class Orcamento {
 	public void inserirNovoOrcamento(){
 		try {
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO orcamento(Orc_data)VALUES(?)";
+			String insertStatement = "INSERT INTO orcamento(Orc_data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id)VALUES(?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			
 			ps.setInt(1, dataOrcamento.getValue());
-                        //ps.setInt(2, edficio.getValue().getIdEdificio().getValue());
-                        //ps.setInt(3, cliente.getValue().getIdCliente().getValue());
-                        //ps.setInt(4, levantamento.getValue().getIdLevantamento().getValue());
+                        ps.setInt(2, edficio.getValue().getIdEdificio().getValue());
+                        ps.setInt(3, cliente.getValue().getIdCliente().getValue());
+                        ps.setInt(4, levantamento.getValue().getIdLevantamento().getValue());
 			
 			ps.execute();
 		}catch (Exception e){

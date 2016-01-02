@@ -20,7 +20,7 @@
          </children>
       </Pane>
       <Label layoutX="13.0" layoutY="174.0" prefHeight="31.0" prefWidth="55.0" text="Edificio:" />
-      <Button layoutX="645.0" layoutY="571.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="76.0" text="Voltar" />
+      <Button fx:id="sair" layoutX="645.0" layoutY="571.0" mnemonicParsing="false" onAction="#voltaMenuPrincipal" prefHeight="27.0" prefWidth="76.0" text="Sair" />
       <Label layoutX="13.0" layoutY="112.0" prefHeight="31.0" prefWidth="117.0" text="Levantamento nº :" />
       <TableView layoutX="31.0" layoutY="226.0" prefHeight="331.0" prefWidth="690.0">
          <columns>
