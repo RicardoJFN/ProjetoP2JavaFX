@@ -108,7 +108,7 @@ public class Edificio {
 	
 	@Override
 	public String toString() {
-		return "Edificio [nomeEdificio=" + nomeEdificio + "]";
+		return "Edificio: " + nomeEdificio.getValue();
 	}
 
 	public void inserirNovoEdificio(){

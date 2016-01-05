@@ -146,9 +146,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nomeCliente=" + nomeCliente + ", moradaCliente=" + moradaCliente
-				+ ", codigoPostal=" + codigoPostal + ", numeroTelefone=" + numeroTelefone 
-				+ ", numeroTelemovel=" + numeroTelemovel + ", emailCliente=" + emailCliente + "]";
+		return "Cliente: " + nomeCliente.getValue();
 	}
 	
 	//-------------------------------------------------------Metodo de insercao de um novo cliente na BD-------------------------------------------------------

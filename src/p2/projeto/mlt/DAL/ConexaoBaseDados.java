@@ -23,7 +23,7 @@ public class ConexaoBaseDados {
     private static final String Nomebd = "mlt";
     private static final String driverString = "jdbc:mysql";
     private static final String driverPath = "com.mysql.jdbc.Driver";
-    private static final String password = "";
+    private static final String password = "root";
     private static final String user = "root";
 
     private ConexaoBaseDados(String driverClassName, String dbURL, String user, String password) throws ClassNotFoundException, SQLException{

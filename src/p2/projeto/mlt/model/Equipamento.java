@@ -7,9 +7,11 @@ package p2.projeto.mlt.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javafx.beans.property.DoubleProperty;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,36 +22,44 @@ public class Equipamento {
 
 	protected IntegerProperty idEquip;
         protected StringProperty tipoEquip;
+        protected ObjectProperty<Levantamento> levantamento;
 	protected ObjectProperty<NovoSubTipoEquipamento> subTipoEquip;
         protected ObjectProperty<Edificio> edificio;
 	protected StringProperty marcaEquip;
 	protected StringProperty modeloEquip;
         protected StringProperty serieEquip;
 	protected StringProperty detalhesEquip;
+        protected DoubleProperty valorEquip;
 	protected Estado estadoEquip;
 
 	public enum Estado {EXCELENTE, RAZOAVEL, DEGRADADO};
 	
-	public Equipamento(int idEquip, String tipoEquip, NovoSubTipoEquipamento subTipoEquip, Edificio edificio, String marcaEquip, String modeloEquip, String serieEquip, String detalhesEquip, Estado estadoEquip){
+	public Equipamento(int idEquip, String tipoEquip, Levantamento levantamento,NovoSubTipoEquipamento subTipoEquip, Edificio edificio, 
+                String marcaEquip, String modeloEquip, String serieEquip, String detalhesEquip, double valorEquip,Estado estadoEquip){
             this.idEquip = new SimpleIntegerProperty(idEquip);
             this.tipoEquip = new SimpleStringProperty(tipoEquip);
+            this.levantamento = new SimpleObjectProperty<>(levantamento);
             this.subTipoEquip = new SimpleObjectProperty<>(subTipoEquip);
             this.edificio = new SimpleObjectProperty<>(edificio);
             this.marcaEquip = new SimpleStringProperty(marcaEquip);
             this.modeloEquip = new SimpleStringProperty(modeloEquip);
             this.serieEquip = new SimpleStringProperty(serieEquip);
             this.detalhesEquip = new SimpleStringProperty(detalhesEquip);
+            this.valorEquip = new SimpleDoubleProperty(valorEquip);
             this.estadoEquip = estadoEquip;
         }
 	
-	public Equipamento(String tipoEquip, NovoSubTipoEquipamento subTipoEquip, Edificio edificio, String marcaEquip, String modeloEquip, String serieEquip, String detalhesEquip, Estado estadoEquip){
+	public Equipamento(String tipoEquip, Levantamento levantamento,NovoSubTipoEquipamento subTipoEquip, Edificio edificio, 
+                String marcaEquip, String modeloEquip, String serieEquip, String detalhesEquip, double valorEquip,Estado estadoEquip){
             this.tipoEquip = new SimpleStringProperty(tipoEquip);
+            this.levantamento = new SimpleObjectProperty<>(levantamento);
             this.subTipoEquip = new SimpleObjectProperty<>(subTipoEquip);
             this.edificio = new SimpleObjectProperty<>(edificio);
             this.marcaEquip = new SimpleStringProperty(marcaEquip);
             this.modeloEquip = new SimpleStringProperty(modeloEquip);
             this.serieEquip = new SimpleStringProperty(serieEquip);
             this.detalhesEquip = new SimpleStringProperty(detalhesEquip);
+            this.valorEquip = new SimpleDoubleProperty(valorEquip);
             this.estadoEquip = estadoEquip;
         }
 
@@ -129,10 +139,28 @@ public class Equipamento {
 		this.estadoEquip = estadoEquip;
 	}
 
+    public ObjectProperty<Levantamento> getLevantamento() {
+        return levantamento;
+    }
+
+    public void setLevantamento(ObjectProperty<Levantamento> levantamento) {
+        this.levantamento = levantamento;
+    }
+
+    public DoubleProperty getValorEquip() {
+        return valorEquip;
+    }
+
+    public void setValorEquip(DoubleProperty valorEquip) {
+        this.valorEquip = valorEquip;
+    }
+        
+        
+
 	public void inserirEquipamento(Equipamento equipamento){
 		try {
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO equipamento(Equip_marca,Equip_model,Equip_detalhes,Equip_serie,Equip_tipo,Equip_estado,Equip_Edif_id,Equip_Sbtequip_id)VALUES(?,?,?,?,?,?,?,?)";
+			String insertStatement = "INSERT INTO equipamento(Equip_marca,Equip_model,Equip_detalhes,Equip_serie,Equip_tipo,Equip_estado,Equip_Edif_id,Equip_Sbtequip_id,Equip_Lev_id,Equip_valorestado)VALUES(?,?,?,?,?,?,?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			
@@ -144,6 +172,8 @@ public class Equipamento {
                         ps.setString(6, estadoEquip.name());
                         ps.setInt(7, edificio.getValue().getIdEdificio().getValue());
                         ps.setInt(8, subTipoEquip.getValue().getIdSubTipo().getValue());
+                        ps.setInt(9, levantamento.getValue().getIdLevantamento().getValue());
+                        ps.setDouble(10, valorEquip.getValue());
 			
 			ps.execute();
 		}catch (Exception e){

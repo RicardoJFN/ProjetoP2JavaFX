@@ -6,6 +6,7 @@
 package p2.projeto.mlt.controller;
 
 import java.util.ArrayList;
+import java.util.Random;
 import javafx.fxml.FXML; 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 import p2.projeto.mlt.model.Edificio;
 import p2.projeto.mlt.model.Equipamento;
 import p2.projeto.mlt.model.Equipamento.Estado;
+import p2.projeto.mlt.model.Levantamento;
 import p2.projeto.mlt.model.NovoSubTipoEquipamento;
 import p2.projeto.mlt.model.NovoTipoEquipamento;
 
@@ -25,6 +27,9 @@ import p2.projeto.mlt.model.NovoTipoEquipamento;
  */
 public class ControladorNovoEquipamento {
     
+    
+        @FXML
+        private ComboBox<Levantamento> numeroLevantamento;
 	@FXML
 	private ComboBox<String> tipoEquipamento;
 	@FXML
@@ -40,6 +45,8 @@ public class ControladorNovoEquipamento {
 	@FXML
 	private ComboBox<Estado> estadoEquipamento;
 	@FXML
+        private TextField valorEquipamento;
+        @FXML
 	private TextField detalhesEquipamento;
 	
 
@@ -65,6 +72,7 @@ public class ControladorNovoEquipamento {
 		tipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaTiposEquipamentos());
                 subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTipos());
                 edificio.getItems().addAll(Edificio.selecionaEdificio());
+                numeroLevantamento.getItems().addAll(Levantamento.selecionaLevantamento());
                 //subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTiposEquipamentos());
                 /*tipoEquipamento.onActionProperty().addListener((obs,oldvalue,newvalue)->{
                    String nome = tipoEquipamento.getSelectionModel().getSelectedItem();
@@ -73,12 +81,29 @@ public class ControladorNovoEquipamento {
                 */
 	}
 	
+        @FXML
+        public void calcularValor(){
+           int chiller = 6, painel = 2, ventilador = 3, uta = 4, depositoInercia = 5, caldeira = 6;
+           Random rnd = new Random();
+           int valManutencao = rnd.nextInt(6) + 5;
+           int estadoExcelente = 1, estadoRazoavel = 5, estadoDegradado = 10;
+           int valorTotal = 0;
+           
+           if(Estado.DEGRADADO == estadoEquipamento.getValue()){
+               if(NovoTipoEquipamento.selecionaTiposEquipamentos().contains("Chiller")){
+                   valorTotal = chiller * valManutencao * estadoDegradado;
+                   System.out.println(valorTotal + " " + valManutencao);
+               }
+           }
+           
+           valorEquipamento.setText(Integer.toString(valorTotal));
+        }
 	
 	@FXML
 	public void guardarInfo(){
 		
-		Equipamento novoEquipamento = new Equipamento(tipoEquipamento.getValue(),subTipoEquipamento.getValue(),edificio.getValue(),marcaEquipamento.getText(), modeloEquipamento.getText(), 
-                        numeroSerieEquipamento.getText(), detalhesEquipamento.getText(), estadoEquipamento.getValue());
+		Equipamento novoEquipamento = new Equipamento(tipoEquipamento.getValue(),numeroLevantamento.getValue(),subTipoEquipamento.getValue(),edificio.getValue(),marcaEquipamento.getText(), modeloEquipamento.getText(), 
+                        numeroSerieEquipamento.getText(), detalhesEquipamento.getText(), Double.parseDouble(valorEquipamento.getText()),estadoEquipamento.getValue());
 		
 		novoEquipamento.inserirEquipamento(novoEquipamento);
 	}

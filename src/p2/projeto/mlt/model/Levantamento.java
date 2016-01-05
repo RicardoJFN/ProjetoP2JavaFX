@@ -209,12 +209,7 @@ public class Levantamento {
 	
 	@Override
 	public String toString() {
-		return "Levantamento [numLevantamento=" + numLevantamento + ", dataLevantamento=" + dataLevantamento
-				+ ", numeroEdificio=" + numeroEdificio + ", primeiroPontoLat="
-				+ primeiroPontoLat + ", primeiroPontoLong=" + primeiroPontoLong + ", segundoPontoLat=" + segundoPontoLat
-				+ ", segundoPontoLong=" + segundoPontoLong + ", terceiroPontoLat=" + terceiroPontoLat
-				+ ", terceiroPontoLong=" + terceiroPontoLong + ", quartoPontoLat=" + quartoPontoLat
-				+ ", quartoPontoLong=" + quartoPontoLong + "]";
+		return "Número: " + numLevantamento.getValue();
 	}
 	
 	

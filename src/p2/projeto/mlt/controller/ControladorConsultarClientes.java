@@ -9,7 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import p2.projeto.mlt.model.Cliente;
 
 /**
  *
@@ -17,8 +22,28 @@ import javafx.stage.Stage;
  */
 public class ControladorConsultarClientes {
     
-          @FXML
- private javafx.scene.control.Button sair;
+    @FXML
+    private javafx.scene.control.Button sair;
+    @FXML
+    private TableView<Cliente> tabelaCliente;
+    @FXML
+    private TableColumn<Cliente, Cliente> nome;
+    @FXML
+    private TableColumn<Cliente, String> morada;
+    @FXML
+    private TableColumn<Cliente, String> localidade;
+    @FXML
+    private TableColumn<Cliente, Integer> telefone;
+    @FXML
+    private TableColumn<Cliente, String> email;
+    
+    
+    @FXML
+    private void initialize(){
+       Cliente clientes = null;
+       
+       //nome.getColumns().add(clientes.getNomeCliente());
+    }
     
     @FXML
     public void voltaMenuPrincipal() {
@@ -52,6 +77,7 @@ public class ControladorConsultarClientes {
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

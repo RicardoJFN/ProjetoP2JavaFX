@@ -49,7 +49,7 @@ public class NovoSubTipoEquipamento {
 
 	@Override
 	public String toString() {
-		return "NovoSubTipoEquipamento [idSubTipo=" + idSubTipo + ", nomeSubTipo=" + nomeSubTipo + "]";
+		return "Sub Tipo Equipamento: " + nomeSubTipo.getValue();
 	}
 	
 	public void inserirNovoSubTipoEquipamento(NovoSubTipoEquipamento novoSubTipoEquipamento){
