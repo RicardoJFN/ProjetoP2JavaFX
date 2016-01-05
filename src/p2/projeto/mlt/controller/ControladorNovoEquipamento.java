@@ -90,9 +90,67 @@ public class ControladorNovoEquipamento {
            int valorTotal = 0;
            
            if(Estado.DEGRADADO == estadoEquipamento.getValue()){
-               if(NovoTipoEquipamento.selecionaTiposEquipamentos().contains("Chiller")){
-                   valorTotal = chiller * valManutencao * estadoDegradado;
-                   System.out.println(valorTotal + " " + valManutencao);
+               switch (tipoEquipamento.getValue()) {
+                   case "Chiller":
+                       valorTotal = chiller * valManutencao * estadoDegradado;
+                       break;
+                   case "Paineis":
+                       valorTotal = painel * valManutencao * estadoDegradado;
+                       break;
+                   case "Ventiladores":
+                       valorTotal = ventilador * valManutencao * estadoDegradado;
+                       break;
+                   case "Utas":
+                       valorTotal = uta * valManutencao * estadoDegradado;
+                       break;
+                   case "Depósitos Inercia":
+                       valorTotal = depositoInercia * valManutencao * estadoDegradado;
+                       break;
+                   case "Caldeiras":
+                       valorTotal = caldeira * valManutencao * estadoDegradado;
+                       break;
+               }
+           }else if(Estado.RAZOAVEL == estadoEquipamento.getValue()){
+               switch (tipoEquipamento.getValue()) {
+                   case "Chiller":
+                       valorTotal = chiller * valManutencao * estadoRazoavel;
+                       break;
+                   case "Paineis":
+                       valorTotal = painel * valManutencao * estadoRazoavel;
+                       break;
+                   case "Ventiladores":
+                       valorTotal = ventilador * valManutencao * estadoRazoavel;
+                       break;
+                   case "Utas":
+                       valorTotal = uta * valManutencao * estadoRazoavel;
+                       break;
+                   case "Depósitos Inercia":
+                       valorTotal = depositoInercia * valManutencao * estadoRazoavel;
+                       break;
+                   case "Caldeiras":
+                       valorTotal = caldeira * valManutencao * estadoRazoavel;
+                       break;
+               }
+           }else {
+               switch (tipoEquipamento.getValue()) {
+                   case "Chiller":
+                       valorTotal = chiller * valManutencao * estadoExcelente;
+                       break;
+                   case "Paineis":
+                       valorTotal = painel * valManutencao * estadoExcelente;
+                       break;
+                   case "Ventiladores":
+                       valorTotal = ventilador * valManutencao * estadoExcelente;
+                       break;
+                   case "Utas":
+                       valorTotal = uta * valManutencao * estadoExcelente;
+                       break;
+                   case "Depósitos Inercia":
+                       valorTotal = depositoInercia * valManutencao * estadoExcelente;
+                       break;
+                   case "Caldeiras":
+                       valorTotal = caldeira * valManutencao * estadoExcelente;
+                       break;
                }
            }
            
