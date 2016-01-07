@@ -154,7 +154,7 @@ public class Cliente {
 	public void inserirNovoCliente(Cliente cliente){
 		try{
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO cliente(Cliente_name,Cliente_morada,Cliente_postal,Cliente_telef,Cliente_telem,Cliente_email) VALUES(?,?,?,?,?,?)";
+			String insertStatement = "INSERT INTO cliente(Cliente_nome,Cliente_morada,Cliente_postal,Cliente_telef,Cliente_telem,Cliente_email) VALUES(?,?,?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			

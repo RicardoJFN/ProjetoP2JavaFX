@@ -73,12 +73,7 @@ public class ControladorNovoEquipamento {
                 subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTipos());
                 edificio.getItems().addAll(Edificio.selecionaEdificio());
                 numeroLevantamento.getItems().addAll(Levantamento.selecionaLevantamento());
-                //subTipoEquipamento.getItems().addAll(NovoSubTipoEquipamento.selecionaSubTiposEquipamentos());
-                /*tipoEquipamento.onActionProperty().addListener((obs,oldvalue,newvalue)->{
-                   String nome = tipoEquipamento.getSelectionModel().getSelectedItem();
-                   subTipoEquipamento.getItems().addAll(NovoTipoEquipamento.selecionaSubTiposEquipamentos(nome));
-                });
-                */
+                
 	}
 	
         @FXML

@@ -5,6 +5,9 @@
  */
 package p2.projeto.mlt.controller;
 
+import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +30,7 @@ public class ControladorConsultarClientes {
     @FXML
     private TableView<Cliente> tabelaCliente;
     @FXML
-    private TableColumn<Cliente, Cliente> nome;
+    private TableColumn<Cliente, String> nome;
     @FXML
     private TableColumn<Cliente, String> morada;
     @FXML
@@ -37,12 +40,22 @@ public class ControladorConsultarClientes {
     @FXML
     private TableColumn<Cliente, String> email;
     
+    private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
+        
+        public ObservableList<Cliente> getClienteData(){
+            return clientes;
+        }
     
     @FXML
     private void initialize(){
-       Cliente clientes = null;
        
-       //nome.getColumns().add(clientes.getNomeCliente());
+       morada.setCellValueFactory(cellData -> cellData.getValue().getMoradaCliente());
+       
+    }
+    
+    public void setTeste(ControladorConsultarClientes cClientes){
+        System.out.println("Numero: " + cClientes.getClienteData().size());
+        tabelaCliente.setItems(cClientes.getClienteData());
     }
     
     @FXML
