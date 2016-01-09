@@ -6,16 +6,9 @@
 package p2.projeto.mlt.controller;
 
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import p2.projeto.mlt.DAL.ConexaoBaseDados;
-import static p2.projeto.mlt.DAL.ConexaoBaseDados.conectar;
 import p2.projeto.mlt.model.Cliente;
 
 /**
@@ -38,23 +31,29 @@ public class ControladorNovoCliente {
 	private TextField emailCliente;
 	
 
-            /**
-     * Nome da Ligacao ao botao - colocado no fx:id do botao sair
-     */
-        @FXML
+    /**
+    * Nome da Ligacao ao botao - colocado no fx:id do botao sair
+    */
+    @FXML
         private javafx.scene.control.Button sair;
 
     /**
      * Metodo para botao Sair - Botao para sair da janela
      */
     @FXML
-    private void botaoSair() {
-        Stage stage = (Stage) sair.getScene().getWindow();
-        stage.hide();
-    }
-        
-	@FXML
-	public void guardarInfo(){
+        private void botaoSair() {
+            Stage stage = (Stage) sair.getScene().getWindow();
+            stage.hide();
+        }
+    
+    /**
+     * 
+     * Metodo que o botao guardar utiliza " on action " para executar o codigo a partir da class modelo Cliente
+     * 
+     */
+    
+    @FXML
+    public void guardarInfo(){
 		
 		try {
 			

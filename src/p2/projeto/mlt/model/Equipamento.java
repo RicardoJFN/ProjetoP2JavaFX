@@ -7,6 +7,9 @@ package p2.projeto.mlt.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javafx.beans.property.DoubleProperty;
 
 import javafx.beans.property.IntegerProperty;
@@ -63,6 +66,10 @@ public class Equipamento {
             this.estadoEquip = estadoEquip;
         }
 
+        
+        public Equipamento(double valorEquip){
+            this.valorEquip = new SimpleDoubleProperty(valorEquip);
+        }
 	
 	
 	public IntegerProperty getIdEquip() {
@@ -113,21 +120,21 @@ public class Equipamento {
 		this.tipoEquip = tipoEquip;
 	}
 
-    public ObjectProperty<NovoSubTipoEquipamento> getSubTipoEquip() {
-        return subTipoEquip;
-    }
+        public ObjectProperty<NovoSubTipoEquipamento> getSubTipoEquip() {
+            return subTipoEquip;
+        }
 
-    public void setSubTipoEquip(ObjectProperty<NovoSubTipoEquipamento> subTipoEquip) {
-        this.subTipoEquip = subTipoEquip;
-    }
+        public void setSubTipoEquip(ObjectProperty<NovoSubTipoEquipamento> subTipoEquip) {
+            this.subTipoEquip = subTipoEquip;
+        }
 
-    public ObjectProperty<Edificio> getEdificio() {
-        return edificio;
-    }
+        public ObjectProperty<Edificio> getEdificio() {
+            return edificio;
+        }
 
-    public void setEdificio(ObjectProperty<Edificio> edificio) {
-        this.edificio = edificio;
-    }
+        public void setEdificio(ObjectProperty<Edificio> edificio) {
+            this.edificio = edificio;
+        }
 
 	
 
@@ -139,21 +146,21 @@ public class Equipamento {
 		this.estadoEquip = estadoEquip;
 	}
 
-    public ObjectProperty<Levantamento> getLevantamento() {
-        return levantamento;
-    }
+        public ObjectProperty<Levantamento> getLevantamento() {
+            return levantamento;
+        }
 
-    public void setLevantamento(ObjectProperty<Levantamento> levantamento) {
-        this.levantamento = levantamento;
-    }
+        public void setLevantamento(ObjectProperty<Levantamento> levantamento) {
+            this.levantamento = levantamento;
+        }
 
-    public DoubleProperty getValorEquip() {
-        return valorEquip;
-    }
+        public DoubleProperty getValorEquip() {
+            return valorEquip;
+        }
 
-    public void setValorEquip(DoubleProperty valorEquip) {
-        this.valorEquip = valorEquip;
-    }
+        public void setValorEquip(DoubleProperty valorEquip) {
+            this.valorEquip = valorEquip;
+        }
         
         
 
@@ -181,5 +188,21 @@ public class Equipamento {
 		}
 	}
 	
+        public static ArrayList<Double> selecionaValorEquipamento(){
+		
+		ArrayList<Double> equipamentos = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT Equip_valorestado FROM equipamento");
+			
+			while(rs.next()){
+                            equipamentos.add(rs.getDouble("Equip_valorestado"));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return equipamentos;
+	}
 	
 }

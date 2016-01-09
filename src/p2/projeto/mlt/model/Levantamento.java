@@ -17,8 +17,6 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import p2.projeto.mlt.DAL.ConexaoBaseDados;
 
 
@@ -78,6 +76,10 @@ public class Levantamento {
             this.numLevantamento = new SimpleDoubleProperty(numLevantamento);
         }
         
+        public Levantamento(double numLevantamento, int dataLevantamento){
+            this.numLevantamento = new SimpleDoubleProperty(numLevantamento);
+            this.dataLevantamento = new SimpleIntegerProperty(dataLevantamento);
+        }
         
         public IntegerProperty getIdLevantamento() {
             return idLevantamento;
@@ -107,13 +109,13 @@ public class Levantamento {
 		this.dataLevantamento = dataLevantamento;
 	}
 
-    public ObjectProperty<Edificio> getNumeroEdificio() {
-        return numeroEdificio;
-    }
+        public ObjectProperty<Edificio> getNumeroEdificio() {
+            return numeroEdificio;
+        }
 
-    public void setNumeroEdificio(ObjectProperty<Edificio> numeroEdificio) {
-        this.numeroEdificio = numeroEdificio;
-    }
+        public void setNumeroEdificio(ObjectProperty<Edificio> numeroEdificio) {
+            this.numeroEdificio = numeroEdificio;
+        }
 
    
 
@@ -196,25 +198,18 @@ public class Levantamento {
 		this.quartoPontoLong = quartoPontoLong;
 	}
 
-    public DoubleProperty getCalculoArea() {
-        return calculoArea;
-    }
+        public DoubleProperty getCalculoArea() {
+            return calculoArea;
+        }
 
-    public void setCalculoArea(DoubleProperty calculoArea) {
-        this.calculoArea = calculoArea;
-    }
+        public void setCalculoArea(DoubleProperty calculoArea) {
+            this.calculoArea = calculoArea;
+        }
 
-
-        
-	
 	@Override
 	public String toString() {
 		return "Número: " + numLevantamento.getValue();
 	}
-	
-	
-	
-	
 	
 	public void inserirNovoLevantamento(){
 		try {
@@ -259,4 +254,21 @@ public class Levantamento {
 		return levantamentos;
 	}
         
+        
+        public static ArrayList<Levantamento> selecionaLevantamentoTabela(){
+		
+		ArrayList<Levantamento> levantamentos = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM levantamento");
+			
+			while(rs.next()){
+				levantamentos.add(new Levantamento(rs.getDouble("Lev_num"), rs.getInt("Lev_data")));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return levantamentos;
+	}
 }

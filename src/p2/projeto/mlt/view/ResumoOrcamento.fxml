@@ -39,6 +39,6 @@
       <Label layoutX="191.0" layoutY="141.0" prefHeight="27.0" prefWidth="113.0" text="Label" />
       <Label layoutX="191.0" layoutY="172.0" prefHeight="27.0" prefWidth="113.0" text="Label" />
       <Label layoutX="191.0" layoutY="203.0" prefHeight="27.0" prefWidth="113.0" text="Label" />
-      <Button layoutX="74.0" layoutY="620.0" mnemonicParsing="false" onAction="#imprimir" prefHeight="27.0" prefWidth="156.0" text=" Orçamento PDF" />
+      <Button layoutX="74.0" layoutY="620.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="156.0" text=" Orçamento PDF" />
    </children>
 </AnchorPane>

@@ -7,8 +7,10 @@ package p2.projeto.mlt.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import p2.projeto.mlt.DAL.ConexaoBaseDados;
@@ -24,20 +26,23 @@ public class Orcamento {
     protected ObjectProperty<Cliente> cliente;
     protected ObjectProperty<Edificio> edficio;
     protected ObjectProperty<Levantamento> levantamento;
+    protected DoubleProperty valorEquipamento;
     
-    public Orcamento(int idOrcamento, int dataOrcamento, Cliente cliente, Edificio edificio, Levantamento levantamento){
+    public Orcamento(int idOrcamento, int dataOrcamento, Cliente cliente, Edificio edificio, Levantamento levantamento, double valorEquipamento){
         this.idOrcamento = new SimpleIntegerProperty(idOrcamento);
         this.dataOrcamento = new SimpleIntegerProperty(dataOrcamento);
         this.cliente = new SimpleObjectProperty<>(cliente);
         this.edficio = new SimpleObjectProperty<>(edificio);
         this.levantamento = new SimpleObjectProperty<>(levantamento);
+        this.valorEquipamento = new SimpleDoubleProperty(valorEquipamento);
     }
     
-    public Orcamento(int dataOrcamento, Edificio edificio , Cliente cliente, Levantamento levantamento){
+    public Orcamento(int dataOrcamento, Edificio edificio , Cliente cliente, Levantamento levantamento, double valorEquipamento){
         this.dataOrcamento = new SimpleIntegerProperty(dataOrcamento);
         this.edficio = new SimpleObjectProperty<>(edificio);
         this.cliente = new SimpleObjectProperty<>(cliente);
         this.levantamento = new SimpleObjectProperty<>(levantamento);
+        this.valorEquipamento = new SimpleDoubleProperty(valorEquipamento);
     }
     
     public Orcamento(int dataOrcamento){
@@ -84,6 +89,14 @@ public class Orcamento {
         this.levantamento = levantamento;
     }
 
+    public DoubleProperty getValorEquipamento() {
+        return valorEquipamento;
+    }
+
+    public void setValorEquipamento(DoubleProperty valorEquipamento) {
+        this.valorEquipamento = valorEquipamento;
+    }
+
     @Override
     public String toString() {
         return "Orcamento{" + "idOrcamento=" + idOrcamento + ", dataOrcamento=" + dataOrcamento + ", cliente=" + cliente + ", edficio=" + edficio + ", levantamento=" + levantamento + '}';
@@ -93,7 +106,7 @@ public class Orcamento {
 	public void inserirNovoOrcamento(){
 		try {
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO orcamento(Orc_data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id)VALUES(?,?,?,?)";
+			String insertStatement = "INSERT INTO orcamento(Orc_data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id,Orc_Equip_valorestado)VALUES(?,?,?,?,?)";
 			Connection conexao = con.getConexao();
 			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
 			
@@ -101,36 +114,12 @@ public class Orcamento {
                         ps.setInt(2, edficio.getValue().getIdEdificio().getValue());
                         ps.setInt(3, cliente.getValue().getIdCliente().getValue());
                         ps.setInt(4, levantamento.getValue().getIdLevantamento().getValue());
+                        ps.setDouble(5, valorEquipamento.getValue());
 			
 			ps.execute();
 		}catch (Exception e){
 			e.printStackTrace();
 		}
 	}
-    
-    
-    
-    /*
-    
-    public void inserirOrcamento(){
-        try {
-            ConexaoBaseDados con = ConexaoBaseDados.conectar();
-            String insertStatement = "INSERT INTO orcamento(Orc_Data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id) VALUES(?,?,?,?)";
-            //String insertStatement = "INSERT INTO orcamento(Orc_Data) VALUES(?)";
-            Connection conexao = con.getConexao();
-            PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
-            
-            ps.setInt(1, dataOrcamento.getValue());
-            ps.setInt(2, edficio.getValue().getIdEdificio().getValue());
-            ps.setInt(3, cliente.getValue().getIdCliente().getValue());
-            ps.setInt(4, levantamento.getValue().getIdLevantamento().getValue());
-            
-            ps.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    */
-   
-    
+  
 }

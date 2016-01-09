@@ -5,24 +5,22 @@
  */
 package p2.projeto.mlt.controller;
 
-import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import p2.projeto.mlt.model.Cliente;
 
 /**
  *
  * @author carlosb
  */
+
 public class ControladorConsultarClientes {
     
     @FXML
@@ -48,15 +46,15 @@ public class ControladorConsultarClientes {
     
     @FXML
     private void initialize(){
-       
+    
+        clientes = FXCollections.observableArrayList(Cliente.selecionaCliente());
+        nome.setCellValueFactory(cellData -> cellData.getValue().getNomeCliente());
        morada.setCellValueFactory(cellData -> cellData.getValue().getMoradaCliente());
+       email.setCellValueFactory(cellData -> cellData.getValue().getEmailCliente());
+       tabelaCliente.setItems(clientes);
        
     }
     
-    public void setTeste(ControladorConsultarClientes cClientes){
-        System.out.println("Numero: " + cClientes.getClienteData().size());
-        tabelaCliente.setItems(cClientes.getClienteData());
-    }
     
     @FXML
     public void voltaMenuPrincipal() {

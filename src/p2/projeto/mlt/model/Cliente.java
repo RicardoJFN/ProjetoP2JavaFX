@@ -29,7 +29,6 @@ public class Cliente {
 	protected StringProperty nomeCliente;
 	protected StringProperty moradaCliente;
 	protected DoubleProperty codigoPostal;
-	//protected StringProperty localidadeCliente;
 	protected IntegerProperty numeroTelefone;
 	protected IntegerProperty numeroTelemovel;
 	protected StringProperty emailCliente;
@@ -41,11 +40,11 @@ public class Cliente {
 	 * @param nomeCliente
 	 * @param moradaCliente
 	 * @param codigoPostal
-	 * @param localidadeCliente
 	 * @param numeroTelefone
 	 * @param numeroTelemovel
 	 * @param emailCliente
 	 */
+        
 	public Cliente(int idCliente, String nomeCliente, String moradaCliente, double codigoPostal, 
 			int numeroTelefone, int numeroTelemovel, String emailCliente){
 		this.idCliente = new SimpleIntegerProperty(idCliente);
@@ -62,11 +61,11 @@ public class Cliente {
 	 * @param nomeCliente
 	 * @param moradaCliente
 	 * @param codigoPostal
-	 * @param localidadeCliente
 	 * @param numeroTelefone
 	 * @param numeroTelemovel
 	 * @param emailCliente
 	 */
+        
 	public Cliente(String nomeCliente, String moradaCliente, double codigoPostal, 
 			int numeroTelefone, int numeroTelemovel, String emailCliente){
 		this.nomeCliente = new SimpleStringProperty(nomeCliente);
@@ -76,6 +75,12 @@ public class Cliente {
 		this.numeroTelemovel = new SimpleIntegerProperty(numeroTelemovel);
 		this.emailCliente = new SimpleStringProperty(emailCliente);
 	}
+        
+        /**
+	 * Construtor do Cliente com o ID como campo obrigatorio
+	 * @param idCliente
+	 * @param nomeCliente
+	 */
         
         public Cliente(int idCliente, String nomeCliente){
             this.idCliente = new SimpleIntegerProperty(idCliente);
@@ -172,6 +177,13 @@ public class Cliente {
 		}
 	}
 	
+        /**
+         * 
+         * Metodo que retorna uma ArrayList do tipo String para devolver apenas o nome do cliente 
+         * 
+         * @return 
+         */        
+        
 	public static ArrayList<String> selecionaNomesCliente(){
 		
 		ArrayList<String> nomes = new ArrayList<>();
@@ -189,6 +201,13 @@ public class Cliente {
 		return nomes;
 	}
 	
+        /**
+         * Metodo que retorna uma ArrayList do tipo Edificio e devolve os seguintes
+         * dados nome e ID do edificio.
+         * Edif_id e uma Foreing Key na base de dados.
+         * @return 
+         */
+        
         public static ArrayList<Cliente> selecionaCliente(){
 		
 		ArrayList<Cliente> nomes = new ArrayList<>();

@@ -28,7 +28,9 @@
       <ComboBox fx:id="cliente" layoutX="188.0" layoutY="163.0" prefWidth="150.0" />
       <ComboBox fx:id="edificio" layoutX="188.0" layoutY="203.0" prefWidth="150.0" />
       <ComboBox fx:id="levantamento" layoutX="188.0" layoutY="243.0" prefWidth="150.0" />
-      <Button layoutX="188.0" layoutY="293.0" mnemonicParsing="false" onAction="#guardarInfo" text="Guardar" />
+      <Button layoutX="189.0" layoutY="324.0" mnemonicParsing="false" onAction="#guardarInfo" text="Guardar" />
       <TextField fx:id="dataOrcamento" layoutX="189.0" layoutY="125.0" />
+      <Label layoutX="95.0" layoutY="279.0" text="Valor orçamento:" />
+      <ComboBox fx:id="valorOrc" layoutX="189.0" layoutY="275.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

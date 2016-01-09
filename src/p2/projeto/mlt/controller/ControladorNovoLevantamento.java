@@ -13,11 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import p2.projeto.mlt.model.Cliente;
 import p2.projeto.mlt.model.Edificio;
 import p2.projeto.mlt.model.Levantamento;
@@ -63,7 +59,6 @@ public class ControladorNovoLevantamento {
     private void initialize() {
 
         nomeCliente.getItems().addAll(Cliente.selecionaNomesCliente());
-        //nomeEdificio.getItems().addAll(Edificio.selecionaNomesEdificio());
         numeroEdificio.getItems().addAll(Edificio.selecionaEdificio());
 
     }
@@ -149,7 +144,7 @@ public class ControladorNovoLevantamento {
     public void obterCoord() {
 
         try {
-            File htmlFile = new File("C:\\\\Users\\\\ricardon\\\\Documents\\\\ProjetoP2\\\\GoogleMaps.html");
+            File htmlFile = new File("C:\\\\Users\\\\pedror\\\\Documents\\\\ProjetoP2\\\\GoogleMaps.html");
             Desktop.getDesktop().browse(htmlFile.toURI());
         } catch (Exception e) {
             e.printStackTrace();
@@ -189,12 +184,6 @@ public class ControladorNovoLevantamento {
     @FXML
     public void guardarInfo() {
 
-        /*
-            Levantamento novoLevantamento = new Levantamento(Integer.parseInt(numeroLevantamento.getText()), Integer.parseInt(dataLevantamento.getText()), 
-                        nomeCliente.getValue(), Integer.parseInt(numeroEdificio.getValue()), Integer.parseInt(primeiroPontoLat.getText()), Integer.parseInt(primeiroPontoLong.getText()), 
-                        Integer.parseInt(segundoPontoLat.getText()), Integer.parseInt(segundoPontoLong.getText()), Integer.parseInt(terceiroPontoLat.getText()), 
-                        Integer.parseInt(terceiroPontoLong.getText()), Integer.parseInt(quartoPontoLat.getText()), Integer.parseInt(quartoPontoLong.getText()));
-         */
         try {
 
             Levantamento novoLevantamento = new Levantamento(Integer.parseInt(numeroLevantamento.getText()), Integer.parseInt(dataLevantamento.getText()),

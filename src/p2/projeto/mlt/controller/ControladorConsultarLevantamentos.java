@@ -5,11 +5,16 @@
  */
 package p2.projeto.mlt.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import p2.projeto.mlt.model.Levantamento;
 
 /**
  *
@@ -19,7 +24,30 @@ public class ControladorConsultarLevantamentos {
     
       @FXML
  private javafx.scene.control.Button sair;
-    
+      
+      
+        @FXML
+        private TableView<Levantamento> tabelaLevantamento;
+        @FXML
+        private TableColumn<Levantamento, Double> numero;
+        @FXML
+        private TableColumn<Levantamento, Integer> data;
+       
+        
+        private ObservableList<Levantamento> levantamentos = FXCollections.observableArrayList();
+        
+        
+        public ObservableList<Levantamento> getDataLevantamento(){
+            return levantamentos;
+        }
+        
+        
+        @FXML
+        private void initialize(){
+            tabelaLevantamento.setEditable(true);
+            //numero.setCellValueFactory(cellData -> cellData.getValue().getNumLevantamento());
+        }
+        
     @FXML
     public void voltaMenuPrincipal() {
         try {

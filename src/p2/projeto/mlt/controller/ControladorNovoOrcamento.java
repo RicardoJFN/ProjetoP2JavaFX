@@ -9,12 +9,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import p2.projeto.mlt.model.Cliente;
 import p2.projeto.mlt.model.Edificio;
+import p2.projeto.mlt.model.Equipamento;
 import p2.projeto.mlt.model.Levantamento;
 import p2.projeto.mlt.model.Orcamento;
 
@@ -32,6 +32,8 @@ public class ControladorNovoOrcamento {
     private ComboBox<Edificio> edificio;
     @FXML
     private ComboBox<Levantamento> levantamento;
+    @FXML
+    private ComboBox<Double> valorOrc;
     
     
     private Stage novoOrcamento; 
@@ -42,6 +44,7 @@ public class ControladorNovoOrcamento {
         cliente.getItems().addAll(Cliente.selecionaCliente());
         edificio.getItems().addAll(Edificio.selecionaEdificio());
         levantamento.getItems().addAll(Levantamento.selecionaLevantamento());
+        valorOrc.getItems().addAll(Equipamento.selecionaValorEquipamento());
     }
     
     public void setNovoOrcamento(){
@@ -95,9 +98,8 @@ public class ControladorNovoOrcamento {
     @FXML
     public void guardarInfo(){
         try {
-            //System.out.println("Teste");
-            //Orcamento orcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()));
-            Orcamento novoOrcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()), edificio.getValue(), cliente.getValue(),levantamento.getValue());
+            Orcamento novoOrcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()), edificio.getValue(), cliente.getValue(),levantamento.getValue(),
+            valorOrc.getValue());
             novoOrcamento.inserirNovoOrcamento();
         } catch (Exception e) {
             e.printStackTrace();

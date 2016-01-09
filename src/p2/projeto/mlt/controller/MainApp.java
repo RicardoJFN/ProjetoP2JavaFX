@@ -5,19 +5,11 @@
  */
 package p2.projeto.mlt.controller;
 
-import java.io.IOException;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import p2.projeto.mlt.model.Cliente;
-import p2.projeto.mlt.model.Edificio;
-import p2.projeto.mlt.model.Equipamento;
-import p2.projeto.mlt.model.Levantamento;
 
 /**
  *
@@ -46,9 +38,7 @@ public class MainApp extends Application{
 			Scene scene = new Scene(layout);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-                
-                        
-                        
+     
                         
 		}catch(Exception e){
 			e.printStackTrace();

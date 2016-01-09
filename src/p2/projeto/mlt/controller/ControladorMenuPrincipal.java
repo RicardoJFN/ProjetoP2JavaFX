@@ -5,26 +5,18 @@
  */
 package p2.projeto.mlt.controller;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.logging.Level;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
+import javafx.scene.control.ProgressIndicator;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+
 
 /**
  *
- * @author ricardon
+ * 
  */
 public class ControladorMenuPrincipal {
 
@@ -44,7 +36,7 @@ public class ControladorMenuPrincipal {
     /**
      * Nome da Ligacao ao botao - colocado no fx:id do botao sair
      */
-    @FXML
+    @FXML    
     private javafx.scene.control.Button sair;
 
     /**
@@ -55,7 +47,11 @@ public class ControladorMenuPrincipal {
         Stage stage = (Stage) sair.getScene().getWindow();
         stage.hide();
     }
-
+    
+    /**
+     * Metodo mostra novo levantamento
+     * 
+     */
   
     @FXML
     private void mostraNovoLevantamento() {
@@ -157,4 +153,17 @@ public class ControladorMenuPrincipal {
 
     }
 
+    
+    @FXML
+    private void ligarDesligar(){
+        
+        //ProgressIndicator pi = new ProgressIndicator();
+        ProgressBar pb = new ProgressBar();
+        pb.setProgress(0.45);
+        
+        
+    }
+    
+    
+    
 }

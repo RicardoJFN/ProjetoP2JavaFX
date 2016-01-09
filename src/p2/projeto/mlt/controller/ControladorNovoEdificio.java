@@ -6,7 +6,6 @@
 package p2.projeto.mlt.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import p2.projeto.mlt.model.Cliente;
@@ -43,11 +42,7 @@ public class ControladorNovoEdificio {
     
 	@FXML
 	private void initialize(){
-            
-            
-           
-            nomeCliente.getItems().addAll(Cliente.selecionaCliente());
-            
+            nomeCliente.getItems().addAll(Cliente.selecionaCliente());  
 	}
 	
 	@FXML

@@ -5,7 +5,6 @@
  */
 package p2.projeto.mlt.controller;
 
-import java.util.ArrayList;
 import java.util.Random;
 import javafx.fxml.FXML; 
 import javafx.fxml.FXMLLoader;
