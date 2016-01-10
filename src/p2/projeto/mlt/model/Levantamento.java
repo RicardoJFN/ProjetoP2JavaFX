@@ -81,6 +81,8 @@ public class Levantamento {
             this.dataLevantamento = new SimpleIntegerProperty(dataLevantamento);
         }
         
+        
+        
         public IntegerProperty getIdLevantamento() {
             return idLevantamento;
         }

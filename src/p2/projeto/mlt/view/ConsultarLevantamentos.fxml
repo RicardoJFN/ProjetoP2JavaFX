@@ -20,12 +20,10 @@
          </children>
       </Pane>
       <Button fx:id="sair" layoutX="602.0" layoutY="449.0" mnemonicParsing="false" onAction="#voltaMenuPrincipal" prefHeight="27.0" prefWidth="76.0" text="Sair" />
-      <TableView layoutX="67.0" layoutY="110.0" prefHeight="331.0" prefWidth="607.0">
+      <TableView fx:id="tabelaLevantamento" layoutX="179.0" layoutY="110.0" prefHeight="331.0" prefWidth="430.0">
          <columns>
-            <TableColumn prefWidth="83.0" text="Numero" />
-            <TableColumn prefWidth="103.0" text="Data" />
-            <TableColumn prefWidth="233.0" text="Cliente" />
-            <TableColumn prefWidth="187.0" text="Edificio" />
+            <TableColumn fx:id="numero" prefWidth="206.0" text="Numero" />
+            <TableColumn fx:id="data" minWidth="0.0" prefWidth="223.0" text="Data" />
          </columns>
       </TableView>
       <Button layoutX="65.0" layoutY="449.0" mnemonicParsing="false" onAction="#mostraResumoLevantamento" prefHeight="27.0" prefWidth="151.0" text="Ver levantamento" />

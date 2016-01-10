@@ -79,7 +79,7 @@ public class Edificio {
         
         /**
 	 * Construtor do Edificio com o ID como campo obrigatorio
-	 * @param cliente
+	 * @param idEdificio
 	 * @param nomeEdificio
 	 */
         

@@ -34,7 +34,7 @@ public class ControladorConsultarClientes {
     @FXML
     private TableColumn<Cliente, String> localidade;
     @FXML
-    private TableColumn<Cliente, Integer> telefone;
+    private TableColumn<Cliente, String> telefone;
     @FXML
     private TableColumn<Cliente, String> email;
     
@@ -47,10 +47,11 @@ public class ControladorConsultarClientes {
     @FXML
     private void initialize(){
     
-        clientes = FXCollections.observableArrayList(Cliente.selecionaCliente());
-        nome.setCellValueFactory(cellData -> cellData.getValue().getNomeCliente());
+       clientes = FXCollections.observableArrayList(Cliente.selecionaCliente());
+       nome.setCellValueFactory(cellData -> cellData.getValue().getNomeCliente());
        morada.setCellValueFactory(cellData -> cellData.getValue().getMoradaCliente());
        email.setCellValueFactory(cellData -> cellData.getValue().getEmailCliente());
+       telefone.setCellValueFactory(cellData -> cellData.getValue().getNumeroTelefone().asString());
        tabelaCliente.setItems(clientes);
        
     }

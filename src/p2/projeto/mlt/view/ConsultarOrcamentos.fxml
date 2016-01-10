@@ -21,10 +21,10 @@
       </Pane>
       <Button layoutX="991.0" layoutY="461.0" mnemonicParsing="false" onAction="#voltaMenuPrincipal" prefHeight="27.0" prefWidth="76.0" text="Sair" />
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="431.0" layoutY="70.0" prefHeight="20.0" prefWidth="261.0" text="Consulta Orçamentos " />
-      <TableView layoutX="77.0" layoutY="120.0" prefHeight="331.0" prefWidth="990.0">
+      <TableView fx:id="tabelaOrcamento" layoutX="77.0" layoutY="120.0" prefHeight="331.0" prefWidth="990.0">
          <columns>
-            <TableColumn prefWidth="178.0" text="Numero Levantamento" />
-            <TableColumn prefWidth="108.0" text="Data" />
+            <TableColumn fx:id="numero" prefWidth="178.0" text="Numero Levantamento" />
+            <TableColumn fx:id="data" prefWidth="108.0" text="Data" />
             <TableColumn prefWidth="184.0" text="Cliente" />
             <TableColumn prefWidth="246.0" text="Edificio" />
             <TableColumn prefWidth="145.0" text="Numero Orçamento" />

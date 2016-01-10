@@ -29,9 +29,9 @@ public class ControladorConsultarLevantamentos {
         @FXML
         private TableView<Levantamento> tabelaLevantamento;
         @FXML
-        private TableColumn<Levantamento, Double> numero;
+        private TableColumn<Levantamento, String> numero;
         @FXML
-        private TableColumn<Levantamento, Integer> data;
+        private TableColumn<Levantamento, String> data;
        
         
         private ObservableList<Levantamento> levantamentos = FXCollections.observableArrayList();
@@ -44,8 +44,12 @@ public class ControladorConsultarLevantamentos {
         
         @FXML
         private void initialize(){
+            
             tabelaLevantamento.setEditable(true);
-            //numero.setCellValueFactory(cellData -> cellData.getValue().getNumLevantamento());
+            levantamentos = FXCollections.observableArrayList(Levantamento.selecionaLevantamento());
+            numero.setCellValueFactory(cellData -> cellData.getValue().getNumLevantamento().asString());
+            data.setCellValueFactory(cellData -> cellData.getValue().getDataLevantamento().asString());
+            tabelaLevantamento.setItems(levantamentos);
         }
         
     @FXML

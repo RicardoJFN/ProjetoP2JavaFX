@@ -7,6 +7,9 @@ package p2.projeto.mlt.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -43,6 +46,11 @@ public class Orcamento {
         this.cliente = new SimpleObjectProperty<>(cliente);
         this.levantamento = new SimpleObjectProperty<>(levantamento);
         this.valorEquipamento = new SimpleDoubleProperty(valorEquipamento);
+    }
+    
+    public Orcamento(int idOrcamento, int dataOrcamento){
+        this.idOrcamento = new SimpleIntegerProperty(idOrcamento);
+        this.dataOrcamento = new SimpleIntegerProperty(dataOrcamento);
     }
     
     public Orcamento(int dataOrcamento){
@@ -121,5 +129,21 @@ public class Orcamento {
 			e.printStackTrace();
 		}
 	}
+        
+        public static ArrayList<Orcamento> selecionaOrcamentos(){
+            ArrayList<Orcamento> orcamentos = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM orcamento");
+			
+			while(rs.next()){
+				orcamentos.add(new Orcamento(rs.getInt("Orc_id"), rs.getInt("Orc_Data")));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return orcamentos;
+        }
   
 }
