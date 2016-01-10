@@ -38,8 +38,7 @@ public class ControladorIdentificarEquipamento {
     private TableView<Equipamento> tabelaEquipamentos;
     @FXML
     private TableColumn<Equipamento, String> tipo;
-    @FXML
-    private ComboBox<Edificio> edificio;
+  
     
     private ObservableList<Equipamento> equipamentos = FXCollections.observableArrayList();
         
@@ -49,7 +48,7 @@ public class ControladorIdentificarEquipamento {
     
     @FXML
     private void initialize(){
-        edificio.getItems().addAll(Edificio.selecionaEdificio());
+       
         equipamentos = FXCollections.observableArrayList(Equipamento.selecionaEquipamentos());
         tipo.setCellValueFactory(cellData -> cellData.getValue().getTipoEquip());
         tabelaEquipamentos.setItems(equipamentos);
