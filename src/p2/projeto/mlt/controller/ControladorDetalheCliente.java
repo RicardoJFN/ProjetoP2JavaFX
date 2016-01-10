@@ -16,10 +16,9 @@ import javafx.stage.Stage;
  * @author carlosb
  */
 public class ControladorDetalheCliente {
-    
-    
-       @FXML
-        private javafx.scene.control.Button sair;
+
+    @FXML
+    private javafx.scene.control.Button sair;
 
     /**
      * Metodo para botao Sair - Botao para sair da janela
@@ -29,9 +28,8 @@ public class ControladorDetalheCliente {
         Stage stage = (Stage) sair.getScene().getWindow();
         stage.hide();
     }
-    
-    
-     @FXML   
+
+    @FXML
     public void mostraJanelaNovoCliente() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoCliente.fxml"));

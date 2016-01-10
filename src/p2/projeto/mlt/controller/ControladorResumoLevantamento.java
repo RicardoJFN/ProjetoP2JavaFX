@@ -16,10 +16,10 @@ import javafx.stage.Stage;
  * @author carlosb
  */
 public class ControladorResumoLevantamento {
- 
-     @FXML
- private javafx.scene.control.Button sair;
-    
+
+    @FXML
+    private javafx.scene.control.Button sair;
+
     @FXML
     public void voltaMenuPrincipal() {
         try {

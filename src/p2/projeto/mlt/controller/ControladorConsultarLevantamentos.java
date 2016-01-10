@@ -5,7 +5,6 @@
  */
 package p2.projeto.mlt.controller;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,40 +21,35 @@ import p2.projeto.mlt.model.Levantamento;
  * @author carlosb
  */
 public class ControladorConsultarLevantamentos {
-    
-      @FXML
- private javafx.scene.control.Button sair;
-      
-     
-      
-        @FXML
-        private TableView<Levantamento> tabelaLevantamento;
-        @FXML
-        private TableColumn<Levantamento, String> numero;
-        @FXML
-        private TableColumn<Levantamento, String> data;
-       
-        
-        private ObservableList<Levantamento> levantamentos = FXCollections.observableArrayList();
-        
-        
-        public ObservableList<Levantamento> getDataLevantamento(){
-            return levantamentos;
-        }
-        
-        @FXML
-        private void initialize(){
-            try {
-           // tabelaLevantamento.setEditable(true);
+
+    @FXML
+    private javafx.scene.control.Button sair;
+    @FXML
+    private TableView<Levantamento> tabelaLevantamento;
+    @FXML
+    private TableColumn<Levantamento, String> numero;
+    @FXML
+    private TableColumn<Levantamento, String> data;
+
+    private ObservableList<Levantamento> levantamentos = FXCollections.observableArrayList();
+
+    public ObservableList<Levantamento> getDataLevantamento() {
+        return levantamentos;
+    }
+
+    @FXML
+    private void initialize() {
+        try {
+            // tabelaLevantamento.setEditable(true);
             levantamentos = FXCollections.observableArrayList(Levantamento.selecionaLevantamento());
             numero.setCellValueFactory(cellData -> cellData.getValue().getNumLevantamento().asString());
             data.setCellValueFactory(cellData -> cellData.getValue().getDataLevantamento().asString());
             //tabelaLevantamento.setItems(levantamentos); 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-      }
-       
+    }
+
     @FXML
     public void voltaMenuPrincipal() {
         try {
@@ -70,12 +64,12 @@ public class ControladorConsultarLevantamentos {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       } 
-    
-     /**
-     * Metodo para botao ver levantamento presente na janela Consultarlevantamentos -
-     * botao para view resumoLevantamento que vai permitir ver o
-     * resumo do levantamento seleccionado
+    }
+
+    /**
+     * Metodo para botao ver levantamento presente na janela
+     * Consultarlevantamentos - botao para view resumoLevantamento que vai
+     * permitir ver o resumo do levantamento seleccionado
      */
     @FXML
     private void mostraResumoLevantamento() {
@@ -92,5 +86,5 @@ public class ControladorConsultarLevantamentos {
         }
 
     }
-    
+
 }

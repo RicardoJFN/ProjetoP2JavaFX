@@ -21,7 +21,7 @@ import p2.projeto.mlt.model.Orcamento;
  * @author carlosb
  */
 public class ControladorConsultarOrcamentos {
-    
+
     @FXML
     private javafx.scene.control.Button sair;
     @FXML
@@ -30,9 +30,9 @@ public class ControladorConsultarOrcamentos {
     private TableColumn<Orcamento, String> numero;
     @FXML
     private TableColumn<Orcamento, String> data;
-    
+
     private ObservableList<Orcamento> orcamentos = FXCollections.observableArrayList();
-      
+
     @FXML
     public void voltaMenuPrincipal() {
         try {
@@ -47,15 +47,14 @@ public class ControladorConsultarOrcamentos {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       }
-    
-    private void initialize(){
+    }
+
+    private void initialize() {
         tabelaOrcamento.setEditable(true);
         orcamentos = FXCollections.observableArrayList(Orcamento.selecionaOrcamentos());
         numero.setCellValueFactory(cellData -> cellData.getValue().getIdOrcamento().asString());
         data.setCellValueFactory(cellData -> cellData.getValue().getDataOrcamento().asString());
         tabelaOrcamento.setItems(orcamentos);
     }
-    
-     
+
 }

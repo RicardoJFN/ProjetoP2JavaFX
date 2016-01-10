@@ -20,10 +20,8 @@ import p2.projeto.mlt.model.Cliente;
  *
  * @author carlosb
  */
-
 public class ControladorConsultarClientes {
-    
-    
+
     @FXML
     private TableView<Cliente> tabelaCliente;
     @FXML
@@ -36,32 +34,29 @@ public class ControladorConsultarClientes {
     private TableColumn<Cliente, String> telefone;
     @FXML
     private TableColumn<Cliente, String> email;
-    
+
     private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
-        
-        public ObservableList<Cliente> getClienteData(){
-            return clientes;
-        }
-    
-    @FXML
-    private void initialize(){
-    
-       clientes = FXCollections.observableArrayList(Cliente.selecionaCliente());
-       nome.setCellValueFactory(cellData -> cellData.getValue().getNomeCliente());
-       morada.setCellValueFactory(cellData -> cellData.getValue().getMoradaCliente());
-       email.setCellValueFactory(cellData -> cellData.getValue().getEmailCliente());
-       telefone.setCellValueFactory(cellData -> cellData.getValue().getNumeroTelefone().asString());
-       tabelaCliente.setItems(clientes);
-       
+
+    public ObservableList<Cliente> getClienteData() {
+        return clientes;
     }
-    
-    
-  
-    
+
+    @FXML
+    private void initialize() {
+
+        clientes = FXCollections.observableArrayList(Cliente.selecionaCliente());
+        nome.setCellValueFactory(cellData -> cellData.getValue().getNomeCliente());
+        morada.setCellValueFactory(cellData -> cellData.getValue().getMoradaCliente());
+        email.setCellValueFactory(cellData -> cellData.getValue().getEmailCliente());
+        telefone.setCellValueFactory(cellData -> cellData.getValue().getNumeroTelefone().asString());
+        tabelaCliente.setItems(clientes);
+
+    }
+
     /**
      * Metodo para botao ver cliente presente na janela ConsultarClientes -
      * botao para view ConsultarDetalheCliente que vai permitir ver todos os
-     * dados do cliente 
+     * dados do cliente
      */
     @FXML
     private void mostraDetalheCliente() {
@@ -78,11 +73,10 @@ public class ControladorConsultarClientes {
         }
 
     }
-    
-     @FXML
- private javafx.scene.control.Button sair;
 
-    
+    @FXML
+    private javafx.scene.control.Button sair;
+
     @FXML
     public void voltaMenuPrincipal() {
         try {
@@ -97,5 +91,5 @@ public class ControladorConsultarClientes {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       }
+    }
 }

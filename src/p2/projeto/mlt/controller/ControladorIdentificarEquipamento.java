@@ -23,40 +23,34 @@ import p2.projeto.mlt.model.Equipamento;
  * @author ricardon
  */
 public class ControladorIdentificarEquipamento {
-    
-    
-        /**
+
+    /**
      * Nome da Ligacao ao botao - colocado no fx:id do botao sair
      */
-        @FXML
-        private javafx.scene.control.Button voltar;
-
-        @FXML
-        private javafx.scene.control.Button sair;
-    
+    @FXML
+    private javafx.scene.control.Button voltar;
+    @FXML
+    private javafx.scene.control.Button sair;
     @FXML
     private TableView<Equipamento> tabelaEquipamentos;
     @FXML
     private TableColumn<Equipamento, String> tipo;
-  
-    
+
     private ObservableList<Equipamento> equipamentos = FXCollections.observableArrayList();
-        
-        public ObservableList<Equipamento> getClienteData(){
-            return equipamentos;
-        }
-    
+
+    public ObservableList<Equipamento> getClienteData() {
+        return equipamentos;
+    }
+
     @FXML
-    private void initialize(){
-       
+    private void initialize() {
+
         equipamentos = FXCollections.observableArrayList(Equipamento.selecionaEquipamentos());
         tipo.setCellValueFactory(cellData -> cellData.getValue().getTipoEquip());
         tabelaEquipamentos.setItems(equipamentos);
     }
-        
-        
-        
-  @FXML
+
+    @FXML
     public void voltarNovoLevantamento() {
         try {
             Stage identificarEquipamentos = (Stage) voltar.getScene().getWindow();
@@ -71,8 +65,8 @@ public class ControladorIdentificarEquipamento {
             e.printStackTrace();
         }
     }
-    
-       /**
+
+    /**
      * Metodo para botao Adicionar Equipamento presente na janela identificar
      * equipamentos - botão de passagem para view AdicionarNovoEquipamento que
      * vai permitir adicionar equipamentos ao levantamento e colocar na janela
@@ -113,5 +107,5 @@ public class ControladorIdentificarEquipamento {
         }
 
     }
-    
+
 }

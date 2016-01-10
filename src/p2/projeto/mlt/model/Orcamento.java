@@ -23,15 +23,15 @@ import p2.projeto.mlt.DAL.ConexaoBaseDados;
  * @author ricardon
  */
 public class Orcamento {
-    
+
     protected IntegerProperty idOrcamento;
     protected IntegerProperty dataOrcamento;
     protected ObjectProperty<Cliente> cliente;
     protected ObjectProperty<Edificio> edficio;
     protected ObjectProperty<Levantamento> levantamento;
     protected DoubleProperty valorEquipamento;
-    
-    public Orcamento(int idOrcamento, int dataOrcamento, Cliente cliente, Edificio edificio, Levantamento levantamento, double valorEquipamento){
+
+    public Orcamento(int idOrcamento, int dataOrcamento, Cliente cliente, Edificio edificio, Levantamento levantamento, double valorEquipamento) {
         this.idOrcamento = new SimpleIntegerProperty(idOrcamento);
         this.dataOrcamento = new SimpleIntegerProperty(dataOrcamento);
         this.cliente = new SimpleObjectProperty<>(cliente);
@@ -39,21 +39,21 @@ public class Orcamento {
         this.levantamento = new SimpleObjectProperty<>(levantamento);
         this.valorEquipamento = new SimpleDoubleProperty(valorEquipamento);
     }
-    
-    public Orcamento(int dataOrcamento, Edificio edificio , Cliente cliente, Levantamento levantamento, double valorEquipamento){
+
+    public Orcamento(int dataOrcamento, Edificio edificio, Cliente cliente, Levantamento levantamento, double valorEquipamento) {
         this.dataOrcamento = new SimpleIntegerProperty(dataOrcamento);
         this.edficio = new SimpleObjectProperty<>(edificio);
         this.cliente = new SimpleObjectProperty<>(cliente);
         this.levantamento = new SimpleObjectProperty<>(levantamento);
         this.valorEquipamento = new SimpleDoubleProperty(valorEquipamento);
     }
-    
-    public Orcamento(int idOrcamento, int dataOrcamento){
+
+    public Orcamento(int idOrcamento, int dataOrcamento) {
         this.idOrcamento = new SimpleIntegerProperty(idOrcamento);
         this.dataOrcamento = new SimpleIntegerProperty(dataOrcamento);
     }
-    
-    public Orcamento(int dataOrcamento){
+
+    public Orcamento(int dataOrcamento) {
         this.dataOrcamento = new SimpleIntegerProperty(dataOrcamento);
     }
 
@@ -109,41 +109,40 @@ public class Orcamento {
     public String toString() {
         return "Orcamento{" + "idOrcamento=" + idOrcamento + ", dataOrcamento=" + dataOrcamento + ", cliente=" + cliente + ", edficio=" + edficio + ", levantamento=" + levantamento + '}';
     }
-    
-    
-	public void inserirNovoOrcamento(){
-		try {
-			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			String insertStatement = "INSERT INTO orcamento(Orc_data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id,Orc_Equip_valorestado)VALUES(?,?,?,?,?)";
-			Connection conexao = con.getConexao();
-			PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
-			
-			ps.setInt(1, dataOrcamento.getValue());
-                        ps.setInt(2, edficio.getValue().getIdEdificio().getValue());
-                        ps.setInt(3, cliente.getValue().getIdCliente().getValue());
-                        ps.setInt(4, levantamento.getValue().getIdLevantamento().getValue());
-                        ps.setDouble(5, valorEquipamento.getValue());
-			
-			ps.execute();
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-	}
-        
-        public static ArrayList<Orcamento> selecionaOrcamentos(){
-            ArrayList<Orcamento> orcamentos = new ArrayList<>();
-		try{
-			ConexaoBaseDados con = ConexaoBaseDados.conectar();
-			Statement stmt = con.getConexao().createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM orcamento");
-			
-			while(rs.next()){
-				orcamentos.add(new Orcamento(rs.getInt("Orc_id"), rs.getInt("Orc_Data")));
-			}
-		}catch (Exception e){
-			e.printStackTrace();
-		}
-		return orcamentos;
+
+    public void inserirNovoOrcamento() {
+        try {
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            String insertStatement = "INSERT INTO orcamento(Orc_data,Orc_Edif_id,Orc_Cliente_id,Orc_Lev_id,Orc_Equip_valorestado)VALUES(?,?,?,?,?)";
+            Connection conexao = con.getConexao();
+            PreparedStatement ps = (PreparedStatement) conexao.prepareStatement(insertStatement);
+
+            ps.setInt(1, dataOrcamento.getValue());
+            ps.setInt(2, edficio.getValue().getIdEdificio().getValue());
+            ps.setInt(3, cliente.getValue().getIdCliente().getValue());
+            ps.setInt(4, levantamento.getValue().getIdLevantamento().getValue());
+            ps.setDouble(5, valorEquipamento.getValue());
+
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-  
+    }
+
+    public static ArrayList<Orcamento> selecionaOrcamentos() {
+        ArrayList<Orcamento> orcamentos = new ArrayList<>();
+        try {
+            ConexaoBaseDados con = ConexaoBaseDados.conectar();
+            Statement stmt = con.getConexao().createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM orcamento");
+
+            while (rs.next()) {
+                orcamentos.add(new Orcamento(rs.getInt("Orc_id"), rs.getInt("Orc_Data")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return orcamentos;
+    }
+
 }

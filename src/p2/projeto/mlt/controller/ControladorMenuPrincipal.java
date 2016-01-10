@@ -13,17 +13,13 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.stage.Stage;
 
-
 /**
  *
- * 
+ *
  */
 public class ControladorMenuPrincipal {
 
-    @SuppressWarnings("unused")
     private MainApp mainApp;
-
-    @SuppressWarnings("unused")
     private Stage menuPrincipal;
 
     public void setMainApp(MainApp mainApp) {
@@ -36,7 +32,7 @@ public class ControladorMenuPrincipal {
     /**
      * Nome da Ligacao ao botao - colocado no fx:id do botao sair
      */
-    @FXML    
+    @FXML
     private javafx.scene.control.Button sair;
 
     /**
@@ -47,16 +43,15 @@ public class ControladorMenuPrincipal {
         Stage stage = (Stage) sair.getScene().getWindow();
         stage.hide();
     }
-    
+
     /**
      * Metodo mostra novo levantamento
-     * 
+     *
      */
-  
     @FXML
     private void mostraNovoLevantamento() {
         try {
-         
+
             Stage MenuPrincipal = (Stage) sair.getScene().getWindow();
             MenuPrincipal.hide();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoLevantamento.fxml"));
@@ -153,17 +148,13 @@ public class ControladorMenuPrincipal {
 
     }
 
-    
     @FXML
-    private void ligarDesligar(){
-        
+    private void ligarDesligar() {
+
         //ProgressIndicator pi = new ProgressIndicator();
         ProgressBar pb = new ProgressBar();
         pb.setProgress(0.45);
-        
-        
+
     }
-    
-    
-    
+
 }

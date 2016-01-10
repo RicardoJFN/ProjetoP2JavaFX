@@ -50,7 +50,11 @@ public class ControladorNovoLevantamento {
     private TextField quartoPontoLong;
     @FXML
     private TextField areaTotal;
-
+    @FXML
+    private javafx.scene.control.Button voltar;
+    @FXML
+    private javafx.scene.control.Button sair;
+    
     private Stage novoLevantamento;
 
     private boolean janelaLevantamento = false;
@@ -70,13 +74,8 @@ public class ControladorNovoLevantamento {
     public boolean isJanelaLevantamento() {
         return janelaLevantamento;
     }
- @FXML
-    private javafx.scene.control.Button voltar;
-   
- @FXML
- private javafx.scene.control.Button sair;
- 
- @FXML   
+
+    @FXML
     public void mostraJanelaNovoCliente() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoCliente.fxml"));
@@ -94,7 +93,7 @@ public class ControladorNovoLevantamento {
     @FXML
     public void mostraJanelaNovoEdificio() {
         try {
-            
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/CriarNovoEdificio.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -121,8 +120,6 @@ public class ControladorNovoLevantamento {
             e.printStackTrace();
         }
     }
-
-   
 
     @FXML
     public void voltaMenuPrincipal() {

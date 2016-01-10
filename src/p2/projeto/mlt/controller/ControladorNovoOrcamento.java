@@ -34,32 +34,29 @@ public class ControladorNovoOrcamento {
     private ComboBox<Levantamento> levantamento;
     @FXML
     private ComboBox<Double> valorOrc;
-    
-    
-    private Stage novoOrcamento; 
-    private boolean janelaOrcamento = false;
-    
     @FXML
-    private void initialize(){
+    private javafx.scene.control.Button voltar;
+    @FXML
+    private javafx.scene.control.Button sair;
+    
+    private Stage novoOrcamento;
+    private boolean janelaOrcamento = false;
+
+    @FXML
+    private void initialize() {
         cliente.getItems().addAll(Cliente.selecionaCliente());
         edificio.getItems().addAll(Edificio.selecionaEdificio());
         levantamento.getItems().addAll(Levantamento.selecionaLevantamento());
         valorOrc.getItems().addAll(Equipamento.selecionaValorEquipamento());
     }
-    
-    public void setNovoOrcamento(){
+
+    public void setNovoOrcamento() {
         this.novoOrcamento = novoOrcamento;
     }
-    
-    public boolean isJanelaOrcamento(){
+
+    public boolean isJanelaOrcamento() {
         return janelaOrcamento;
     }
-    
-    @FXML
-    private javafx.scene.control.Button voltar;
-    
-     @FXML
-    private javafx.scene.control.Button sair;
 
     @FXML
     public void voltaMenuPrincipal() {
@@ -76,9 +73,9 @@ public class ControladorNovoOrcamento {
             e.printStackTrace();
         }
     }
-    
+
     @FXML
-    public void mostraResumoLevantamento(){
+    public void mostraResumoLevantamento() {
         try {
             Stage criarNovoOrcamento = (Stage) sair.getScene().getWindow();
             criarNovoOrcamento.hide();
@@ -92,18 +89,16 @@ public class ControladorNovoOrcamento {
             e.printStackTrace();
         }
     }
-    
-    
-    
+
     @FXML
-    public void guardarInfo(){
+    public void guardarInfo() {
         try {
-            Orcamento novoOrcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()), edificio.getValue(), cliente.getValue(),levantamento.getValue(),
-            valorOrc.getValue());
+            Orcamento novoOrcamento = new Orcamento(Integer.parseInt(dataOrcamento.getText()), edificio.getValue(), cliente.getValue(), levantamento.getValue(),
+                    valorOrc.getValue());
             novoOrcamento.inserirNovoOrcamento();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 }

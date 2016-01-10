@@ -13,12 +13,12 @@ import javafx.stage.Stage;
  * @author carlosb
  */
 public class ControladorNovoTipoEquipamento {
-    
-        /**
+
+    /**
      * Nome da Ligacao ao botao - colocado no fx:id do botao sair
      */
-        @FXML
-        private javafx.scene.control.Button sair;
+    @FXML
+    private javafx.scene.control.Button sair;
 
     /**
      * Metodo para botao Sair - Botao para sair da janela
@@ -28,6 +28,5 @@ public class ControladorNovoTipoEquipamento {
         Stage stage = (Stage) sair.getScene().getWindow();
         stage.hide();
     }
-    
-    
+
 }
