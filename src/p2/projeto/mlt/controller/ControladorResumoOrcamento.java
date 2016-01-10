@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-
 /**
  *
  * @author carlosb
@@ -21,8 +20,6 @@ public class ControladorResumoOrcamento {
       @FXML
  private javafx.scene.control.Button sair;
     
-      
-      
     @FXML
     public void voltaMenuPrincipal() {
         try {

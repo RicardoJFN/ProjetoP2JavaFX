@@ -19,7 +19,7 @@
             <Label layoutY="14.0" prefHeight="17.0" prefWidth="304.0" text="Modulo Levantamento Técnico / Orçamentação" />
          </children>
       </Pane>
-      <Button layoutX="991.0" layoutY="461.0" mnemonicParsing="false" onAction="#voltaMenuPrincipal" prefHeight="27.0" prefWidth="76.0" text="Sair" />
+      <Button fx:id="sair" layoutX="991.0" layoutY="461.0" mnemonicParsing="false" onAction="#voltaMenuPrincipal" prefHeight="27.0" prefWidth="76.0" text="Sair" />
       <Label alignment="CENTER" contentDisplay="TOP" layoutX="431.0" layoutY="70.0" prefHeight="20.0" prefWidth="261.0" text="Consulta Orçamentos " />
       <TableView fx:id="tabelaOrcamento" layoutX="77.0" layoutY="120.0" prefHeight="331.0" prefWidth="990.0">
          <columns>

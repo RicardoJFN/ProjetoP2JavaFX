@@ -142,7 +142,7 @@ public class ControladorMenuPrincipal {
         try {
             Stage MenuPrincipal = (Stage) sair.getScene().getWindow();
             MenuPrincipal.hide();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ConsultarOrcamentos_old.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/p2/projeto/mlt/view/ConsultarOrcamentos.fxml"));
             Parent root = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("Consulta Orçamentos");

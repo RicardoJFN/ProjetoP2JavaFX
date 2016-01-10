@@ -5,6 +5,7 @@
  */
 package p2.projeto.mlt.controller;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +26,7 @@ public class ControladorConsultarLevantamentos {
       @FXML
  private javafx.scene.control.Button sair;
       
+     
       
         @FXML
         private TableView<Levantamento> tabelaLevantamento;
@@ -41,17 +43,19 @@ public class ControladorConsultarLevantamentos {
             return levantamentos;
         }
         
-        
         @FXML
         private void initialize(){
-            
-            tabelaLevantamento.setEditable(true);
+            try {
+           // tabelaLevantamento.setEditable(true);
             levantamentos = FXCollections.observableArrayList(Levantamento.selecionaLevantamento());
             numero.setCellValueFactory(cellData -> cellData.getValue().getNumLevantamento().asString());
             data.setCellValueFactory(cellData -> cellData.getValue().getDataLevantamento().asString());
-            tabelaLevantamento.setItems(levantamentos);
+            //tabelaLevantamento.setItems(levantamentos); 
+        }catch (Exception e) {
+            e.printStackTrace();
         }
-        
+      }
+       
     @FXML
     public void voltaMenuPrincipal() {
         try {
@@ -66,7 +70,8 @@ public class ControladorConsultarLevantamentos {
         } catch (Exception e) {
             e.printStackTrace();
         }
-       }
+       } 
+    
      /**
      * Metodo para botao ver levantamento presente na janela Consultarlevantamentos -
      * botao para view resumoLevantamento que vai permitir ver o
@@ -83,6 +88,7 @@ public class ControladorConsultarLevantamentos {
             stage.setScene(new Scene(root));
             stage.show();
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
