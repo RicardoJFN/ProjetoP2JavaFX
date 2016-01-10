@@ -5,17 +5,25 @@
  */
 package p2.projeto.mlt.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import p2.projeto.mlt.model.Edificio;
+import p2.projeto.mlt.model.Equipamento;
 
 /**
  *
  * @author ricardon
  */
 public class ControladorIdentificarEquipamento {
+    
     
         /**
      * Nome da Ligacao ao botao - colocado no fx:id do botao sair
@@ -25,6 +33,29 @@ public class ControladorIdentificarEquipamento {
 
         @FXML
         private javafx.scene.control.Button sair;
+    
+    @FXML
+    private TableView<Equipamento> tabelaEquipamentos;
+    @FXML
+    private TableColumn<Equipamento, String> tipo;
+    @FXML
+    private ComboBox<Edificio> edificio;
+    
+    private ObservableList<Equipamento> equipamentos = FXCollections.observableArrayList();
+        
+        public ObservableList<Equipamento> getClienteData(){
+            return equipamentos;
+        }
+    
+    @FXML
+    private void initialize(){
+        edificio.getItems().addAll(Edificio.selecionaEdificio());
+        equipamentos = FXCollections.observableArrayList(Equipamento.selecionaEquipamentos());
+        tipo.setCellValueFactory(cellData -> cellData.getValue().getTipoEquip());
+        tabelaEquipamentos.setItems(equipamentos);
+    }
+        
+        
         
   @FXML
     public void voltarNovoLevantamento() {

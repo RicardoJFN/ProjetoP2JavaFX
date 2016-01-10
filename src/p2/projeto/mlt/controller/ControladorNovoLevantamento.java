@@ -168,9 +168,9 @@ public class ControladorNovoLevantamento {
 
         double resultadoSomaEsquerda = primeiraMultiEsquerda + segundaMultiEsquerda + terceiraMultiEsquerda + quartaMultiEsquerda;
 
-        double teste = Math.max(resultadoSomaDireita, resultadoSomaEsquerda);
+        double resultadoSomas = Math.max(resultadoSomaDireita, resultadoSomaEsquerda);
         double sub = 0;
-        if (teste == resultadoSomaDireita) {
+        if (resultadoSomas == resultadoSomaDireita) {
             sub = resultadoSomaDireita - resultadoSomaEsquerda;
         } else {
             sub = resultadoSomaEsquerda - resultadoSomaDireita;

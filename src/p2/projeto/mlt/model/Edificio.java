@@ -88,6 +88,10 @@ public class Edificio {
             this.nomeEdificio = new SimpleStringProperty(nomeEdificio);
         }
 
+        public Edificio(int idEdificio){
+            this.idEdificio = new SimpleIntegerProperty(idEdificio);
+           }
+        
         //-------------------------------------------------------Getters e Setters-------------------------------------------------------
         
 	public IntegerProperty getIdEdificio() {
@@ -147,7 +151,7 @@ public class Edificio {
 	
 	@Override
 	public String toString() {
-		return "Edificio: " + nomeEdificio.getValue();
+		return "Edificio: " + nomeEdificio.getValue() + " - " + idEdificio.getValue();
 	}
 
         /**
@@ -218,6 +222,24 @@ public class Edificio {
               
 			while(rs.next()){
 				edificios.add(new Edificio(rs.getInt("Edif_id"), rs.getString("Edif_nome")));
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return edificios;
+	}
+        
+        public static ArrayList<Edificio> selecionaIDEdificio(){
+		
+		ArrayList<Edificio> edificios = new ArrayList<>();
+		try{
+			ConexaoBaseDados con = ConexaoBaseDados.conectar();
+			Statement stmt = con.getConexao().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM edificios");
+			
+              
+			while(rs.next()){
+				edificios.add(new Edificio(rs.getInt("Edif_id")));
 			}
 		}catch (Exception e){
 			e.printStackTrace();

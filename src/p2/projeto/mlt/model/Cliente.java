@@ -156,7 +156,7 @@ public class Cliente {
 	
 	//-------------------------------------------------------Metodo de insercao de um novo cliente na BD-------------------------------------------------------
 	
-	public void inserirNovoCliente(Cliente cliente){
+	public void inserirNovoCliente(){
 		try{
 			ConexaoBaseDados con = ConexaoBaseDados.conectar();
 			String insertStatement = "INSERT INTO cliente(Cliente_nome,Cliente_morada,Cliente_postal,Cliente_telef,Cliente_telem,Cliente_email) VALUES(?,?,?,?,?,?)";

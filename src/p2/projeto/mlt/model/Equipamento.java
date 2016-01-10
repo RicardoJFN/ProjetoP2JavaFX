@@ -66,6 +66,10 @@ public class Equipamento {
             this.estadoEquip = estadoEquip;
         }
 
+        public Equipamento(String tipoEquip){
+            this.tipoEquip = new SimpleStringProperty(tipoEquip);
+            
+        }
         
         public Equipamento(double valorEquip){
             this.valorEquip = new SimpleDoubleProperty(valorEquip);
@@ -204,5 +208,24 @@ public class Equipamento {
 		}
 		return equipamentos;
 	}
+        
+        public static ArrayList<Equipamento> selecionaEquipamentos(){
+			
+			ArrayList <Equipamento> equipamentos = new ArrayList<>();
+			try {
+				ConexaoBaseDados con = ConexaoBaseDados.conectar();
+				Statement stmt = con.getConexao().createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM equipamento");
+				
+				while(rs.next()){
+					equipamentos.add(new Equipamento(rs.getString("Equip_tipo")));
+				}
+			} catch (Exception e) {
+		
+				e.printStackTrace();
+			}
+			return equipamentos;
+			
+		}
 	
 }

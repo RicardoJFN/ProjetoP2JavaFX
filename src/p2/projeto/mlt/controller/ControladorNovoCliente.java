@@ -65,7 +65,7 @@ public class ControladorNovoCliente {
 				Integer.parseInt(telefoneCliente.getText()), Integer.parseInt(telemovelCliente.getText()), 
 				emailCliente.getText());
 		
-		novoCliente.inserirNovoCliente(novoCliente);
+		novoCliente.inserirNovoCliente();
 	}
 
 
