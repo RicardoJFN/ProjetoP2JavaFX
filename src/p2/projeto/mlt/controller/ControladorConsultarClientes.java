@@ -18,10 +18,16 @@ import p2.projeto.mlt.model.Cliente;
 
 /**
  *
- * @author carlosb
+ * @author 
  */
 public class ControladorConsultarClientes {
 
+    /**
+     * Indicação dos nomes referentes a TableView 
+     * e respectivas colunas da Tableview:
+     * nome, morada, localidade, telefone, email 
+     */
+    
     @FXML
     private TableView<Cliente> tabelaCliente;
     @FXML

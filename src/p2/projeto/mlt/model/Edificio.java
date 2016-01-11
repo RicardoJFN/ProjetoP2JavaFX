@@ -23,7 +23,7 @@ import p2.projeto.mlt.DAL.ConexaoBaseDados;
 
 /**
  *
- * @author pedror
+ * @author 
  */
 public class Edificio {
 

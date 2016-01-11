@@ -20,7 +20,7 @@ import p2.projeto.mlt.model.Orcamento;
 
 /**
  *
- * @author ricardon
+ * @author 
  */
 public class ControladorNovoOrcamento {
 

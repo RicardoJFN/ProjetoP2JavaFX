@@ -12,7 +12,7 @@ import p2.projeto.mlt.model.Cliente;
 
 /**
  *
- * @author ricardon
+ * @author 
  */
 public class ControladorNovoCliente {
 

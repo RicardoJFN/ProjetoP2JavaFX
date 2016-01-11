@@ -85,7 +85,11 @@ public class Cliente {
         this.nomeCliente = new SimpleStringProperty(nomeCliente);
     }
 
-    //-------------------------------------------------------Getters e Setters-------------------------------------------------------
+   /**
+ +  * Declaracao de Getters e Setters
+ +  * @return 
+ +  */
+    
     public IntegerProperty getIdCliente() {
         return idCliente;
     }

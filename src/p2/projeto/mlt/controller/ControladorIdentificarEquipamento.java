@@ -20,7 +20,7 @@ import p2.projeto.mlt.model.Equipamento;
 
 /**
  *
- * @author ricardon
+ * @author 
  */
 public class ControladorIdentificarEquipamento {
 

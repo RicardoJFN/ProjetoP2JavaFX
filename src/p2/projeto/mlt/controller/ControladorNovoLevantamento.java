@@ -20,7 +20,7 @@ import p2.projeto.mlt.model.Levantamento;
 
 /**
  *
- * @author ricardon
+ * @author 
  */
 public class ControladorNovoLevantamento {
 

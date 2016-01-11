@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author carlosb
+ * @author 
  */
 public class ControladorResumoLevantamento {
 

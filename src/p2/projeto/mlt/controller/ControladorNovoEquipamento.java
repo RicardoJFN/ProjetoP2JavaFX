@@ -22,7 +22,7 @@ import p2.projeto.mlt.model.NovoTipoEquipamento;
 
 /**
  *
- * @author ricardon
+ * @author 
  */
 public class ControladorNovoEquipamento {
 

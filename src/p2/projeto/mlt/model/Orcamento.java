@@ -20,7 +20,7 @@ import p2.projeto.mlt.DAL.ConexaoBaseDados;
 
 /**
  *
- * @author ricardon
+ * @author 
  */
 public class Orcamento {
 
